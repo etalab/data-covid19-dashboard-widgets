@@ -1,0 +1,38 @@
+[taux_incidence]
+dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
+res_id_fra = "cbd6477e-bda6-485d-afdc-8e61b904d771"
+res_id_reg = "36ab36ea-d073-4543-9ea0-a64a0175083f"
+res_id_dep = "3c18e242-7d45-44f2-ac70-dee78a38ee1c"
+trendType = "normal"
+nom = ["Taux d'incidence (pour 100 000 habitants)"]
+unite = ["Nombre de cas par semaine pour 100 000 habitant"]
+#Formula = P * 100000 / pop
+
+[hospitalisations]
+dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
+res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
+trendType = "normal"
+nom = ["Hospitalisations","Moyenne des nouvelles hospitalisations par jour sur les 7 derniers jours"]
+unite = ["personnes hospitalisées","personnes hospitalisées"]
+
+[reanimations]
+dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
+res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
+trendType = "normal"
+nom = ["Hospitalisations en soins critiques","Moyenne des nouvelles hospitalisations en soins critiques par jour sur les 7 derniers jours"]
+unite = ["personnes en soins critiques","personnes en soins critiques"]
+
+[vaccins]
+dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
+res_id = "4f39ec91-80d7-4602-befb-4b522804c0af"
+trendType = "abnormal"
+nom = ["Personnes ayant reçu au moins une première injection"]
+unite = ["personnes"]
+
+[cas_positifs]
+dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
+res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
+trendType = "normal"
+nom = ["Nombre moyen de nouveaux cas confirmés quotidiens sur 7 jours (J-3)"]
+unite = ["cas positifs"]
+
