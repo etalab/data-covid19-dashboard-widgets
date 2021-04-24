@@ -33,6 +33,8 @@ jobs:
             python main.py
             python plot_kpi.py
 
+            git config --global user.email "robot@circleci.com"
+            git config --global user.name "CircleCI"
             git clone https://github.com/geoffreyaldebert/covidbackend.git
             cp -r ~/project/data/* ~/project/covidbackend/data/
             cp -r ~/project/data/* ~/project/covidbackend/plots/
