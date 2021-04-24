@@ -4,10 +4,10 @@ jobs:
   fetch:
     docker:
       - image: circleci/python:3.8
-    working_directory: ~/project/
+    working_directory: ~/
     steps:
       - checkout:
-          path: ~/project
+          path: ~/
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "requirements.txt" }}
