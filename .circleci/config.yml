@@ -34,21 +34,9 @@ jobs:
             . venv/bin/activate
             python main.py
             python plot_kpi.py
-            python tweet.py
+
             git clone https://github.com/geoffreyaldebert/covidbackend.git
-            cp -r data/* covidbackend/data/
-            cp -r data/* covidbackend/plots/
-            cp -r data/* covidbackend/kpis/
-            cd covibackend
-            if [ -n "$(git status --porcelain)" ]; then
-              git add data
-              git add plots
-              git add kpis
-              git commit -am "New data at $(date -u +'%Y-%m-%dT%H:%M:%SZ') [skip ci]"
-              git push origin master
-            else
-              echo "No changes";
-            fi
+            ls
       - persist_to_workspace:
           root: .
           paths:
