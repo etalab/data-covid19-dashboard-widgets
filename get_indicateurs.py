@@ -2,7 +2,7 @@
 import pandas as pd
 from tqdm import tqdm
 
-from func import tauxIncidenceProcessing, hospProcessing, reaProcessing, firstInjectionProcessing, casPositifsProcessing
+from func import tauxIncidenceProcessing, hospProcessing, reaProcessing, vaccinProcessing, casPositifsProcessing, dcProcessing
 from utils import getEmptyIndicateur, getConfig
 
 deps = pd.read_csv('utils/departement2021.csv',dtype=str)
@@ -100,6 +100,35 @@ def getReas():
     return indicateurResult
 
 
+def getDeces():
+    
+    indicateurResult = getEmptyIndicateur()
+    config = getConfig('deces')
+    print('Processing - Décès')
+
+    for nom in config['nom']:
+        indicateurResult['nom'].append(nom)
+    for unite in config['unite']:
+        indicateurResult['unite'].append(unite)
+
+    df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id'], sep=None, engine='python',dtype={'reg':str,'dep':str})
+    for country in tqdm(countries, desc="Processing National"):
+        df = df[['dep','reg','date','incid_dchosp']]
+        res = dcProcessing(df.groupby(['date'],as_index=False).sum(),'nat','fra', config['trendType'])
+        indicateurResult['france'].append(res)
+
+    dfinter = df.groupby(['date','reg'],as_index=False).sum()
+    for reg in tqdm(df.reg.unique(),desc="Processing Régions"):    
+        res = dcProcessing(dfinter[dfinter['reg'] == reg].copy(),'reg',reg, config['trendType'])
+        indicateurResult['regions'].append(res)
+
+    for dep in tqdm(df.dep.unique(),desc="Processing Départements"):
+        res = dcProcessing(df[df['dep'] == dep].copy(),'dep',dep, config['trendType'])
+        indicateurResult['departements'].append(res)    
+    
+    return indicateurResult
+
+
 def getVaccins():
     
     indicateurResult = getEmptyIndicateur()
@@ -113,19 +142,19 @@ def getVaccins():
 
     df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id'], sep=None, engine='python',dtype={'reg':str,'dep':str})
     for country in tqdm(countries, desc="Processing National"):
-        df = df[['dep','jour','n_cum_dose1']]
+        df = df[['dep','jour','n_cum_dose1','n_cum_dose2']]
         df = df.rename(columns={'jour':'date'})
         df = pd.merge(df,deps,on='dep',how='left')
-        res = firstInjectionProcessing(df.groupby(['date'],as_index=False).sum(),'nat','fra', config['trendType'])
+        res = vaccinProcessing(df.groupby(['date'],as_index=False).sum(),'nat','fra', config['trendType'])
         indicateurResult['france'].append(res)
 
     dfinter = df.groupby(['date','reg'],as_index=False).sum()
     for reg in tqdm(dfinter.reg.unique(),desc="Processing Régions"):
-        res = firstInjectionProcessing(dfinter[dfinter['reg'] == reg].copy(),'reg',reg, config['trendType'])
+        res = vaccinProcessing(dfinter[dfinter['reg'] == reg].copy(),'reg',reg, config['trendType'])
         indicateurResult['regions'].append(res)
 
     for dep in tqdm(df.dep.unique(),desc="Processing Départements"):
-        res = firstInjectionProcessing(df[df['dep'] == dep].copy(),'dep',dep, config['trendType'])
+        res = vaccinProcessing(df[df['dep'] == dep].copy(),'dep',dep, config['trendType'])
         indicateurResult['departements'].append(res)    
         
     return indicateurResult

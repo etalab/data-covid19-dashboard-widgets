@@ -53,3 +53,15 @@ def formatDict(last_value,last_date,evol,evol_percentage,level,code_level,dfvalu
         interdict['date'] = row['date']
         resdict['values'].append(interdict)
     return resdict
+
+
+def getMeanKPI(date,df,column):
+    x = 0
+    cpt = 0
+    for i in range(0,7):
+        newDate  = datetime.strftime(datetime.strptime(date, "%Y-%m-%d")- timedelta(days=i),"%Y-%m-%d")
+        if(df[df['date'] == newDate].shape[0] > 0):
+            x = x + df[df['date'] == newDate][column].iloc[0]
+            cpt = cpt + 1
+    x = x / cpt
+    return x

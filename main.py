@@ -1,13 +1,49 @@
 import json
-from get_indicateurs import getTauxIncidence, getHospitalisations, getReas, getVaccins, getCasPositifs
+import glob
+from get_indicateurs import getTauxIncidence, getHospitalisations, getReas, getVaccins, getCasPositifs, getDeces
 
-resGlobal = {}
+res = {}
 
-#resGlobal['tx_incidence'] = getTauxIncidence()
-#resGlobal['hospitalisations'] = getHospitalisations()
-#resGlobal['reas'] = getReas()
-resGlobal['premieres_injections'] = getVaccins()
-resGlobal['cas_positifs'] = getCasPositifs()
+try:
+    res['taux_incidence'] = getTauxIncidence()
+except:
+    print('ERROR - Taux incidence')
 
-with open('result.json','w') as fp:
-    json.dump(resGlobal, fp)
+try:
+    res['hospitalisations'] = getHospitalisations()
+except:
+    print('ERROR - Hospitalisations')
+
+try:
+    res['soins_critiques'] = getReas()
+except:
+    print('ERROR - Réanimations')
+
+try:
+    res['deces'] = getDeces()
+except:
+    print('ERROR - Décès')
+
+try:
+    res['vaccins'] = getVaccins()
+except:
+    print('ERROR - Vaccins')
+
+try:
+    res['cas_positifs'] = getCasPositifs()
+except:
+    print('ERROR - Cas Positifs')
+
+for item in res:
+    with open('json/'+item+'.json','w') as fp:
+        json.dump(res[item], fp)
+
+resglobal = {}
+files = glob.glob("json/*.json")
+for file in files:
+    with open(file) as json_file:
+        resglobal[file.replace('json/','').replace('.json','')] = json.load(json_file)
+
+with open('global.json','w') as fp:
+    json.dump(resglobal, fp)
+
