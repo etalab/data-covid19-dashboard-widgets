@@ -1,6 +1,7 @@
 import tweepy
 import secrets
 import toml
+import os 
 
 TWITTER_API_KEY = os.getenv('TWITTER_API_KEY')
 TWITTER_API_SECRET_KEY = os.getenv('TWITTER_API_SECRET_KEY')
