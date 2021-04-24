@@ -35,14 +35,14 @@ except:
     print('ERROR - Cas Positifs')
 
 for item in res:
-    with open('json/'+item+'.json','w') as fp:
+    with open('data/'+item+'.json','w') as fp:
         json.dump(res[item], fp)
 
 resglobal = {}
-files = glob.glob("json/*.json")
+files = glob.glob("data/*.json")
 for file in files:
     with open(file) as json_file:
-        resglobal[file.replace('json/','').replace('.json','')] = json.load(json_file)
+        resglobal[file.replace('data/','').replace('.json','')] = json.load(json_file)
 
 with open('global.json','w') as fp:
     json.dump(resglobal, fp)

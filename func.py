@@ -1,7 +1,6 @@
 from datetime import timedelta
 from datetime import datetime
 from utils import getColor, formatDict, getMeanKPI
-import toml
 
 def tauxIncidenceProcessing(df,level,code_level, trendType):
     df['tx_incidence'] = df['P']*100000/df['pop']

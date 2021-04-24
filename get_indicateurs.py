@@ -74,7 +74,7 @@ def getHospitalisations():
 def getReas():
     
     indicateurResult = getEmptyIndicateur()
-    config = getConfig('reanimations')
+    config = getConfig('soins_critiques')
     print('Processing - Réanimations')
 
     for nom in config['nom']:
