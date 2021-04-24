@@ -26,6 +26,8 @@ jobs:
       - run:
           name: Fetch datasets and generate data
           command: |
+            pwd
+            ls
             . venv/bin/activate
             python main.py
             python plot_kpi.py
