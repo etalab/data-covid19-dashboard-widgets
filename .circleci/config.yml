@@ -8,8 +8,6 @@ jobs:
     steps:
       - checkout:
           path: ~/project
-      - attach_workspace:
-          at: /tmp
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "requirements.txt" }}
@@ -33,9 +31,9 @@ jobs:
             python plot_kpi.py
             python tweet.py
             git clone https://github.com/geoffreyaldebert/covidbackend.git /tmp/covidbackend
-            mv /tmp/data /tmp/covidbackend/data
-            mv /tmp/data /tmp/covidbackend/plots
-            mv /tmp/data /tmp/covidbackend/kpis
+            mv data /tmp/covidbackend/data
+            mv data /tmp/covidbackend/plots
+            mv data /tmp/covidbackend/kpis
             cd /tmp/covibackend
             if [ -n "$(git status --porcelain)" ]; then
               git add data
