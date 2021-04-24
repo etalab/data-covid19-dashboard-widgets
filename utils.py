@@ -1,4 +1,7 @@
 import toml
+from datetime import datetime
+from datetime import timedelta
+
 
 def getColor(val,trendType):
     if(val > 0):
