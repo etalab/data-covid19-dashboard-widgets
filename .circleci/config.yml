@@ -37,7 +37,7 @@ jobs:
             cp -r ~/project/data/* ~/project/covidbackend/data/
             cp -r ~/project/data/* ~/project/covidbackend/plots/
             cp -r ~/project/data/* ~/project/covidbackend/kpis/
-            cd ~/project/covibackend
+            cd ~/project/covidbackend
             if [ -n "$(git status --porcelain)" ]; then
               git add data
               git add plots
