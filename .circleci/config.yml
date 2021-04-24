@@ -64,7 +64,7 @@ workflows:
   cron_fetch:
     triggers:
       - schedule:
-          cron: "38 17 * * *"
+          cron: "45 15 * * *"
           filters:
             branches:
               only:
