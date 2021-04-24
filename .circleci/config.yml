@@ -36,7 +36,19 @@ jobs:
             python plot_kpi.py
 
             git clone https://github.com/geoffreyaldebert/covidbackend.git
-            ls
+            cp -r ~/project/data/* ~/project/covidbackend/data/
+            cp -r ~/project/data/* ~/project/covidbackend/plots/
+            cp -r ~/project/data/* ~/project/covidbackend/kpis/
+            cd ~/project/covibackend
+            if [ -n "$(git status --porcelain)" ]; then
+              git add data
+              git add plots
+              git add kpis
+              git commit -am "New data at $(date -u +'%Y-%m-%dT%H:%M:%SZ') [skip ci]"
+              git push origin master
+            else
+              echo "No changes";
+            fi
       - persist_to_workspace:
           root: .
           paths:
