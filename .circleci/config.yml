@@ -32,6 +32,7 @@ jobs:
             . venv/bin/activate
             python main.py
             python plot_kpi.py
+            python tweet.py
 
             git config --global user.email "robot@circleci.com"
             git config --global user.name "CircleCI"
@@ -64,7 +65,7 @@ workflows:
   cron_fetch:
     triggers:
       - schedule:
-          cron: "45 15 * * *"
+          cron: "30 17 * * *"
           filters:
             branches:
               only:
