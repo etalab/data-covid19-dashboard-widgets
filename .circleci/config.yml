@@ -35,12 +35,11 @@ jobs:
             python main.py
             python plot_kpi.py
             python tweet.py
-            git clone https://github.com/geoffreyaldebert/covidbackend.git /tmp/covidbackend
-            ls /tmp/
-            cp -r ~/project/data/* /tmp/covidbackend/data/
-            cp -r ~/project/data/* /tmp/covidbackend/plots/
-            cp -r ~/project/data/* /tmp/covidbackend/kpis/
-            cd /tmp/covibackend
+            git clone https://github.com/geoffreyaldebert/covidbackend.git
+            cp -r data/* covidbackend/data/
+            cp -r data/* covidbackend/plots/
+            cp -r data/* covidbackend/kpis/
+            cd covibackend
             if [ -n "$(git status --porcelain)" ]; then
               git add data
               git add plots
