@@ -30,6 +30,20 @@ jobs:
             python main.py
             python plot_kpi.py
             python tweet.py
+            git clone https://github.com/geoffreyaldebert/covidbackend.git /tmp/covidbackend
+            mv /tmp/data /tmp/covidbackend/data
+            mv /tmp/data /tmp/covidbackend/plots
+            mv /tmp/data /tmp/covidbackend/kpis
+            cd /tmp/covibackend
+            if [ -n "$(git status --porcelain)" ]; then
+              git add data
+              git add plots
+              git add kpis
+              git commit -am "New data at $(date -u +'%Y-%m-%dT%H:%M:%SZ') [skip ci]"
+              git push origin master
+            else
+              echo "No changes";
+            fi
       - persist_to_workspace:
           root: .
           paths:
