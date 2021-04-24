@@ -4,7 +4,10 @@ jobs:
   fetch:
     docker:
       - image: circleci/python:3.8
+    working_directory: ~/project/
     steps:
+      - checkout:
+          path: ~/project
       - attach_workspace:
           at: /tmp
       - restore_cache:
