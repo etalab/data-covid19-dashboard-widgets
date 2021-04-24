@@ -3,7 +3,7 @@ import glob
 from get_indicateurs import getTauxIncidence, getHospitalisations, getReas, getVaccins, getCasPositifs, getDeces
 
 res = {}
-
+""" 
 try:
     res['taux_incidence'] = getTauxIncidence()
 except:
@@ -37,7 +37,7 @@ except:
 for item in res:
     with open('data/'+item+'.json','w') as fp:
         json.dump(res[item], fp)
-
+ """
 resglobal = {}
 files = glob.glob("data/*.json")
 for file in files:
