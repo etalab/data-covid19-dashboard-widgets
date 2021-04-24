@@ -1,0 +1,49 @@
+version: 2
+
+jobs:
+  fetch:
+    docker:
+      - image: circleci/python:3.8
+    working_directory: ~/project/
+    steps:
+      - checkout:
+          path: ~/project
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "requirements.txt" }}
+      - run:
+          name: Install dependencies
+          command: |
+            python -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
+      - run:
+          name: Fetch datasets and generate data
+          command: |
+            . venv/bin/activate
+            python main.py
+            python plot_kpi.py
+            python tweet.py
+      - persist_to_workspace:
+          root: .
+          paths:
+            - cache
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - fetch
+  cron_fetch:
+    triggers:
+      - schedule:
+          cron: "0 20 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - fetch

@@ -2,8 +2,13 @@ import tweepy
 import secrets
 import toml
 
-auth = tweepy.OAuthHandler(secrets.api_key, secrets.api_secret_key)
-auth.set_access_token(secrets.token, secrets.secret_token)
+TWITTER_API_KEY = os.getenv('TWITTER_API_KEY')
+TWITTER_API_SECRET_KEY = os.getenv('TWITTER_API_SECRET_KEY')
+TWITTER_TOKEN = os.getenv('TWITTER_TOKEN')
+TWITTER_SECRET_TOKEN = os.getenv('TWITTER_SECRET_TOKEN')
+
+auth = tweepy.OAuthHandler(TWITTER_API_KEY, TWITTER_API_SECRET_KEY)
+auth.set_access_token(TWITTER_TOKEN, TWITTER_SECRET_TOKEN)
 
 api = tweepy.API(auth)
 
