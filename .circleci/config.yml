@@ -36,6 +36,7 @@ jobs:
             python plot_kpi.py
             python tweet.py
             git clone https://github.com/geoffreyaldebert/covidbackend.git /tmp/covidbackend
+            ls /tmp/
             cp -r ~/project/data/* /tmp/covidbackend/data/
             cp -r ~/project/data/* /tmp/covidbackend/plots/
             cp -r ~/project/data/* /tmp/covidbackend/kpis/
