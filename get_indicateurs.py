@@ -2,7 +2,7 @@
 import pandas as pd
 from tqdm import tqdm
 
-from func import tauxIncidenceProcessing, hospProcessing, reaProcessing, vaccinProcessing, casPositifsProcessing, dcProcessing
+from func import *
 from utils import getEmptyIndicateur, getConfig
 
 deps = pd.read_csv('utils/departement2021.csv',dtype=str)
@@ -18,10 +18,8 @@ def getTauxIncidence():
     config = getConfig('taux_incidence')
     print('Processing - Taux incidence')
 
-    for nom in config['nom']:
-        indicateurResult['nom'].append(nom)
-    for unite in config['unite']:
-        indicateurResult['unite'].append(unite)
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
     
     df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id_fra'], sep=None, engine='python',dtype={'reg':str,'dep':str})
     for country in tqdm(countries, desc="Processing National"):
@@ -47,10 +45,8 @@ def getHospitalisations():
     config = getConfig('hospitalisations')
     print('Processing - Hospitalisations')
 
-    for nom in config['nom']:
-        indicateurResult['nom'].append(nom)
-    for unite in config['unite']:
-        indicateurResult['unite'].append(unite)
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
         
     df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id'], sep=None, engine='python',dtype={'reg':str,'dep':str})
     for country in tqdm(countries, desc="Processing National"):
@@ -70,6 +66,33 @@ def getHospitalisations():
     return indicateurResult
 
 
+def getMeanHospitalisations():
+    
+    indicateurResult = getEmptyIndicateur()
+    config = getConfig('hospitalisations_moyenne_quotidien')
+    print('Processing - Hospitalisations Moyenne quotidien')
+
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
+        
+    df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id'], sep=None, engine='python',dtype={'reg':str,'dep':str})
+    for country in tqdm(countries, desc="Processing National"):
+        df = df[['dep','reg','date','incid_hosp','hosp']]
+        res = hospMeanProcessing(df.groupby(['date'],as_index=False).sum(),'nat','fra', config['trendType'])
+        indicateurResult['france'].append(res)
+
+    dfinter = df.groupby(['date','reg'],as_index=False).sum()
+    for reg in tqdm(df.reg.unique(),desc="Processing Régions"):    
+        res = hospMeanProcessing(dfinter[dfinter['reg'] == reg].copy(),'reg',reg, config['trendType'])
+        indicateurResult['regions'].append(res)
+
+    for dep in tqdm(df.dep.unique(),desc="Processing Départements"):
+        res = hospMeanProcessing(df[df['dep'] == dep].copy(),'dep',dep, config['trendType'])
+        indicateurResult['departements'].append(res)    
+
+    return indicateurResult
+
+
 
 def getReas():
     
@@ -77,10 +100,8 @@ def getReas():
     config = getConfig('soins_critiques')
     print('Processing - Réanimations')
 
-    for nom in config['nom']:
-        indicateurResult['nom'].append(nom)
-    for unite in config['unite']:
-        indicateurResult['unite'].append(unite)
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
 
     df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id'], sep=None, engine='python',dtype={'reg':str,'dep':str})
     for country in tqdm(countries, desc="Processing National"):
@@ -100,16 +121,41 @@ def getReas():
     return indicateurResult
 
 
+def getMeanReas():
+    
+    indicateurResult = getEmptyIndicateur()
+    config = getConfig('soins_critiques_moyenne_quotidien')
+    print('Processing - Réanimations')
+
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
+
+    df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id'], sep=None, engine='python',dtype={'reg':str,'dep':str})
+    for country in tqdm(countries, desc="Processing National"):
+        df = df[['dep','reg','date','incid_rea','rea']]
+        res = reaMeanProcessing(df.groupby(['date'],as_index=False).sum(),'nat','fra', config['trendType'])
+        indicateurResult['france'].append(res)
+
+    dfinter = df.groupby(['date','reg'],as_index=False).sum()
+    for reg in tqdm(df.reg.unique(),desc="Processing Régions"):    
+        res = reaMeanProcessing(dfinter[dfinter['reg'] == reg].copy(),'reg',reg, config['trendType'])
+        indicateurResult['regions'].append(res)
+
+    for dep in tqdm(df.dep.unique(),desc="Processing Départements"):
+        res = reaMeanProcessing(df[df['dep'] == dep].copy(),'dep',dep, config['trendType'])
+        indicateurResult['departements'].append(res)    
+    
+    return indicateurResult
+
+
 def getDeces():
     
     indicateurResult = getEmptyIndicateur()
     config = getConfig('deces')
     print('Processing - Décès')
 
-    for nom in config['nom']:
-        indicateurResult['nom'].append(nom)
-    for unite in config['unite']:
-        indicateurResult['unite'].append(unite)
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
 
     df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id'], sep=None, engine='python',dtype={'reg':str,'dep':str})
     for country in tqdm(countries, desc="Processing National"):
@@ -128,33 +174,87 @@ def getDeces():
     
     return indicateurResult
 
-
-def getVaccins():
+def getMeanDeces():
     
     indicateurResult = getEmptyIndicateur()
-    config = getConfig('vaccins')
-    print('Processing - Vaccins')
+    config = getConfig('deces_moyenne_quotidien')
+    print('Processing - Décès')
 
-    for nom in config['nom']:
-        indicateurResult['nom'].append(nom)
-    for unite in config['unite']:
-        indicateurResult['unite'].append(unite)
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
 
     df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id'], sep=None, engine='python',dtype={'reg':str,'dep':str})
     for country in tqdm(countries, desc="Processing National"):
-        df = df[['dep','jour','n_cum_dose1','n_cum_dose2']]
-        df = df.rename(columns={'jour':'date'})
-        df = pd.merge(df,deps,on='dep',how='left')
-        res = vaccinProcessing(df.groupby(['date'],as_index=False).sum(),'nat','fra', config['trendType'])
+        df = df[['dep','reg','date','incid_dchosp']]
+        res = dcMeanProcessing(df.groupby(['date'],as_index=False).sum(),'nat','fra', config['trendType'])
+        indicateurResult['france'].append(res)
+
+    dfinter = df.groupby(['date','reg'],as_index=False).sum()
+    for reg in tqdm(df.reg.unique(),desc="Processing Régions"):    
+        res = dcMeanProcessing(dfinter[dfinter['reg'] == reg].copy(),'reg',reg, config['trendType'])
+        indicateurResult['regions'].append(res)
+
+    for dep in tqdm(df.dep.unique(),desc="Processing Départements"):
+        res = dcMeanProcessing(df[df['dep'] == dep].copy(),'dep',dep, config['trendType'])
+        indicateurResult['departements'].append(res)    
+    
+    return indicateurResult
+
+
+def getFirstDoseVaccins():
+    
+    indicateurResult = getEmptyIndicateur()
+    config = getConfig('vaccins_premiere_dose')
+    print('Processing - Vaccins')
+
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
+
+    df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id'], sep=None, engine='python',dtype={'reg':str,'dep':str})
+    df = df[['dep','jour','n_cum_dose1','n_cum_complet']]
+    df = df.rename(columns={'jour':'date'})
+    df = pd.merge(df,deps,on='dep',how='left')
+
+    for country in tqdm(countries, desc="Processing National"):
+        res = vaccinFirstDoseProcessing(df.groupby(['date'],as_index=False).sum(),'nat','fra', config['trendType'])
         indicateurResult['france'].append(res)
 
     dfinter = df.groupby(['date','reg'],as_index=False).sum()
     for reg in tqdm(dfinter.reg.unique(),desc="Processing Régions"):
-        res = vaccinProcessing(dfinter[dfinter['reg'] == reg].copy(),'reg',reg, config['trendType'])
+        res = vaccinFirstDoseProcessing(dfinter[dfinter['reg'] == reg].copy(),'reg',reg, config['trendType'])
         indicateurResult['regions'].append(res)
 
     for dep in tqdm(df.dep.unique(),desc="Processing Départements"):
-        res = vaccinProcessing(df[df['dep'] == dep].copy(),'dep',dep, config['trendType'])
+        res = vaccinFirstDoseProcessing(df[df['dep'] == dep].copy(),'dep',dep, config['trendType'])
+        indicateurResult['departements'].append(res)    
+        
+    return indicateurResult
+
+def getFullVaccins():
+    
+    indicateurResult = getEmptyIndicateur()
+    config = getConfig('vaccins_vaccines')
+    print('Processing - Vaccins')
+
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
+
+    df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id'], sep=None, engine='python',dtype={'reg':str,'dep':str})
+    df = df[['dep','jour','n_cum_dose1','n_cum_complet']]
+    df = df.rename(columns={'jour':'date'})
+    df = pd.merge(df,deps,on='dep',how='left')
+
+    for country in tqdm(countries, desc="Processing National"):
+        res = vaccinFullProcessing(df.groupby(['date'],as_index=False).sum(),'nat','fra', config['trendType'])
+        indicateurResult['france'].append(res)
+
+    dfinter = df.groupby(['date','reg'],as_index=False).sum()
+    for reg in tqdm(dfinter.reg.unique(),desc="Processing Régions"):
+        res = vaccinFullProcessing(dfinter[dfinter['reg'] == reg].copy(),'reg',reg, config['trendType'])
+        indicateurResult['regions'].append(res)
+
+    for dep in tqdm(df.dep.unique(),desc="Processing Départements"):
+        res = vaccinFullProcessing(df[df['dep'] == dep].copy(),'dep',dep, config['trendType'])
         indicateurResult['departements'].append(res)    
         
     return indicateurResult
@@ -165,10 +265,8 @@ def getCasPositifs():
     config = getConfig('cas_positifs')
     print('Processing - Cas Positifs')
 
-    for nom in config['nom']:
-        indicateurResult['nom'].append(nom)
-    for unite in config['unite']:
-        indicateurResult['unite'].append(unite)
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
 
     df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id'], sep=None, engine='python',dtype={'reg':str,'dep':str})
     for country in tqdm(countries, desc="Processing National"):
@@ -185,4 +283,31 @@ def getCasPositifs():
         res = casPositifsProcessing(df[df['dep'] == dep].copy(),'dep',dep, config['trendType'])
         indicateurResult['departements'].append(res)    
     
+    return indicateurResult
+
+
+def getTauxPositivite():
+    
+    indicateurResult = getEmptyIndicateur()
+    config = getConfig('taux_positivite')
+    print('Processing - Taux positivité')
+
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
+    
+    df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id_fra'], sep=None, engine='python',dtype={'reg':str,'dep':str})
+    for country in tqdm(countries, desc="Processing National"):
+        res = tauxPositiviteProcessing(df,'nat','fra', config['trendType'])
+        indicateurResult['france'].append(res)
+
+    df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id_reg'], sep=None, engine='python',dtype={'reg':str,'dep':str})
+    for reg in tqdm(df.reg.unique(),desc="Processing Régions"):
+        res = tauxPositiviteProcessing(df[df['reg'] == reg].copy(),'reg',reg, config['trendType'])
+        indicateurResult['regions'].append(res)
+
+    df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id_dep'], sep=None, engine='python',dtype={'reg':str,'dep':str})
+    for dep in tqdm(df.dep.unique(),desc="Processing Départements"):
+        res = tauxPositiviteProcessing(df[df['dep'] == dep].copy(),'dep',dep, config['trendType'])
+        indicateurResult['departements'].append(res)
+        
     return indicateurResult

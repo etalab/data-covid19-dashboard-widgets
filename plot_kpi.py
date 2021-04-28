@@ -10,6 +10,7 @@ from datetime import datetime
 
 config = toml.load('./config.toml')
 for itemGroup, detail in config.items():
+    print(itemGroup)
     with open('data/'+itemGroup+'.json') as fp:
         data = json.load(fp)
     
@@ -17,7 +18,7 @@ for itemGroup, detail in config.items():
     arr = []
     for item in data['france'][0]['values']:
         mydict = {}
-        mydict['val'] = float(item['value'][detail['positionData']])
+        mydict['val'] = float(item['value'])
         mydict['date'] = item['date']
         arr.append(mydict)
 
@@ -45,11 +46,11 @@ for itemGroup, detail in config.items():
     plt.close()
 
     # KPI
-    if(float(data['france'][0]['evol_percentage'][detail['positionData']]) > 0):
-        evol = "+"+data['france'][0]['evol_percentage'][detail['positionData']]
+    if(float(data['france'][0]['evol_percentage']) > 0):
+        evol = "+"+data['france'][0]['evol_percentage']
     else:
-        evol = data['france'][0]['evol_percentage'][detail['positionData']]
-    status = "Au "+datetime.strptime(data['france'][0]['last_date'],'%Y-%m-%d').strftime('%d/%m/%y')+", "+detail['statusTwitter']+str(int(round(float(data['france'][0]['last_value'][detail['positionData']]),0)))+" ("+evol+"% par rapport à la semaine dernière)"
+        evol = data['france'][0]['evol_percentage']
+    status = "Au "+datetime.strptime(data['france'][0]['last_date'],'%Y-%m-%d').strftime('%d/%m/%y')+", "+detail['statusTwitter']+str(int(round(float(data['france'][0]['last_value']),0)))+" ("+evol+"% par rapport à la semaine dernière)"
     print(status)
     text_file = open("kpis/"+itemGroup+".txt", "w")
     n = text_file.write(status)
