@@ -231,23 +231,23 @@ def casPositifsProcessing(df, level, code_level, trendType):
 
 def tauxPositiviteProcessing(df,level,code_level, trendType):
     
-    df['tx_incidence'] = df['P']*100000/df['pop']
+    df['tx_positivite'] = df['P']/df['pop']* 100
     df['date'] = df['semaine_glissante'].apply(lambda x: str(x)[11:])
     df = df.sort_values(by=['date'])
     df = df.reset_index(drop=True)
     df['date_7days_ago'] = df['date'].apply(lambda x: datetime.strftime(datetime.strptime(x, "%Y-%m-%d") - timedelta(days=7),"%Y-%m-%d"))
-    df['tx_incidence_7days_ago'] = df['date_7days_ago'].apply(lambda x: df[df['date'] == x]['tx_incidence'].iloc[0] if(df[df['date'] == x].shape[0] > 0) else None)
-    df['evol_tx_incidence'] = df['tx_incidence'] - df['tx_incidence_7days_ago']
-    df['evol_tx_incidence_percentage'] = df['evol_tx_incidence'] / df['tx_incidence_7days_ago'] * 100
+    df['tx_positivite_7days_ago'] = df['date_7days_ago'].apply(lambda x: df[df['date'] == x]['tx_positivite'].iloc[0] if(df[df['date'] == x].shape[0] > 0) else None)
+    df['evol_tx_positivite'] = df['tx_positivite'] - df['tx_positivite_7days_ago']
+    df['evol_tx_positivite_percentage'] = df['evol_tx_positivite'] / df['tx_positivite_7days_ago'] * 100
     
     return formatDict(
-        df[df['date'] == df.date.max()]['tx_incidence'].iloc[0],
+        df[df['date'] == df.date.max()]['tx_positivite'].iloc[0],
         df.date.max(),
-        df[df['date'] == df.date.max()]['evol_tx_incidence'].iloc[0],
-        df[df['date'] == df.date.max()]['evol_tx_incidence_percentage'].iloc[0],
+        df[df['date'] == df.date.max()]['evol_tx_positivite'].iloc[0],
+        df[df['date'] == df.date.max()]['evol_tx_positivite_percentage'].iloc[0],
         level,
         code_level,
-        df[['tx_incidence','date']],
-        'tx_incidence',
+        df[['tx_positivite','date']],
+        'tx_positivite',
         trendType
     )  
