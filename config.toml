@@ -27,7 +27,7 @@ yLabel = "personnes"
 positionData = 1
 statusTwitter = "le nombre moyen de personnes hospitalisés chaque jour en France est de "
 
-[hospitalisations_moyenne_quotidien]
+[hospitalisations_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
 trendType = "normal"
@@ -82,7 +82,7 @@ yLabel = "personnes"
 positionData = 1
 statusTwitter = "le nombre moyen de personnes entrant en soins critiques chaque jour en France est de "
 
-[soins_critiques_moyenne_quotidien]
+[soins_critiques_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
 trendType = "normal"
@@ -108,7 +108,7 @@ yLabel = "personnes"
 positionData = 1
 statusTwitter = "le nombre moyen de décès dus au Covid chaque jour en France est de "
 
-[deces_moyenne_quotidien]
+[deces_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
 trendType = "normal"
@@ -147,7 +147,7 @@ yLabel = "personnes"
 positionData = 0
 statusTwitter = "le nombre de premières injections en France est de "
 
-[vaccins_premiere_dose_moyenne]
+[vaccins_premiere_dose_moyenne_quotidienne]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
 res_id = "4f39ec91-80d7-4602-befb-4b522804c0af"
 trendType = "abnormal"

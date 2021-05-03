@@ -108,7 +108,7 @@ def getHospitalisations():
 def getMeanHospitalisations():
     
     indicateurResult = getEmptyIndicateur()
-    config = getConfig('hospitalisations_moyenne_quotidien')
+    config = getConfig('hospitalisations_moyenne_quotidienne')
     print('Processing - Hospitalisations Moyenne quotidien')
 
     indicateurResult['nom'] = config['nom']
@@ -163,7 +163,7 @@ def getReas():
 def getMeanReas():
     
     indicateurResult = getEmptyIndicateur()
-    config = getConfig('soins_critiques_moyenne_quotidien')
+    config = getConfig('soins_critiques_moyenne_quotidienne')
     print('Processing - Réanimations')
 
     indicateurResult['nom'] = config['nom']
@@ -216,7 +216,7 @@ def getDeces():
 def getMeanDeces():
     
     indicateurResult = getEmptyIndicateur()
-    config = getConfig('deces_moyenne_quotidien')
+    config = getConfig('deces_moyenne_quotidienne')
     print('Processing - Décès')
 
     indicateurResult['nom'] = config['nom']
@@ -359,7 +359,7 @@ def getFullVaccins():
 
 def getMeanFirstDoseVaccins():
     indicateurResult = getEmptyIndicateur()
-    config = getConfig('vaccins_premiere_dose_moyenne')
+    config = getConfig('vaccins_premiere_dose_moyenne_quotidienne')
     print('Processing - Vaccins moyennes quotidiennes')
 
     indicateurResult['nom'] = config['nom']
