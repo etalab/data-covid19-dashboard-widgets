@@ -9,7 +9,7 @@ res = {}
 items = ["taux_incidence","hospitalisations","soins_critiques","deces","vaccins","cas_positifs","taux_positivite"]
 
 res['taux_incidence'] = getTauxIncidence()
-res['hospitalisations'] = getHospitalisations()
+''' es['hospitalisations'] = getHospitalisations()
 res['hospitalisations_moyenne_quotidien'] = getMeanHospitalisations()
 res['soins_critiques'] = getReas()
 res['soins_critiques_moyenne_quotidien'] = getMeanReas()
@@ -17,7 +17,7 @@ res['deces'] = getDeces()
 res['deces_moyenne_quotidien'] = getMeanDeces()
 res['vaccins_premiere_dose'] = getFirstDoseVaccins()
 res['vaccins_vaccines'] = getFullVaccins()
-res['cas_positifs'] = getCasPositifs()
+res['cas_positifs'] = getCasPositifs() '''
 res['taux_positivite'] = getTauxPositivite()
 
 for item in res:

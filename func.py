@@ -231,7 +231,7 @@ def casPositifsProcessing(df, level, code_level, trendType):
 
 def tauxPositiviteProcessing(df,level,code_level, trendType):
     
-    df['tx_positivite'] = df['P']/df['pop']* 100
+    df['tx_positivite'] = df['P']/df['T']* 100
     df['date'] = df['semaine_glissante'].apply(lambda x: str(x)[11:])
     df = df.sort_values(by=['date'])
     df = df.reset_index(drop=True)
