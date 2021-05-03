@@ -11,7 +11,7 @@ from datetime import datetime
 config = toml.load('./config.toml')
 for itemGroup, detail in config.items():
     print(itemGroup)
-    with open('data/'+itemGroup+'.json') as fp:
+    with open('dist/'+itemGroup+'.json') as fp:
         data = json.load(fp)
     
     # plot

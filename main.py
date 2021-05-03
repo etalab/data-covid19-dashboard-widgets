@@ -6,8 +6,6 @@ import multiprocessing as mp
 res = {}
 
 
-items = ["taux_incidence","hospitalisations","soins_critiques","deces","vaccins","cas_positifs","taux_positivite"]
-
 res['taux_incidence'] = getTauxIncidence()
 res['hospitalisations'] = getHospitalisations()
 res['hospitalisations_moyenne_quotidien'] = getMeanHospitalisations()
@@ -15,7 +13,10 @@ res['soins_critiques'] = getReas()
 res['soins_critiques_moyenne_quotidien'] = getMeanReas()
 res['deces'] = getDeces()
 res['deces_moyenne_quotidien'] = getMeanDeces()
+res['retour_a_domicile'] = getRad()
+res['retour_a_domicile_moyenne_quotidienne'] = getMeanRad()
 res['vaccins_premiere_dose'] = getFirstDoseVaccins()
+res['vaccins_premiere_dose_moyenne_quotidien'] = getMeanFirstDoseVaccins()
 res['vaccins_vaccines'] = getFullVaccins()
 res['cas_positifs'] = getCasPositifs()
 res['taux_positivite'] = getTauxPositivite()
