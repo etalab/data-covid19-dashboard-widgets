@@ -113,37 +113,6 @@ def datasetSyntheseRollingMeanProcessing(df, level, code_level, trendType, colum
     )  
 
 
-
-def casPositifsProcessing(df, level, code_level, trendType):
-    df = df.sort_values(by=['date'])
-    df = df.reset_index(drop=True)
-    df = df[:-3]
-    df = df[df['pos_7j'].notna()]
-    df['pos7j_moyen'] = df['pos_7j'] / 7
-    df['pos7j_moyen'] = df['pos7j_moyen'].astype(int)
-
-    df['date_7days_ago'] = df['date'].apply(lambda x: datetime.strftime(datetime.strptime(x, "%Y-%m-%d") - timedelta(days=7),"%Y-%m-%d"))
-    df['pos7j_moyen_7days_ago'] = df['date_7days_ago'].apply(lambda x: df[df['date'] == x]['pos7j_moyen'].iloc[0] if(df[df['date'] == x].shape[0] > 0) else None)
-
-    df['evol_pos7j_moyen'] = df['pos7j_moyen'] - df['pos7j_moyen_7days_ago']
-    df['evol_pos7j_moyen_percentage'] = df['evol_pos7j_moyen'] / df['pos7j_moyen_7days_ago'] * 100
-
-    
-    return formatDict(
-        int(df[df['date'] == df.date.max()]['pos7j_moyen'].iloc[0]),
-        df.date.max(),
-        int(df[df['date'] == df.date.max()]['evol_pos7j_moyen'].iloc[0]),
-        df[df['date'] == df.date.max()]['evol_pos7j_moyen_percentage'].iloc[0],
-        level,
-        code_level,
-        df[['pos7j_moyen','date']],
-        'pos7j_moyen',
-        trendType
-    )  
-    
-
-
-
 def saveResult(res,name):
     with open('dist/'+name+'.json','w') as fp:
         json.dump(res, fp)
