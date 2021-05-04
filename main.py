@@ -3,7 +3,7 @@ import glob
 from utils import *
 
 res = {}
- 
+
 res['taux_incidence'] = getTxGeneric('taux_incidence')
 res['taux_positivite'] = getTxGeneric('taux_positivite')
 res['cas_positifs'] = getKPIGeneric('cas_positifs','pos_7j',False)
