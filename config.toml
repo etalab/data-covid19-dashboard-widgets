@@ -14,6 +14,22 @@ yLabel = "Taux d'incidence"
 positionData = 0
 statusTwitter = "le taux d'incidence en France est de "
 
+[taux_positivite]
+dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
+res_id_fra = "cbd6477e-bda6-485d-afdc-8e61b904d771"
+res_id_reg = "36ab36ea-d073-4543-9ea0-a64a0175083f"
+res_id_dep = "3c18e242-7d45-44f2-ac70-dee78a38ee1c"
+trendType = "normal"
+nom = "Taux de positivité"
+unite = "%"
+colorLine = "#fc7b03"
+colorZone = "#f5b77d"
+titleChart = "Taux de positivité"
+yLabel = "%"
+positionData = 0
+statusTwitter = "le taux de positivité moyen sur les 7 derniers jours en France est de "
+
+
 [hospitalisations]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
@@ -58,7 +74,7 @@ statusTwitter = ""
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
 trendType = "normal"
-nom = "Nombre moyen de retours à domicile quotidien"
+nom = "Nombre moyen de retours à domicile quotidiens"
 unite = "personnes"
 colorLine = "#cc212c"
 colorZone = "#de646c"
@@ -90,7 +106,7 @@ nom = "Nombre moyen de nouvelles entrées en soins critiques quotidiennes"
 unite = "personnes en soins critiques"
 colorLine = "#801767"
 colorZone = "#d171ba"
-titleChart = "Nombre de personnes en soins critiques"
+titleChart = "Nombre moyen de nouvelles entrées en soins critiques quotidiennes"
 yLabel = "personnes"
 positionData = 1
 statusTwitter = "le nombre moyen de personnes entrant en soins critiques chaque jour en France est de "
@@ -116,7 +132,7 @@ nom = "Nombre moyen de décès quotidiens"
 unite = "décès"
 colorLine = "#000000"
 colorZone = "#ab9da8"
-titleChart = "Nombre de décès"
+titleChart = "Nombre moyen de décès quotidiens"
 yLabel = "personnes"
 positionData = 1
 statusTwitter = "le nombre moyen de décès dus au Covid chaque jour en France est de "
@@ -130,7 +146,7 @@ unite = "personnes"
 colorLine = "#149c56"
 colorZone = "#4fe397"
 titleChart = "Nombre de personnes ayant reçu au moins une première injection"
-yLabel = "personnes"
+yLabel = "personnes ayant reçues au moins une dose de vaccin"
 positionData = 0
 statusTwitter = "le nombre de premières injections en France est de "
 
@@ -142,8 +158,8 @@ nom = "Nombre de personnes vaccinées"
 unite = "personnes"
 colorLine = "#149c56"
 colorZone = "#4fe397"
-titleChart = "Personnes ayant reçu au moins une première injection"
-yLabel = "personnes"
+titleChart = "Nombre de personnes vaccinées"
+yLabel = "personnes vaccinées"
 positionData = 0
 statusTwitter = "le nombre de premières injections en France est de "
 
@@ -156,7 +172,7 @@ unite = "personnes"
 colorLine = "#149c56"
 colorZone = "#4fe397"
 titleChart = "Nombre moyen quotidien de personnes ayant reçu au moins une première injection"
-yLabel = "personnes"
+yLabel = "personnes ayant reçues au moins une dose de vaccin"
 positionData = 0
 statusTwitter = "le nombre de premières injections en France est de "
 
@@ -173,19 +189,3 @@ titleChart = "Nombre moyen de nouveaux cas confirmés quotidiens sur 7 jours (J-
 yLabel = "personnes"
 positionData = 0
 statusTwitter = "le nombre de personnes positives au Covid en France est de "
-
-[taux_positivite]
-dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
-res_id_fra = "cbd6477e-bda6-485d-afdc-8e61b904d771"
-res_id_reg = "36ab36ea-d073-4543-9ea0-a64a0175083f"
-res_id_dep = "3c18e242-7d45-44f2-ac70-dee78a38ee1c"
-trendType = "normal"
-nom = "Taux de positivité"
-unite = "%"
-colorLine = "#fc7b03"
-colorZone = "#f5b77d"
-titleChart = "Taux de positivité moyen sur les 7 derniers jours"
-yLabel = "%"
-positionData = 0
-statusTwitter = "le taux de positivité moyen sur les 7 derniers jours en France est de "
-

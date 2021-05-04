@@ -1,30 +1,25 @@
 import json
 import glob
-from get_indicateurs import *
-import multiprocessing as mp
+from utils import *
 
 res = {}
+ 
+res['taux_incidence'] = getTxGeneric('taux_incidence')
+res['taux_positivite'] = getTxGeneric('taux_positivite')
+res['cas_positifs'] = getKPIGeneric('cas_positifs','pos_7j',False)
+res['hospitalisations'] = getKPIGeneric('hospitalisations','hosp',False)
+res['hospitalisations_moyenne_quotidienne'] = getKPIGeneric('hospitalisations_moyenne_quotidienne','incid_hosp',True)
+res['soins_critiques'] = getKPIGeneric('soins_critiques','rea',False)
+res['soins_critiques_moyenne_quotidienne'] = getKPIGeneric('soins_critiques_moyenne_quotidienne','incid_rea',True)
+res['deces'] = getKPIGeneric('deces','dchosp',False) 
 
-
-res['taux_incidence'] = getTauxIncidence()
-res['hospitalisations'] = getHospitalisations()
-res['hospitalisations_moyenne_quotidien'] = getMeanHospitalisations()
-res['soins_critiques'] = getReas()
-res['soins_critiques_moyenne_quotidienne'] = getMeanReas()
-res['deces'] = getDeces()
-res['deces_moyenne_quotidien'] = getMeanDeces()
-res['retour_a_domicile'] = getRad()
-res['retour_a_domicile_moyenne_quotidienne'] = getMeanRad()
-res['vaccins_premiere_dose'] = getFirstDoseVaccins()
-res['vaccins_premiere_dose_moyenne_quotidienne'] = getMeanFirstDoseVaccins()
-res['vaccins_vaccines'] = getFullVaccins()
-res['cas_positifs'] = getCasPositifs()
-res['taux_positivite'] = getTauxPositivite()
-
-for item in res:
-    with open('dist/'+item+'.json','w') as fp:
-        json.dump(res[item], fp)
-
+res['deces_moyenne_quotidienne'] = getKPIGeneric('deces_moyenne_quotidienne','incid_dchosp',True)
+res['retour_a_domicile'] = getKPIGeneric('retour_a_domicile','rad',False)
+res['retour_a_domicile_moyenne_quotidienne'] = getKPIGeneric('retour_a_domicile_moyenne_quotidienne','incid_rad',True)
+res['vaccins_premiere_dose'] = getKPIGeneric('vaccins_premiere_dose','n_cum_dose1',False,True)
+res['vaccins_premiere_dose_moyenne_quotidienne'] = getKPIGeneric('vaccins_premiere_dose_moyenne_quotidienne','n_dose1',True,True)
+res['vaccins_vaccines'] = getKPIGeneric('vaccins_vaccines','n_cum_complet',False,True)
+ 
 resglobal = {}
 files = glob.glob("dist/*.json")
 
