@@ -1,8 +1,8 @@
 [taux_incidence]
 dataset = ""
-res_id_fra = "cbd6477e-bda6-485d-afdc-8e61b904d771"
-res_id_reg = "36ab36ea-d073-4543-9ea0-a64a0175083f"
-res_id_dep = "3c18e242-7d45-44f2-ac70-dee78a38ee1c"
+res_id_fra = "taux_fra.csv"
+res_id_reg = "taux_reg.csv"
+res_id_dep = "taux_dep.csv"
 trendType = "normal"
 nom = "Taux d'incidence"
 unite = "Nombre de cas par semaine pour 100 000 habitant"
@@ -16,9 +16,9 @@ statusTwitter = "le taux d'incidence en France est de "
 
 [taux_positivite]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
-res_id_fra = "cbd6477e-bda6-485d-afdc-8e61b904d771"
-res_id_reg = "36ab36ea-d073-4543-9ea0-a64a0175083f"
-res_id_dep = "3c18e242-7d45-44f2-ac70-dee78a38ee1c"
+res_id_fra = "taux_fra.csv"
+res_id_reg = "taux_reg.csv"
+res_id_dep = "taux_dep.csv"
 trendType = "normal"
 nom = "Taux de positivité"
 unite = "%"
@@ -32,7 +32,7 @@ statusTwitter = "le taux de positivité moyen sur les 7 derniers jours en France
 
 [hospitalisations]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
-res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
+res_id = "synthese.csv"
 trendType = "normal"
 nom = "Hospitalisations"
 unite = "personnes hospitalisées"
@@ -45,7 +45,7 @@ statusTwitter = "le nombre moyen de personnes hospitalisés chaque jour en Franc
 
 [hospitalisations_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
-res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
+res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de nouvelles hospitalisations quotidiennes"
 unite = "personnes hospitalisées"
@@ -59,7 +59,7 @@ statusTwitter = "le nombre moyen de personnes hospitalisés chaque jour en Franc
 
 [retour_a_domicile]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
-res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
+res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre de retours à domicile"
 unite = "personnes"
@@ -72,7 +72,7 @@ statusTwitter = ""
 
 [retour_a_domicile_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
-res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
+res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de retours à domicile quotidiens"
 unite = "personnes"
@@ -87,7 +87,7 @@ statusTwitter = "le nombre moyen de personnes hospitalisés chaque jour en Franc
 
 [soins_critiques]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
-res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
+res_id = "synthese.csv"
 trendType = "normal"
 nom = "Hospitalisations en soins critiques"
 unite = "personnes en soins critiques"
@@ -100,7 +100,7 @@ statusTwitter = "le nombre moyen de personnes entrant en soins critiques chaque 
 
 [soins_critiques_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
-res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
+res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de nouvelles entrées en soins critiques quotidiennes"
 unite = "personnes en soins critiques"
@@ -113,7 +113,7 @@ statusTwitter = "le nombre moyen de personnes entrant en soins critiques chaque 
 
 [deces]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
-res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
+res_id = "synthese.csv"
 trendType = "normal"
 nom = "Décès"
 unite = "décès"
@@ -126,7 +126,7 @@ statusTwitter = "le nombre moyen de décès dus au Covid chaque jour en France e
 
 [deces_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
-res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
+res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de décès quotidiens"
 unite = "décès"
@@ -139,7 +139,7 @@ statusTwitter = "le nombre moyen de décès dus au Covid chaque jour en France e
 
 [vaccins_premiere_dose]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
-res_id = "4f39ec91-80d7-4602-befb-4b522804c0af"
+res_id = "vaccin.csv"
 trendType = "abnormal"
 nom = "Nombre de personnes ayant reçu au moins une première injection"
 unite = "personnes ayant reçues au moins une dose de vaccin"
@@ -152,7 +152,7 @@ statusTwitter = "le nombre de premières injections en France est de "
 
 [vaccins_vaccines]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
-res_id = "4f39ec91-80d7-4602-befb-4b522804c0af"
+res_id = "vaccin.csv"
 trendType = "abnormal"
 nom = "Nombre de personnes vaccinées"
 unite = "personnes vaccinées"
@@ -165,7 +165,7 @@ statusTwitter = "le nombre de premières injections en France est de "
 
 [vaccins_premiere_dose_moyenne_quotidienne]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
-res_id = "4f39ec91-80d7-4602-befb-4b522804c0af"
+res_id = "vaccin.csv"
 trendType = "abnormal"
 nom = "Nombre moyen quotidien de personnes ayant reçu au moins une première injection"
 unite = "personnes ayant reçues au moins une dose de vaccin"
@@ -179,7 +179,7 @@ statusTwitter = "le nombre de premières injections en France est de "
 
 [cas_positifs]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
-res_id = "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5"
+res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de nouveaux cas confirmés quotidiens sur 7 jours (J-3)"
 unite = "cas positifs"

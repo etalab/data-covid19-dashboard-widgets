@@ -133,21 +133,21 @@ def getTxGeneric(name):
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
     
-    df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id_fra'], sep=None, engine='python',dtype={'reg':str,'dep':str})
+    df = pd.read_csv('files_new/'+config['res_id_fra'], sep=None, engine='python',dtype={'reg':str,'dep':str})
     df = enrichDataframe(df,name)
     df['date'] = df['semaine_glissante'].apply(lambda x: str(x)[11:])
     for country in tqdm(countries, desc="Processing National"):
         res = datasetSyntheseProcessing(df,'nat','fra', config['trendType'],name)
         indicateurResult['france'].append(res)
 
-    df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id_reg'], sep=None, engine='python',dtype={'reg':str,'dep':str})
+    df = pd.read_csv('files_new/'+config['res_id_reg'], sep=None, engine='python',dtype={'reg':str,'dep':str})
     df = enrichDataframe(df,name)
     df['date'] = df['semaine_glissante'].apply(lambda x: str(x)[11:])
     for reg in tqdm(df.reg.unique(),desc="Processing Régions"):
         res = datasetSyntheseProcessing(df[df['reg'] == reg].copy(),'reg',reg, config['trendType'],name)
         indicateurResult['regions'].append(res)
 
-    df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id_dep'], sep=None, engine='python',dtype={'reg':str,'dep':str})
+    df = pd.read_csv('files_new/'+config['res_id_dep'], sep=None, engine='python',dtype={'reg':str,'dep':str})
     df = enrichDataframe(df,name)
     df['date'] = df['semaine_glissante'].apply(lambda x: str(x)[11:])
     for dep in tqdm(df.dep.unique(),desc="Processing Départements"):
@@ -176,7 +176,7 @@ def getKPIGeneric(name,column,mean,transformDF=False):
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
     
-    df = pd.read_csv('https://www.data.gouv.fr/fr/datasets/r/'+config['res_id'], sep=None, engine='python',dtype={'reg':str,'dep':str})
+    df = pd.read_csv('files_new/'+config['res_id'], sep=None, engine='python',dtype={'reg':str,'dep':str})
     
     # Specificity KPI vaccins
     if(transformDF):
