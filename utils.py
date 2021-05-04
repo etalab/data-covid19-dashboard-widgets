@@ -163,9 +163,9 @@ def getTxGeneric(name):
 
 def kpiProcessing(df, level, code_level, trendType, column, mean):
     if(mean):
-        res = datasetSyntheseRollingMeanProcessing(df,'nat','fra', trendType,column)
+        res = datasetSyntheseRollingMeanProcessing(df,level, code_level, trendType,column)
     else:
-        res = datasetSyntheseProcessing(df,'nat','fra', trendType,column)
+        res = datasetSyntheseProcessing(df,level, code_level, trendType,column)
     return res
 
 def getKPIGeneric(name,column,mean,transformDF=False):
