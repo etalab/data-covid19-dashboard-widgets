@@ -36,12 +36,12 @@ jobs:
             rm -rf ~/project/covidbackend/data
             rm -rf ~/project/covidbackend/plots
             rm -rf ~/project/covidbackend/kpis
-            mv ~/project/data ~/project/covidbackend/data/
+            mv ~/project/dist ~/project/covidbackend/dist/
             mv ~/project/plots ~/project/covidbackend/plots/
             mv ~/project/kpis ~/project/covidbackend/kpis/
             cd ~/project/covidbackend
             if [ -n "$(git status --porcelain)" ]; then
-              git add data
+              git add dist
               git add plots
               git add kpis
               git commit -am "New data at $(date -u +'%Y-%m-%dT%H:%M:%SZ') [skip ci]"
