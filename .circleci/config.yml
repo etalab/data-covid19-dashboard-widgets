@@ -28,10 +28,31 @@ jobs:
           name: Fetch datasets and generate data
           command: |
             . venv/bin/activate
-            ls ~/project/
+            python main.py
 
-            
-
+            git config --global user.email "robot@circleci.com"
+            git config --global user.name "CircleCI"
+            git clone https://github.com/geoffreyaldebert/covidbackend.git
+            rm -rf ~/project/covidbackend/dist
+            rm -rf ~/project/covidbackend/plots
+            rm -rf ~/project/covidbackend/kpis
+            rm -rf ~/project/covidbackend/files_previous
+            rm -rf ~/project/covidbackend/files_new
+            mv ~/project/dist ~/project/covidbackend/
+            mv ~/project/plots ~/project/covidbackend/
+            mv ~/project/kpis ~/project/covidbackend/kpis/
+            mv ~/project/files_previous ~/project/covidbackend/
+            mv ~/project/files_new ~/project/covidbackend/
+            cd ~/project/covidbackend
+            if [ -n "$(git status --porcelain)" ]; then
+              git add dist
+              git add plots
+              git add kpis
+              git commit -am "New data at $(date -u +'%Y-%m-%dT%H:%M:%SZ') [skip ci]"
+              git push origin master
+            else
+              echo "No changes";
+            fi
       - persist_to_workspace:
           root: .
           paths:
