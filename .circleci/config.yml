@@ -33,9 +33,11 @@ jobs:
             git config --global user.email "robot@circleci.com"
             git config --global user.name "CircleCI"
             git clone https://github.com/geoffreyaldebert/covidbackend.git
-            rm -rf ~/project/covidbackend/data
+            rm -rf ~/project/covidbackend/dist
             rm -rf ~/project/covidbackend/plots
             rm -rf ~/project/covidbackend/kpis
+            rm -rf ~/project/covidbackend/files_previous
+            rm -rf ~/project/covidbackend/files_new
             mv ~/project/dist/* ~/project/covidbackend/dist/
             mv ~/project/plots/* ~/project/covidbackend/plots/
             mv ~/project/kpis/* ~/project/covidbackend/kpis/
