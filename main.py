@@ -9,7 +9,7 @@ kpis = download_and_check()
 
 print(kpis)
 
-kpis = ['taux_occupation', 'facteur_reproduction']
+kpis = ['vaccins_vaccines_moyenne_quotidienne']
 
 res = {}
 
@@ -43,6 +43,8 @@ if('vaccins_premiere_dose_moyenne_quotidienne' in kpis): get_kpi('vaccins_premie
     
 if('vaccins_vaccines' in kpis): get_kpi('vaccins_vaccines','n_cum_complet',False,True)
 
+if('vaccins_vaccines_moyenne_quotidienne' in kpis): get_kpi('vaccins_vaccines_moyenne_quotidienne','n_complet',True,True)
+    
 if('taux_occupation' in kpis): get_taux_specific('taux_occupation','TO')
 
 if('facteur_reproduction' in kpis): get_taux_specific('facteur_reproduction','R')

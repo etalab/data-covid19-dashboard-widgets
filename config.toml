@@ -100,6 +100,13 @@ trendType = "abnormal"
 nom = "Nombre moyen quotidien de personnes ayant reçu au moins une première injection"
 unite = "personnes ayant reçues au moins une dose de vaccin"
 
+[vaccins_vaccines_moyenne_quotidienne]
+dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
+res_id = "vaccin.csv"
+trendType = "abnormal"
+nom = "Nombre moyen quotidien de personnes totalement vaccinées"
+unite = "personnes vaccinées"
+
 [cas_positifs]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "synthese.csv"

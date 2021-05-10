@@ -52,12 +52,10 @@ def format_dict(last_value,last_date,evol,evol_percentage,level,code_level,dfval
     resdict['values'] = []
     for index, row in dfvalues.iterrows():
         interdict = {}
-        interdict['value'] = str(row[column])
+        interdict['value'] = str(round(row[column],2))
         interdict['date'] = row['date']
         resdict['values'].append(interdict)
     return resdict
-
-
 
 
 def get_rolling_average(date,df,column):
@@ -76,9 +74,9 @@ def process_stock(df, level, code_level, trendType, column, shorten=False):
     df['evol_percentage'] = df['evol'] / df['7days_ago'] * 100
 
     return format_dict(
-        df[df['date'] == df.date.max()][column].iloc[0],
+        round(df[df['date'] == df.date.max()][column].iloc[0],2),
         df.date.max(),
-        df[df['date'] == df.date.max()]['evol'].iloc[0],
+        round(df[df['date'] == df.date.max()]['evol'].iloc[0],2),
         df[df['date'] == df.date.max()]['evol_percentage'].iloc[0],
         level,
         code_level,
@@ -121,6 +119,8 @@ def enrich_dataframe(df,name):
         df['taux_incidence'] = df['P']*100000/df['pop']
     if(name == 'taux_positivite'):
         df['taux_positivite'] = df['P']/df['T']* 100
+    if(name == 'taux_occupation'):
+        df['TO'] = df['TO']*100
     return df
 
 def get_taux(name):
@@ -235,8 +235,7 @@ def get_taux_specific(name, column):
     df = pd.read_csv('files_new/'+config['res_id_fra'], sep=None, engine='python',dtype={'reg':str,'dep':str})
     df = df[df[column].notna()]
     df = df.sort_values(by=['date'])
-    if(name == "taux_occupation"):
-        df['TO'] = df['TO']*100
+    df = enrich_dataframe(df,name)
 
     for country in tqdm(countries, desc="Processing National"):
         res = process_stock(df,'nat','fra', config['trendType'],column)
@@ -245,8 +244,7 @@ def get_taux_specific(name, column):
     df = pd.read_csv('files_new/'+config['res_id_reg'], sep=None, engine='python',dtype={'reg':str,'dep':str})
     df = df[df[column].notna()]
     df = df.sort_values(by=['date'])
-    if(name == "taux_occupation"):
-        df['TO'] = df['TO']*100
+    df = enrich_dataframe(df,name)
 
     for reg in tqdm(df.reg.unique(),desc="Processing Régions"):
         res = process_stock(df[df['dep'] == df[df['reg'] == reg].dep.unique()[0]].copy(),'reg',reg, config['trendType'],column)
@@ -255,8 +253,7 @@ def get_taux_specific(name, column):
     df = pd.read_csv('files_new/'+config['res_id_dep'], sep=None, engine='python',dtype={'reg':str,'dep':str})
     df = df[df[column].notna()]
     df = df.sort_values(by=['date'])
-    if(name == "taux_occupation"):
-        df['TO'] = df['TO']*100
+    df = enrich_dataframe(df,name)
 
     for dep in tqdm(df.dep.unique(),desc="Processing Départements"):
         res = process_stock(df[df['dep'] == dep].copy(),'dep',dep, config['trendType'],column)
