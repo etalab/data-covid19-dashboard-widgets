@@ -31,13 +31,13 @@ for itemGroup, detail in config.items():
     plt.rcParams["figure.figsize"] = (16,8)
     plt.rcParams['axes.facecolor'] = 'white'
     fig, ax = plt.subplots()
-    ax.plot(x, y,linewidth=3,label='Cas',color=detail['colorLine'])
-    ax.set_ylabel(detail['yLabel'], fontproperties=prop,size="14")
-    ax.set_title(detail['titleChart'], fontproperties=prop,size="30")
+    ax.plot(x, y,linewidth=3,label='Cas',color="#0000FF")
+    ax.set_ylabel(detail['unite'], fontproperties=prop,size="14")
+    ax.set_title(detail['nom'], fontproperties=prop,size="30")
 
     myFmt = mdates.DateFormatter('%d/%m')
     ax.xaxis.set_major_formatter(myFmt)
-    ax.fill_between(x, y, color=detail['colorZone'])
+    ax.fill_between(x, y, color="#0000FF")
     plt.setp(ax.spines.values(), color="#ebebeb")
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
@@ -50,7 +50,7 @@ for itemGroup, detail in config.items():
         evol = "+"+data['france'][0]['evol_percentage']
     else:
         evol = data['france'][0]['evol_percentage']
-    status = "Au "+datetime.strptime(data['france'][0]['last_date'],'%Y-%m-%d').strftime('%d/%m/%y')+", "+detail['statusTwitter']+str(int(round(float(data['france'][0]['last_value']),0)))+" ("+evol+"% par rapport à la semaine dernière)"
+    status = "Au "+datetime.strptime(data['france'][0]['last_date'],'%Y-%m-%d').strftime('%d/%m/%y')+", "+detail['nom']+str(int(round(float(data['france'][0]['last_value']),0)))+" ("+evol+"% par rapport à la semaine dernière)"
     print(status)
     text_file = open("kpis/"+itemGroup+".txt", "w")
     n = text_file.write(status)

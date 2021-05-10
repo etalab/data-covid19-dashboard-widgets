@@ -6,13 +6,6 @@ res_id_dep = "taux_dep.csv"
 trendType = "normal"
 nom = "Taux d'incidence"
 unite = "Nombre de cas par semaine pour 100 000 habitant"
-#Formula = P * 100000 / pop
-colorLine = "#060191"
-colorZone = "#D9E9FD"
-titleChart = "Taux d'incidence"
-yLabel = "Taux d'incidence"
-positionData = 0
-statusTwitter = "le taux d'incidence en France est de "
 
 [taux_positivite]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -22,13 +15,6 @@ res_id_dep = "taux_dep.csv"
 trendType = "normal"
 nom = "Taux de positivité"
 unite = "%"
-colorLine = "#fc7b03"
-colorZone = "#f5b77d"
-titleChart = "Taux de positivité"
-yLabel = "%"
-positionData = 0
-statusTwitter = "le taux de positivité moyen sur les 7 derniers jours en France est de "
-
 
 [hospitalisations]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -36,12 +22,6 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Hospitalisations"
 unite = "personnes hospitalisées"
-colorLine = "#cc212c"
-colorZone = "#de646c"
-titleChart = "Nombre de personnes hospitalisées"
-yLabel = "personnes"
-positionData = 1
-statusTwitter = "le nombre moyen de personnes hospitalisés chaque jour en France est de "
 
 [hospitalisations_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -49,13 +29,6 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de nouvelles hospitalisations quotidiennes"
 unite = "personnes hospitalisées"
-colorLine = "#cc212c"
-colorZone = "#de646c"
-titleChart = "Nombre moyen de nouvelles hospitalisations quotidiennes"
-yLabel = "personnes"
-positionData = 1
-statusTwitter = "le nombre moyen de personnes hospitalisés chaque jour en France est de "
-
 
 [retour_a_domicile]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -63,12 +36,6 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre de retours à domicile"
 unite = "personnes"
-colorLine = "#cc212c"
-colorZone = "#de646c"
-titleChart = "Nombre de retours à domicile"
-yLabel = "personnes"
-positionData = 1
-statusTwitter = ""
 
 [retour_a_domicile_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -76,14 +43,6 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de retours à domicile quotidiens"
 unite = "personnes"
-colorLine = "#cc212c"
-colorZone = "#de646c"
-titleChart = "Nombre moyen de retours à domicile quotidien"
-yLabel = "personnes"
-positionData = 1
-statusTwitter = "le nombre moyen de personnes hospitalisés chaque jour en France est de "
-
-
 
 [soins_critiques]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -91,12 +50,6 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Hospitalisations en soins critiques"
 unite = "personnes en soins critiques"
-colorLine = "#801767"
-colorZone = "#d171ba"
-titleChart = "Nombre de personnes en soins critiques"
-yLabel = "personnes"
-positionData = 1
-statusTwitter = "le nombre moyen de personnes entrant en soins critiques chaque jour en France est de "
 
 [soins_critiques_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -104,38 +57,27 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de nouvelles entrées en soins critiques quotidiennes"
 unite = "personnes en soins critiques"
-colorLine = "#801767"
-colorZone = "#d171ba"
-titleChart = "Nombre moyen de nouvelles entrées en soins critiques quotidiennes"
-yLabel = "personnes"
-positionData = 1
-statusTwitter = "le nombre moyen de personnes entrant en soins critiques chaque jour en France est de "
 
 [deces]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "synthese.csv"
 trendType = "normal"
-nom = "Décès"
-unite = "décès"
-colorLine = "#000000"
-colorZone = "#ab9da8"
-titleChart = "Nombre de décès"
-yLabel = "personnes"
-positionData = 1
-statusTwitter = "le nombre moyen de décès dus au Covid chaque jour en France est de "
+nom = "Décès hospitaliers"
+unite = "décès hospitaliers"
 
 [deces_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de décès quotidiens"
+unite = "décès hospitaliers"
+
+[deces_total]
+dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
+res_id = "synthese_fra.csv"
+trendType = "normal"
+nom = "Nombre total de décès"
 unite = "décès"
-colorLine = "#000000"
-colorZone = "#ab9da8"
-titleChart = "Nombre moyen de décès quotidiens"
-yLabel = "personnes"
-positionData = 1
-statusTwitter = "le nombre moyen de décès dus au Covid chaque jour en France est de "
 
 [vaccins_premiere_dose]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
@@ -143,12 +85,6 @@ res_id = "vaccin.csv"
 trendType = "abnormal"
 nom = "Nombre de personnes ayant reçu au moins une première injection"
 unite = "personnes ayant reçues au moins une dose de vaccin"
-colorLine = "#149c56"
-colorZone = "#4fe397"
-titleChart = "Nombre de personnes ayant reçu au moins une première injection"
-yLabel = "personnes ayant reçues au moins une dose de vaccin"
-positionData = 0
-statusTwitter = "le nombre de premières injections en France est de "
 
 [vaccins_vaccines]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
@@ -156,12 +92,6 @@ res_id = "vaccin.csv"
 trendType = "abnormal"
 nom = "Nombre de personnes vaccinées"
 unite = "personnes vaccinées"
-colorLine = "#149c56"
-colorZone = "#4fe397"
-titleChart = "Nombre de personnes vaccinées"
-yLabel = "personnes vaccinées"
-positionData = 0
-statusTwitter = "le nombre de premières injections en France est de "
 
 [vaccins_premiere_dose_moyenne_quotidienne]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
@@ -169,13 +99,6 @@ res_id = "vaccin.csv"
 trendType = "abnormal"
 nom = "Nombre moyen quotidien de personnes ayant reçu au moins une première injection"
 unite = "personnes ayant reçues au moins une dose de vaccin"
-colorLine = "#149c56"
-colorZone = "#4fe397"
-titleChart = "Nombre moyen quotidien de personnes ayant reçu au moins une première injection"
-yLabel = "personnes ayant reçues au moins une dose de vaccin"
-positionData = 0
-statusTwitter = "le nombre de premières injections en France est de "
-
 
 [cas_positifs]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -183,9 +106,21 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de nouveaux cas confirmés quotidiens sur 7 jours (J-3)"
 unite = "cas positifs"
-colorLine = "#fc7b03"
-colorZone = "#f5b77d"
-titleChart = "Nombre moyen de nouveaux cas confirmés quotidiens sur 7 jours (J-3)"
-yLabel = "personnes"
-positionData = 0
-statusTwitter = "le nombre de personnes positives au Covid en France est de "
+
+[facteur_reproduction]
+dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
+res_id_fra = "synthese_fra.csv"
+res_id_reg = "synthese.csv"
+res_id_dep = "synthese.csv"
+trendType = "normal"
+nom = "Facteur de reproduction du virus"
+unite = "R"
+
+[taux_occupation]
+dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
+res_id_fra = "synthese_fra.csv"
+res_id_reg = "synthese.csv"
+res_id_dep = "synthese.csv"
+trendType = "normal"
+nom = "Tension hospitalière sur la capacité en réanimation"
+unite = "%"

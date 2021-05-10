@@ -9,48 +9,42 @@ kpis = download_and_check()
 
 print(kpis)
 
+kpis = ['taux_occupation', 'facteur_reproduction']
+
 res = {}
 
-if('taux_incidence' in kpis):
-    res['taux_incidence'] = getTxGeneric('taux_incidence')
+if('taux_incidence' in kpis): get_taux('taux_incidence')
     
-if('taux_positivite' in kpis):
-    res['taux_positivite'] = getTxGeneric('taux_positivite')
+if('taux_positivite' in kpis): get_taux('taux_positivite')
     
-if('cas_positifs' in kpis):
-    res['cas_positifs'] = getKPIGeneric('cas_positifs','pos_7j',False)
+if('cas_positifs' in kpis): get_kpi('cas_positifs','pos_7j',False)
     
-if('hospitalisations' in kpis):
-    res['hospitalisations'] = getKPIGeneric('hospitalisations','hosp',False)
+if('hospitalisations' in kpis): get_kpi('hospitalisations','hosp',False)
     
-if('hospitalisations_moyenne_quotidienne' in kpis):
-    res['hospitalisations_moyenne_quotidienne'] = getKPIGeneric('hospitalisations_moyenne_quotidienne','incid_hosp',True)
+if('hospitalisations_moyenne_quotidienne' in kpis): get_kpi('hospitalisations_moyenne_quotidienne','incid_hosp',True)
     
-if('soins_critiques' in kpis):
-    res['soins_critiques'] = getKPIGeneric('soins_critiques','rea',False)
+if('soins_critiques' in kpis): get_kpi('soins_critiques','rea',False)
     
-if('soins_critiques_moyenne_quotidienne' in kpis):
-    res['soins_critiques_moyenne_quotidienne'] = getKPIGeneric('soins_critiques_moyenne_quotidienne','incid_rea',True)
+if('soins_critiques_moyenne_quotidienne' in kpis): get_kpi('soins_critiques_moyenne_quotidienne','incid_rea',True)
     
-if('deces' in kpis):
-    res['deces'] = getKPIGeneric('deces','dchosp',False) 
+if('deces' in kpis): get_kpi('deces','dchosp',False) 
     
-if('deces_moyenne_quotidienne' in kpis):
-    res['deces_moyenne_quotidienne'] = getKPIGeneric('deces_moyenne_quotidienne','incid_dchosp',True)
+if('deces_moyenne_quotidienne' in kpis): get_kpi('deces_moyenne_quotidienne','incid_dchosp',True)
+
+if('deces_total' in kpis): get_kpi_only_france('deces_total','dc_tot',False)
+
+if('retour_a_domicile' in kpis): get_kpi('retour_a_domicile','rad',False)
     
-if('retour_a_domicile' in kpis):
-    res['retour_a_domicile'] = getKPIGeneric('retour_a_domicile','rad',False)
+if('retour_a_domicile_moyenne_quotidienne' in kpis): get_kpi('retour_a_domicile_moyenne_quotidienne','incid_rad',True)
     
-if('retour_a_domicile_moyenne_quotidienne' in kpis):
-    res['retour_a_domicile_moyenne_quotidienne'] = getKPIGeneric('retour_a_domicile_moyenne_quotidienne','incid_rad',True)
+if('vaccins_premiere_dose' in kpis): get_kpi('vaccins_premiere_dose','n_cum_dose1',False,True)
     
-if('vaccins_premiere_dose' in kpis):
-    res['vaccins_premiere_dose'] = getKPIGeneric('vaccins_premiere_dose','n_cum_dose1',False,True)
+if('vaccins_premiere_dose_moyenne_quotidienne' in kpis): get_kpi('vaccins_premiere_dose_moyenne_quotidienne','n_dose1',True,True)
     
-if('vaccins_premiere_dose_moyenne_quotidienne' in kpis):
-    res['vaccins_premiere_dose_moyenne_quotidienne'] = getKPIGeneric('vaccins_premiere_dose_moyenne_quotidienne','n_dose1',True,True)
-    
-if('vaccins_vaccines' in kpis):
-    res['vaccins_vaccines'] = getKPIGeneric('vaccins_vaccines','n_cum_complet',False,True)
+if('vaccins_vaccines' in kpis): get_kpi('vaccins_vaccines','n_cum_complet',False,True)
+
+if('taux_occupation' in kpis): get_taux_specific('taux_occupation','TO')
+
+if('facteur_reproduction' in kpis): get_taux_specific('facteur_reproduction','R')
  
-saveNewFiles()
+save_new_files()
