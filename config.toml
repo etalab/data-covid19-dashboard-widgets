@@ -5,7 +5,7 @@ res_id_reg = "taux_reg.csv"
 res_id_dep = "taux_dep.csv"
 trendType = "normal"
 nom = "Taux d'incidence"
-unite = "Nombre de cas par semaine pour 100 000 habitant"
+unite = "nombre de cas par semaine pour 100 000 habitants"
 
 [taux_positivite]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -20,7 +20,7 @@ unite = "%"
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "synthese.csv"
 trendType = "normal"
-nom = "Hospitalisations"
+nom = "Nombre de personnes hospitalisées"
 unite = "personnes hospitalisées"
 
 [hospitalisations_moyenne_quotidienne]
@@ -28,7 +28,7 @@ dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de nouvelles hospitalisations quotidiennes"
-unite = "personnes hospitalisées"
+unite = "nouvelles personnes hospitalisées"
 
 [retour_a_domicile]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -41,14 +41,14 @@ unite = "personnes"
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "synthese.csv"
 trendType = "normal"
-nom = "Nombre moyen de retours à domicile quotidiens"
-unite = "personnes"
+nom = "Nombre moyen de nouveaux retours à domicile quotidiens"
+unite = "nouvelles personnes retournées à domicile"
 
 [soins_critiques]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "synthese.csv"
 trendType = "normal"
-nom = "Hospitalisations en soins critiques"
+nom = "Nombre de personnes en soins critiques "
 unite = "personnes en soins critiques"
 
 [soins_critiques_moyenne_quotidienne]
@@ -56,7 +56,7 @@ dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de nouvelles entrées en soins critiques quotidiennes"
-unite = "personnes en soins critiques"
+unite = "nouvelles entrées en soins critiques"
 
 [deces]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -69,49 +69,49 @@ unite = "décès hospitaliers"
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "synthese.csv"
 trendType = "normal"
-nom = "Nombre moyen de décès quotidiens"
+nom = "Nombre moyen de décès quotidiens à l'hôpital"
 unite = "décès hospitaliers"
 
 [deces_total]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "synthese_fra.csv"
 trendType = "normal"
-nom = "Nombre total de décès"
+nom = "Nombre total des décès à l'hôpital et en ESMS dont EPHAD"
 unite = "décès"
 
 [vaccins_premiere_dose]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
 res_id = "vaccin.csv"
 trendType = "abnormal"
-nom = "Nombre de personnes ayant reçu au moins une première injection"
+nom = "Nombre de personnes ayant reçu au moins une dose"
 unite = "personnes ayant reçues au moins une dose de vaccin"
 
 [vaccins_vaccines]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
 res_id = "vaccin.csv"
 trendType = "abnormal"
-nom = "Nombre de personnes vaccinées"
-unite = "personnes vaccinées"
+nom = "Nombre de personnes complètement vaccinées"
+unite = "personnes complètement vaccinées"
 
 [vaccins_premiere_dose_moyenne_quotidienne]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
 res_id = "vaccin.csv"
 trendType = "abnormal"
-nom = "Nombre moyen quotidien de personnes ayant reçu au moins une première injection"
+nom = "Nombre quotidien de personnes ayant reçu au moins une dose"
 unite = "personnes ayant reçues au moins une dose de vaccin"
 
 [vaccins_vaccines_moyenne_quotidienne]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
 res_id = "vaccin.csv"
 trendType = "abnormal"
-nom = "Nombre moyen quotidien de personnes totalement vaccinées"
-unite = "personnes vaccinées"
+nom = "Nombre quotidien de personnes complètement vaccinées"
+unite = "personnes complètement vaccinées"
 
 [cas_positifs]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
 res_id = "synthese.csv"
 trendType = "normal"
-nom = "Nombre moyen de nouveaux cas confirmés quotidiens sur 7 jours (J-3)"
+nom = "Nombre moyen de nouveaux cas confirmés quotidiens"
 unite = "cas positifs"
 
 [facteur_reproduction]
@@ -120,8 +120,8 @@ res_id_fra = "synthese_fra.csv"
 res_id_reg = "synthese.csv"
 res_id_dep = "synthese.csv"
 trendType = "normal"
-nom = "Facteur de reproduction du virus"
-unite = "R"
+nom = "Taux de reproduction effectif"
+unite = ""
 
 [taux_occupation]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -129,5 +129,5 @@ res_id_fra = "synthese_fra.csv"
 res_id_reg = "synthese.csv"
 res_id_dep = "synthese.csv"
 trendType = "normal"
-nom = "Tension hospitalière sur la capacité en réanimation"
+nom = "Taux d'occupation"
 unite = "%"

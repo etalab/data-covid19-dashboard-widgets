@@ -5,6 +5,7 @@ import time
 import pandas as pd
 from tqdm import tqdm
 import json
+import glob
 
 deps = pd.read_csv('utils/departement2021.csv',dtype=str)
 deps = deps[['DEP','REG']]
@@ -260,3 +261,19 @@ def get_taux_specific(name, column):
         indicateurResult['departements'].append(res)
     
     save_result(indicateurResult,name)
+
+
+def shorten_and_save(kpis):
+    for kpi in kpis:
+        with open('./dist/'+kpi+'.json') as f:
+            data = json.load(f)
+        if(data['france'] != None):
+            data['france'][0].pop('values')
+        if(data['regions'] != None):
+            for reg in data['regions']:
+                reg.pop('values')
+        if(data['departements'] != None):
+            for dep in data['departements']:
+                dep.pop('values')
+        with open("./dist/"+kpi+"_short.json", "w") as write_file:
+            json.dump(data, write_file)
