@@ -51,7 +51,7 @@ def download_and_check():
         {
             "res_id": "4f39ec91-80d7-4602-befb-4b522804c0af",
             "title": "vaccin",
-            "kpis": ["vaccins_premiere_dose","vaccins_premiere_dose_moyenne_quotidienne","vaccins_vaccines","vaccins_vacines_moyenne_quotidienne"],
+            "kpis": ["vaccins_premiere_dose","vaccins_premiere_dose_moyenne_quotidienne","vaccins_vaccines","vaccins_vaccines_moyenne_quotidienne"],
             "columns": ["jour","dep","n_cum_dose1","n_cum_complet","n_dose1","n_complet"]
         }
     ]

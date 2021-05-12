@@ -277,3 +277,4 @@ def shorten_and_save(kpis):
                 dep.pop('values')
         with open("./dist/"+kpi+"_short.json", "w") as write_file:
             json.dump(data, write_file)
+
