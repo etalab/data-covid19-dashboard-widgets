@@ -1,19 +1,21 @@
 import pandas as pd
+import matplotlib.dates as mdates
 import json
-import requests
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
-prop = fm.FontProperties(fname='./Marianne-Regular.otf')
-import matplotlib.dates as mdates
 import toml
 from datetime import datetime
+
+# Script for quickly plot kpis.
+
+prop = fm.FontProperties(fname='./Marianne-Regular.otf')
 
 config = toml.load('./config.toml')
 for itemGroup, detail in config.items():
     print(itemGroup)
     with open('dist/'+itemGroup+'.json') as fp:
         data = json.load(fp)
-    
+
     # plot
     arr = []
     for item in data['france'][0]['values']:
@@ -23,17 +25,19 @@ for itemGroup, detail in config.items():
         arr.append(mydict)
 
     df = pd.DataFrame(arr)
-    df['date'] = df['date'].apply(lambda x: pd.to_datetime(str(x), format='%Y-%m-%d'))
+    df['date'] = df['date'].apply(
+        lambda x: pd.to_datetime(str(x), format='%Y-%m-%d')
+    )
 
     x = df.date
     y = df.val
 
-    plt.rcParams["figure.figsize"] = (16,8)
+    plt.rcParams["figure.figsize"] = (16, 8)
     plt.rcParams['axes.facecolor'] = 'white'
     fig, ax = plt.subplots()
-    ax.plot(x, y,linewidth=3,label='Cas',color="#0000FF")
-    ax.set_ylabel(detail['unite'], fontproperties=prop,size="14")
-    ax.set_title(detail['nom'], fontproperties=prop,size="30")
+    ax.plot(x, y, linewidth=3, label='Cas', color="#0000FF")
+    ax.set_ylabel(detail['unite'], fontproperties=prop, size="14")
+    ax.set_title(detail['nom'], fontproperties=prop, size="30")
 
     myFmt = mdates.DateFormatter('%d/%m')
     ax.xaxis.set_major_formatter(myFmt)

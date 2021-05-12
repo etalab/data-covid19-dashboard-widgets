@@ -8,6 +8,8 @@ TWITTER_API_SECRET_KEY = os.getenv('TWITTER_API_SECRET_KEY')
 TWITTER_TOKEN = os.getenv('TWITTER_TOKEN')
 TWITTER_SECRET_TOKEN = os.getenv('TWITTER_SECRET_TOKEN')
 
+# Deprecated. Function to tweet if we want.
+
 auth = tweepy.OAuthHandler(TWITTER_API_KEY, TWITTER_API_SECRET_KEY)
 auth.set_access_token(TWITTER_TOKEN, TWITTER_SECRET_TOKEN)
 
