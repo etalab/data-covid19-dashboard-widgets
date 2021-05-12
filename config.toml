@@ -121,7 +121,7 @@ res_id_reg = "synthese.csv"
 res_id_dep = "synthese.csv"
 trendType = "normal"
 nom = "Taux de reproduction effectif"
-unite = ""
+unite = "R"
 
 [taux_occupation]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
