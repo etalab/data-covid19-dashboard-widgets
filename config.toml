@@ -131,3 +131,22 @@ res_id_dep = "synthese.csv"
 trendType = "normal"
 nom = "Taux d'occupation"
 unite = "%"
+
+
+[couverture_vaccinale_dose1]
+dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
+res_id_fra = "vaccin_fra.csv"
+res_id_reg = "vaccin_reg.csv"
+res_id_dep = "vaccin.csv"
+trendType = "abnormal"
+nom = "Couverture vaccinale"
+unite = "%"
+
+[couverture_vaccinale_complet]
+dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
+res_id_fra = "vaccin_fra.csv"
+res_id_reg = "vaccin_reg.csv"
+res_id_dep = "vaccin.csv"
+trendType = "abnormal"
+nom = "Couverture vaccinale"
+unite = "%"

@@ -175,10 +175,17 @@ def enrich_dataframe(df, name):
         df['taux_positivite'] = df['P']/df['T'] * 100
     if(name == 'taux_occupation'):
         df['TO'] = df['TO']*100
+    if(name == 'couverture_vaccinale_dose1'):
+        df['couverture_vaccinale_dose1'] = df['couv_dose1']
+        df['date'] = df['jour']
+    if(name == 'couverture_vaccinale_complet'):
+        df['couverture_vaccinale_complet'] = df['couv_complet']
+        df['date'] = df['jour']
+
     return df
 
 
-def get_taux(name):
+def get_taux(name, formatDate):
     """Process each geozones for Rate type of KPIs.
 
     Common function which orchestrate processing for Rate type of KPIs
@@ -198,7 +205,8 @@ def get_taux(name):
         dtype={'reg': str, 'dep': str}
     )
     df = enrich_dataframe(df, name)
-    df['date'] = df['semaine_glissante'].apply(lambda x: str(x)[11:])
+    if(formatDate):
+        df['date'] = df['semaine_glissante'].apply(lambda x: str(x)[11:])
     for country in tqdm(countries, desc="Processing National"):
         res = process_stock(
             df,
@@ -216,7 +224,8 @@ def get_taux(name):
         dtype={'reg': str, 'dep': str}
     )
     df = enrich_dataframe(df, name)
-    df['date'] = df['semaine_glissante'].apply(lambda x: str(x)[11:])
+    if(formatDate):
+        df['date'] = df['semaine_glissante'].apply(lambda x: str(x)[11:])
     for reg in tqdm(df.reg.unique(), desc="Processing Régions"):
         res = process_stock(
             df[df['reg'] == reg].copy(),
@@ -234,7 +243,8 @@ def get_taux(name):
         dtype={'reg': str, 'dep': str}
     )
     df = enrich_dataframe(df, name)
-    df['date'] = df['semaine_glissante'].apply(lambda x: str(x)[11:])
+    if(formatDate):
+        df['date'] = df['semaine_glissante'].apply(lambda x: str(x)[11:])
     for dep in tqdm(df.dep.unique(), desc="Processing Départements"):
         res = process_stock(
             df[df['dep'] == dep].copy(),

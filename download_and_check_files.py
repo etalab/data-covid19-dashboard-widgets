@@ -146,7 +146,40 @@ def download_and_check():
                 "n_cum_dose1",
                 "n_cum_complet",
                 "n_dose1",
-                "n_complet"
+                "n_complet",
+                "couv_dose1",
+                "couv_complet"
+            ]
+        },
+        {
+            "res_id": "735b0df8-51b4-4dd2-8a2d-8e46d77d60d8",
+            "title": "vaccin_reg",
+            "kpis": [
+                "vaccins_premiere_dose",
+                "vaccins_premiere_dose_moyenne_quotidienne",
+                "vaccins_vaccines",
+                "vaccins_vaccines_moyenne_quotidienne"
+            ],
+            "columns": [
+                "jour",
+                "reg",
+                "couv_dose1",
+                "couv_complet"
+            ]
+        },
+        {
+            "res_id": "efe23314-67c4-45d3-89a2-3faef82fae90",
+            "title": "vaccin_fra",
+            "kpis": [
+                "vaccins_premiere_dose",
+                "vaccins_premiere_dose_moyenne_quotidienne",
+                "vaccins_vaccines",
+                "vaccins_vaccines_moyenne_quotidienne"
+            ],
+            "columns": [
+                "jour",
+                "couv_dose1",
+                "couv_complet"
             ]
         }
     ]
