@@ -62,6 +62,10 @@ workflows:
   commit:
     jobs:
       - fetch
+          filters:
+            branches:
+              only:
+                - master
   cron_fetch:
     triggers:
       - schedule:
@@ -72,3 +76,7 @@ workflows:
                 - master
     jobs:
       - fetch
+          filters:
+            branches:
+              only:
+                - master
