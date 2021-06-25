@@ -148,7 +148,60 @@ def download_and_check():
                 "n_dose1",
                 "n_complet"
             ]
-        }
+        },
+        {
+            "res_id": "efe23314-67c4-45d3-89a2-3faef82fae90",
+            "title": "vaccin_couv_fra",
+            "kpis": [
+                "vaccins_vaccines_couv",
+            ],
+            "columns": [
+                "fra",
+                "jour",
+                "n_dose1",
+                "n_complet",
+                "n_cum_dose1",
+                "n_cum_complet",
+                "couv_dose1",
+                "couv_complet"
+            ]
+        },
+        {
+            "res_id": "735b0df8-51b4-4dd2-8a2d-8e46d77d60d8",
+            "title": "vaccin_couv_reg",
+            "kpis": [
+                "vaccins_vaccines_couv",
+            ],
+            "columns": [
+                "reg",
+                "jour",
+                "n_dose1",
+                "n_complet",
+                "n_cum_dose1",
+                "n_cum_complet",
+                "couv_dose1",
+                "couv_complet"
+            ]
+        },
+        {
+            "res_id": "4f39ec91-80d7-4602-befb-4b522804c0af",
+            "title": "vaccin_couv_dep",
+            "kpis": [
+                "vaccins_vaccines_couv",
+            ],
+            "columns": [
+                "dep",
+                "jour",
+                "n_dose1",
+                "n_complet",
+                "n_cum_dose1",
+                "n_cum_complet",
+                "couv_dose1",
+                "couv_complet"
+            ]
+        },
+                
+        
     ]
 
     output_kpis = []

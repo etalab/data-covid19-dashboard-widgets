@@ -443,3 +443,88 @@ def get_taux_specific(name, column):
         indicateurResult['departements'].append(res)
 
     save_result(indicateurResult, name)
+    
+def get_couv(name, column):
+    """Process each geozone for Rate type of KPIs with exception.
+
+    Specific function dedicated to vaccin_vaccines_couv
+
+    """
+    indicateurResult = get_empty_kpi()
+    config = get_config(name)
+    log.debug('Processing - '+name)
+
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
+
+    df = pd.read_csv(
+        'files_new/'+config['res_id_fra'],
+        sep=None,
+        engine='python',
+        dtype={'reg': str, 'dep': str}
+    )
+    
+    df = df.rename(columns={'jour': 'date'})
+    
+    df = df[df[column].notna()]
+    df = df.sort_values(by=['date'])
+    df = enrich_dataframe(df, name)
+
+    for country in tqdm(countries, desc="Processing National"):
+        res = process_stock(
+            df,
+            'nat',
+            'fra',
+            config['trendType'],
+            column
+        )
+        indicateurResult['france'].append(res)
+
+    df = pd.read_csv(
+        'files_new/'+config['res_id_reg'],
+        sep=None,
+        engine='python',
+        dtype={'reg': str, 'dep': str}
+    )
+    
+    df = df.rename(columns={'jour': 'date'})
+    
+    df = df[df[column].notna()]
+    df = df.sort_values(by=['date'])
+    df = enrich_dataframe(df, name)
+
+    for reg in tqdm(df.reg.unique(), desc="Processing Régions"):
+        res = process_stock(
+            df[df["reg"] == reg].copy(),
+            'reg',
+            reg,
+            config['trendType'],
+            column
+        )
+        indicateurResult['regions'].append(res)
+
+    df = pd.read_csv(
+        'files_new/'+config['res_id_dep'],
+        sep=None,
+        engine='python',
+        dtype={'reg': str, 'dep': str}
+    )
+    
+    df = df.rename(columns={'jour': 'date'})
+    
+    df = df[df[column].notna()]
+    df = df.sort_values(by=['date'])
+    df = enrich_dataframe(df, name)
+
+    for dep in tqdm(df.dep.unique(), desc="Processing Départements"):
+        res = process_stock(
+            df[df['dep'] == dep].copy(),
+            'dep',
+            dep,
+            config['trendType'],
+            column
+        )
+        indicateurResult['departements'].append(res)
+
+    save_result(indicateurResult, name)
+

@@ -1,6 +1,6 @@
 import json
 import glob
-from utils import get_taux, get_kpi, get_kpi_only_france, get_taux_specific
+from utils import get_taux, get_kpi, get_kpi_only_france, get_taux_specific, get_couv
 from download_and_check_files import download_and_check, save_new_files, shorten_and_save
 from logger import log
 
@@ -59,6 +59,9 @@ if('vaccins_vaccines' in kpis):
 
 if('vaccins_vaccines_moyenne_quotidienne' in kpis):
     get_kpi('vaccins_vaccines_moyenne_quotidienne', 'n_complet', True, True)
+    
+if('vaccins_vaccines_couv' in kpis):
+    get_couv('vaccins_vaccines_couv','couv_complet')
 
 if('taux_occupation' in kpis):
     get_taux_specific('taux_occupation', 'TO')
