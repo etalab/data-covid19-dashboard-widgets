@@ -48,6 +48,8 @@ jobs:
               git add dist
               git add plots
               git add kpis
+              git add files_previous
+              git add files_new
               git commit -am "New data at $(date -u +'%Y-%m-%dT%H:%M:%SZ') [skip ci]"
               git push origin master
             else
