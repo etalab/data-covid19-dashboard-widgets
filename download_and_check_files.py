@@ -206,6 +206,61 @@ def download_and_check():
                 "couv_complet"
             ]
         },
+        {
+            "res_id": "dc103057-d933-4e4b-bdbf-36d312af9ca9",
+            "title": "pop_age_fra",
+            "kpis": [
+                "vaccins_vaccines_couv_majeurs",
+                "vaccins_vaccines_couv_ado_majeurs"
+            ],
+            "columns": [
+                "fra",
+                'clage_vacsi',
+                "jour",
+                "n_tot_dose1",
+                "n_tot_complet",
+                "pop",
+                "couv_tot_dose1",
+                "couv_tot_complet"
+            ]
+        },
+        {
+            "res_id": "2dadbaa7-02ae-43df-92bb-53a82e790cb2",
+            "title": "pop_age_reg",
+            "kpis": [
+                "vaccins_vaccines_couv_majeurs",
+                "vaccins_vaccines_couv_ado_majeurs"
+            ],
+            "columns": [
+                "reg",
+                'clage_vacsi',
+                "jour",
+                "n_tot_dose1",
+                "n_tot_complet",
+                "pop",
+                "couv_tot_dose1",
+                "couv_tot_complet"
+            ]
+        },
+        {
+            "res_id": "de4b356b-8cd9-4b9a-8878-459a62646107",
+            "title": "pop_age_dep",
+            "kpis": [
+                "vaccins_vaccines_couv_majeurs",
+                "vaccins_vaccines_couv_ado_majeurs"
+            ],
+            "columns": [
+                "dep",
+                'clage_vacsi',
+                "jour",
+                "n_tot_dose1",
+                "n_tot_complet",
+                "pop",
+                "couv_tot_dose1",
+                "couv_tot_complet"
+            ]
+        }
+        
                 
         
     ]
