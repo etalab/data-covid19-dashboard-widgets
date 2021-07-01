@@ -465,11 +465,11 @@ def get_couv(name, column, minClass):
     
     
     
-    pop = pd.read_csv("https://www.data.gouv.fr/fr/datasets/r/dc103057-d933-4e4b-bdbf-36d312af9ca9", 
+    pop = pd.read_csv("files_new/" + config['pop_id_fra'], 
                       sep=None,
                       engine='python', 
                       dtype={'reg': str, 'dep': str})
-    pop = pop[pop['clage_vacsi'] >= 17]
+    pop = pop[pop['clage_vacsi'] >= minClass]
     pop = pop[['clage_vacsi', 'pop']]
 
     df = pd.read_csv(
@@ -500,11 +500,11 @@ def get_couv(name, column, minClass):
         )
         indicateurResult['france'].append(res)
         
-    pop = pd.read_csv("https://www.data.gouv.fr/fr/datasets/r/2dadbaa7-02ae-43df-92bb-53a82e790cb2", 
+    pop = pd.read_csv("files_new/" + config['pop_id_reg'], 
                       sep=None,
                       engine='python', 
                       dtype={'reg': str, 'dep': str})
-    pop = pop[pop['clage_vacsi'] >= 17]
+    pop = pop[pop['clage_vacsi'] >= minClass]
     pop = pop[['reg', 'clage_vacsi', 'pop']]        
 
     df = pd.read_csv(
@@ -532,11 +532,11 @@ def get_couv(name, column, minClass):
         )
         indicateurResult['regions'].append(res)
         
-    pop = pd.read_csv("https://www.data.gouv.fr/fr/datasets/r/de4b356b-8cd9-4b9a-8878-459a62646107", 
+    pop = pd.read_csv("files_new/" + config['pop_id_dep'], 
                       sep=None,
                       engine='python', 
                       dtype={'reg': str, 'dep': str})
-    pop = pop[(pop['clage_vacsi'] >= 17) & (pop['dep'] != '00')]
+    pop = pop[(pop['clage_vacsi'] >= minClass) & (pop['dep'] != '00')]
     pop = pop[['dep', 'clage_vacsi', 'pop']]           
 
     df = pd.read_csv(
