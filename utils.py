@@ -175,6 +175,12 @@ def enrich_dataframe(df, name):
         df['taux_positivite'] = df['P']/df['T'] * 100
     if(name == 'taux_occupation'):
         df['TO'] = df['TO']*100
+    if(name == 'vaccins_vaccines_couv_majeurs'):
+        df['couv_complet'] = 100 * df['n_cum_complet'] / df['pop']
+    if(name == 'vaccins_vaccines_couv_ado_majeurs'):
+        df['couv_complet'] = 100 * df['n_cum_complet'] / df['pop']
+        
+        
     return df
 
 
@@ -444,7 +450,7 @@ def get_taux_specific(name, column):
 
     save_result(indicateurResult, name)
     
-def get_couv(name, column):
+def get_couv(name, column, minClass):
     """Process each geozone for Rate type of KPIs with exception.
 
     Specific function dedicated to vaccin_vaccines_couv
@@ -456,6 +462,15 @@ def get_couv(name, column):
 
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
+    
+    
+    
+    pop = pd.read_csv("https://www.data.gouv.fr/fr/datasets/r/dc103057-d933-4e4b-bdbf-36d312af9ca9", 
+                      sep=None,
+                      engine='python', 
+                      dtype={'reg': str, 'dep': str})
+    pop = pop[pop['clage_vacsi'] >= 17]
+    pop = pop[['clage_vacsi', 'pop']]
 
     df = pd.read_csv(
         'files_new/'+config['res_id_fra'],
@@ -466,9 +481,14 @@ def get_couv(name, column):
     
     df = df.rename(columns={'jour': 'date'})
     
+    df = df[df['clage_vacsi'] >= minClass]
     df = df[df[column].notna()]
+    df = df.merge(pop, how = 'left', on = 'clage_vacsi')
+    df = df.groupby('date')[['n_cum_complet', 'pop']].sum().reset_index()
     df = df.sort_values(by=['date'])
+    
     df = enrich_dataframe(df, name)
+    
 
     for country in tqdm(countries, desc="Processing National"):
         res = process_stock(
@@ -479,6 +499,13 @@ def get_couv(name, column):
             column
         )
         indicateurResult['france'].append(res)
+        
+    pop = pd.read_csv("https://www.data.gouv.fr/fr/datasets/r/2dadbaa7-02ae-43df-92bb-53a82e790cb2", 
+                      sep=None,
+                      engine='python', 
+                      dtype={'reg': str, 'dep': str})
+    pop = pop[pop['clage_vacsi'] >= 17]
+    pop = pop[['reg', 'clage_vacsi', 'pop']]        
 
     df = pd.read_csv(
         'files_new/'+config['res_id_reg'],
@@ -488,8 +515,10 @@ def get_couv(name, column):
     )
     
     df = df.rename(columns={'jour': 'date'})
-    
+    df = df[df['clage_vacsi'] >= minClass]
     df = df[df[column].notna()]
+    df = df.merge(pop, how = 'left', on = ['reg', 'clage_vacsi'])
+    df = df.groupby(['reg', 'date'])[['n_cum_complet', 'pop']].sum().reset_index()
     df = df.sort_values(by=['date'])
     df = enrich_dataframe(df, name)
 
@@ -502,6 +531,13 @@ def get_couv(name, column):
             column
         )
         indicateurResult['regions'].append(res)
+        
+    pop = pd.read_csv("https://www.data.gouv.fr/fr/datasets/r/de4b356b-8cd9-4b9a-8878-459a62646107", 
+                      sep=None,
+                      engine='python', 
+                      dtype={'reg': str, 'dep': str})
+    pop = pop[(pop['clage_vacsi'] >= 17) & (pop['dep'] != '00')]
+    pop = pop[['dep', 'clage_vacsi', 'pop']]           
 
     df = pd.read_csv(
         'files_new/'+config['res_id_dep'],
@@ -511,8 +547,10 @@ def get_couv(name, column):
     )
     
     df = df.rename(columns={'jour': 'date'})
-    
+    df = df[df['clage_vacsi'] >= minClass]
     df = df[df[column].notna()]
+    df = df.merge(pop, how = 'left', on = ['dep', 'clage_vacsi'])
+    df = df.groupby(['dep', 'date'])[['n_cum_complet', 'pop']].sum().reset_index()
     df = df.sort_values(by=['date'])
     df = enrich_dataframe(df, name)
 

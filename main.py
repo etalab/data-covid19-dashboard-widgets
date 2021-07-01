@@ -60,8 +60,11 @@ if('vaccins_vaccines' in kpis):
 if('vaccins_vaccines_moyenne_quotidienne' in kpis):
     get_kpi('vaccins_vaccines_moyenne_quotidienne', 'n_complet', True, True)
     
-if('vaccins_vaccines_couv' in kpis):
-    get_couv('vaccins_vaccines_couv','couv_complet')
+if('vaccins_vaccines_couv_majeurs' in kpis):
+    get_couv('vaccins_vaccines_couv_majeurs','couv_complet', 24)
+    
+if('vaccins_vaccines_couv_ado_majeurs' in kpis):
+    get_couv('vaccins_vaccines_couv_ado_majeurs','couv_complet', 17)
 
 if('taux_occupation' in kpis):
     get_taux_specific('taux_occupation', 'TO')
