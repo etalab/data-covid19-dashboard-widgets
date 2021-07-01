@@ -132,11 +132,20 @@ trendType = "normal"
 nom = "Taux d'occupation"
 unite = "%"
 
-[vaccins_vaccines_couv]
+[vaccins_vaccines_couv_majeurs]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
 res_id_fra = "vaccin_couv_fra.csv"
 res_id_reg = "vaccin_couv_reg.csv"
 res_id_dep = "vaccin_couv_dep.csv"
 trendType = "abnormal"
-nom = "Pourcentage de personnes complètement vaccinées"
-unite = "Pourcentage de personnes complètement vaccinées"
+nom = "Part de la population majeure complètement vaccinée "
+unite = "Part de la population majeure complètement vaccinée "
+
+[vaccins_vaccines_couv_ado_majeurs]
+dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
+res_id_fra = "vaccin_couv_fra.csv"
+res_id_reg = "vaccin_couv_reg.csv"
+res_id_dep = "vaccin_couv_dep.csv"
+trendType = "abnormal"
+nom = "Part de la population âgée de plus de 12 ans complètement vaccinée "
+unite = "Part de la population âgée de plus de 12 ans complètement vaccinée "

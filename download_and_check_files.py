@@ -150,13 +150,15 @@ def download_and_check():
             ]
         },
         {
-            "res_id": "efe23314-67c4-45d3-89a2-3faef82fae90",
+            "res_id": "54dd5f8d-1e2e-4ccb-8fb8-eac68245befd",
             "title": "vaccin_couv_fra",
             "kpis": [
-                "vaccins_vaccines_couv",
+                "vaccins_vaccines_couv_majeurs",
+                "vaccins_vaccines_couv_ado_majeurs"
             ],
             "columns": [
                 "fra",
+                'clage_vacsi',
                 "jour",
                 "n_dose1",
                 "n_complet",
@@ -167,13 +169,15 @@ def download_and_check():
             ]
         },
         {
-            "res_id": "735b0df8-51b4-4dd2-8a2d-8e46d77d60d8",
+            "res_id": "c3ccc72a-a945-494b-b98d-09f48aa25337",
             "title": "vaccin_couv_reg",
             "kpis": [
-                "vaccins_vaccines_couv",
+                "vaccins_vaccines_couv_majeurs",
+                "vaccins_vaccines_couv_ado_majeurs"
             ],
             "columns": [
                 "reg",
+                'clage_vacsi',
                 "jour",
                 "n_dose1",
                 "n_complet",
@@ -184,13 +188,15 @@ def download_and_check():
             ]
         },
         {
-            "res_id": "4f39ec91-80d7-4602-befb-4b522804c0af",
+            "res_id": "83cbbdb9-23cb-455e-8231-69fc25d58111",
             "title": "vaccin_couv_dep",
             "kpis": [
-                "vaccins_vaccines_couv",
+                "vaccins_vaccines_couv_majeurs",
+                "vaccins_vaccines_couv_ado_majeurs"
             ],
             "columns": [
                 "dep",
+                'clage_vacsi',
                 "jour",
                 "n_dose1",
                 "n_complet",
