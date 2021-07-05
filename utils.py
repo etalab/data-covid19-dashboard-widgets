@@ -38,7 +38,6 @@ def get_empty_kpi():
     indicateurResult = {}
     indicateurResult['nom'] = []
     indicateurResult['unite'] = []
-    indicateurResult['trendType'] = []
     indicateurResult['france'] = []
     indicateurResult['regions'] = []
     indicateurResult['departements'] = []
@@ -197,7 +196,6 @@ def get_taux(name):
 
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
-    indicateurResult['trendType'] = config['trendType']
 
     df = pd.read_csv(
         'files_new/'+config['res_id_fra'],
@@ -281,7 +279,6 @@ def get_kpi(name, column, mean, transformDF=False):
 
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
-    indicateurResult['trendType'] = config['trendType']
 
     df = pd.read_csv(
         'files_new/'+config['res_id'],
@@ -353,7 +350,6 @@ def get_kpi_only_france(name, column, mean, transformDF=False):
 
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
-    indicateurResult['trendType'] = config['trendType']
 
     df = pd.read_csv(
         'files_new/'+config['res_id'],
@@ -391,7 +387,6 @@ def get_taux_specific(name, column):
 
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
-    indicateurResult['trendType'] = config['trendType']
 
     df = pd.read_csv(
         'files_new/'+config['res_id_fra'],
@@ -467,7 +462,6 @@ def get_couv(name, column, minClass):
 
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
-    indicateurResult['trendType'] = config['trendType']
     
     
     
