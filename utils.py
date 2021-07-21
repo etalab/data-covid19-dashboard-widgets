@@ -255,6 +255,81 @@ def get_taux(name):
 
     save_result(indicateurResult, name)
 
+def get_taux_variants(name):
+    """Process each geozones for variants Rate KPIs.
+
+    Common function which orchestrate processing for variants Rate KPIs
+    (there is some exception, see get_taux_specific)
+    """
+    indicateurResult = get_empty_kpi()
+    config = get_config(name)
+    log.debug('Processing - '+name)
+
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
+    indicateurResult['trendType'] = config['trendType']
+
+    if name == "prop_variant_A":
+        colname = "tx_A1"
+    elif name == "prop_variant_B":
+        colname = "tx_B1"
+    else :
+        colname = "tx_C1"
+
+    df = pd.read_csv(
+        'files_new/'+config['res_id_fra'],
+        sep=None,
+        engine='python',
+        dtype={'reg': str, 'dep': str}
+    )
+    df = enrich_dataframe(df, name)
+    df['date'] = df['semaine'].apply(lambda x: str(x)[11:])
+    for country in tqdm(countries, desc="Processing National"):
+        res = process_stock(
+            df,
+            'nat',
+            'fra',
+            config['trendType'],
+            colname
+        )
+        indicateurResult['france'].append(res)
+    df = pd.read_csv(
+        'files_new/'+config['res_id_reg'],
+        sep=None,
+        engine='python',
+        dtype={'reg': str, 'dep': str}
+    )
+    df = enrich_dataframe(df, name)
+    df['date'] = df['semaine'].apply(lambda x: str(x)[11:])
+    for reg in tqdm(df.reg.unique(), desc="Processing Régions"):
+        res = process_stock(
+            df[df['reg'] == reg].copy(),
+            'reg',
+            reg,
+            config['trendType'],
+            colname
+        )
+        indicateurResult['regions'].append(res)
+
+    df = pd.read_csv(
+        'files_new/'+config['res_id_dep'],
+        sep=None,
+        engine='python',
+        dtype={'reg': str, 'dep': str}
+    )
+    df = enrich_dataframe(df, name)
+    df['date'] = df['semaine'].apply(lambda x: str(x)[11:])
+    for dep in tqdm(df.dep.unique(), desc="Processing Départements"):
+        res = process_stock(
+            df[df['dep'] == dep].copy(),
+            'dep',
+            dep,
+            config['trendType'],
+            colname
+        )
+        indicateurResult['departements'].append(res)
+
+    save_result(indicateurResult, name)
 
 def get_kpi_by_type(df, level, code_level, trendType, column, mean):
     """Redirect to good function depending of type of KPI needed.
