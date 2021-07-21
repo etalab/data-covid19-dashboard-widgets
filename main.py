@@ -1,6 +1,6 @@
 import json
 import glob
-from utils import get_taux, get_kpi, get_kpi_only_france, get_taux_specific, get_couv
+from utils import get_taux, get_taux_variants, get_kpi, get_kpi_only_france, get_taux_specific, get_couv
 from download_and_check_files import download_and_check, save_new_files, shorten_and_save
 from logger import log
 
@@ -14,6 +14,15 @@ res = {}
 
 if('taux_incidence' in kpis):
     get_taux('taux_incidence')
+
+if('prop_variant_A' in kpis):
+    get_taux_variants('prop_variant_A')
+
+if('prop_variant_B' in kpis):
+    get_taux_variants('prop_variant_B')
+
+if('prop_variant_C' in kpis):
+    get_taux_variants('prop_variant_C')
 
 if('taux_positivite' in kpis):
     get_taux('taux_positivite')

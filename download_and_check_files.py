@@ -259,10 +259,82 @@ def download_and_check():
                 "couv_tot_dose1",
                 "couv_tot_complet"
             ]
+        },
+        {
+            "res_id": "848debc4-0e42-4e3b-a176-afc285ed5401",
+            "title": "prop_variants_fra",
+            "kpis": [
+                "prop_variant_A",
+                "prop_variant_B",
+                "prop_variant_C"
+            ],
+            "columns": [
+                "fra",
+                "semaine",
+                "nb_crib",
+                "nb_pos",
+                "tx_crib",
+                "nb_A0",
+                "nb_A1",
+                "tx_A1",
+                "nb_B0",
+                "nb_B1",
+                "tx_B1",
+                "nb_C0",
+                "nb_C1",
+                "tx_C1"
+            ]
+        },
+        {
+            "res_id": "5ff0cad6-f150-47ea-a4e0-57e354c1b2a4",
+            "title": "prop_variants_reg",
+            "kpis": [
+                "prop_variant_A",
+                "prop_variant_B",
+                "prop_variant_C"
+            ],
+            "columns": [
+                "reg",
+                "semaine",
+                "nb_crib",
+                "nb_pos",
+                "tx_crib",
+                "nb_A0",
+                "nb_A1",
+                "tx_A1",
+                "nb_B0",
+                "nb_B1",
+                "tx_B1",
+                "nb_C0",
+                "nb_C1",
+                "tx_C1"
+            ]
+        },
+        {
+            "res_id": "4d3e5a8b-9649-4c41-86ec-5420eb6b530c",
+            "title": "prop_variants_dep",
+            "kpis": [
+                "prop_variant_A",
+                "prop_variant_B",
+                "prop_variant_C"
+            ],
+            "columns": [
+                "dep",
+                "semaine",
+                "nb_crib",
+                "nb_pos",
+                "tx_crib",
+                "nb_A0",
+                "nb_A1",
+                "tx_A1",
+                "nb_B0",
+                "nb_B1",
+                "tx_B1",
+                "nb_C0",
+                "nb_C1",
+                "tx_C1"
+            ]
         }
-        
-                
-        
     ]
 
     output_kpis = []

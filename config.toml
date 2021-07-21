@@ -155,3 +155,30 @@ pop_id_dep = "pop_age_dep.csv"
 trendType = "abnormal"
 nom = "Part de la population âgée de plus de 12 ans complètement vaccinée "
 unite = "Part de la population âgée de plus de 12 ans complètement vaccinée "
+
+[prop_variant_A]
+dataset = "donnees-de-laboratoires-pour-le-depistage-indicateurs-sur-les-mutations"
+res_id_fra = "prop_variants_fra.csv"
+res_id_reg = "prop_variants_reg.csv"
+res_id_dep = "prop_variants_dep.csv"
+trendType = "normal"
+nom = "Taux de variant A"
+unite = "%"
+
+[prop_variant_B]
+dataset = "donnees-de-laboratoires-pour-le-depistage-indicateurs-sur-les-mutations"
+res_id_fra = "prop_variants_fra.csv"
+res_id_reg = "prop_variants_reg.csv"
+res_id_dep = "prop_variants_dep.csv"
+trendType = "normal"
+nom = "Taux de variant B"
+unite = "%"
+
+[prop_variant_C]
+dataset = "donnees-de-laboratoires-pour-le-depistage-indicateurs-sur-les-mutations"
+res_id_fra = "prop_variants_fra.csv"
+res_id_reg = "prop_variants_reg.csv"
+res_id_dep = "prop_variants_dep.csv"
+trendType = "normal"
+nom = "Taux de variant C"
+unite = "%"
