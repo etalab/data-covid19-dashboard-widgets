@@ -2,6 +2,7 @@ import toml
 from datetime import datetime
 from datetime import timedelta
 import pandas as pd
+import numpy as np
 from tqdm import tqdm
 import json
 from logger import log
@@ -25,11 +26,13 @@ def get_color(val, trendType):
             color = 'red'
         else:
             color = 'green'
-    else:
+    elif(val < 0):
         if(trendType == 'normal'):
             color = 'green'
         else:
             color = 'red'
+    else:
+        color = 'blue'
     return color
 
 
@@ -38,6 +41,7 @@ def get_empty_kpi():
     indicateurResult = {}
     indicateurResult['nom'] = []
     indicateurResult['unite'] = []
+    indicateurResult['unite_short'] = []
     indicateurResult['trendType'] = []
     indicateurResult['france'] = []
     indicateurResult['regions'] = []
@@ -65,8 +69,10 @@ def format_dict(
     resdict['last_value'] = str(last_value)
     resdict['last_date'] = str(last_date)
     resdict['evol'] = str(evol)
+    if (np.isinf(evol_percentage)) | (pd.isnull(evol_percentage)):
+        evol_percentage = 0   
     resdict['evol_percentage'] = str(round(evol_percentage, 2))
-    resdict['evol_color'] = get_color(evol_percentage, trendType)
+    resdict['evol_color'] = get_color(round(evol_percentage, 2), trendType)
     resdict['level'] = level
     resdict['code_level'] = str(code_level)
     resdict['values'] = []
@@ -197,6 +203,7 @@ def get_taux(name):
 
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
+    indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
 
     df = pd.read_csv(
@@ -267,6 +274,7 @@ def get_taux_variants(name):
 
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
+    indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
 
     if name == "prop_variant_A":
@@ -356,6 +364,7 @@ def get_kpi(name, column, mean, transformDF=False):
 
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
+    indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
 
     df = pd.read_csv(
@@ -428,6 +437,7 @@ def get_kpi_only_france(name, column, mean, transformDF=False):
 
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
+    indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
 
     df = pd.read_csv(
@@ -466,6 +476,7 @@ def get_taux_specific(name, column):
 
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
+    indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
 
     df = pd.read_csv(
@@ -542,6 +553,7 @@ def get_couv(name, column, minClass):
 
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
+    indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
     
     
@@ -645,5 +657,75 @@ def get_couv(name, column, minClass):
         )
         indicateurResult['departements'].append(res)
 
+    save_result(indicateurResult, name)
+    
+def get_vacsi_non_vacsi(name, column, statut, multi):
+    """Process each geozone for Rate type of KPIs with exception.
+
+    Specific function dedicated to vaccin_vaccines_couv
+
+    """
+    indicateurResult = get_empty_kpi()
+    config = get_config(name)
+    log.debug('Processing - '+name)
+
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
+    indicateurResult['unite_short'] = config['unite_short']
+    indicateurResult['trendType'] = config['trendType']    
+    
+    
+    df = pd.read_csv("files_new/" + config['res_id_fra'], 
+                     sep=None,
+                     engine='python', 
+                     dtype={'reg': str, 'dep': str})
+    
+    df = df[df['vac_statut'] == statut]
+    df = df.sort_values('date', ascending = True)
+    df['numerateur'] = multi * df[column].rolling(window = 7).sum()
+    df['denominateur'] = df['effectif J-7'].rolling(window = 7).mean()
+    df = df[~df['denominateur'].isnull()]
+    df['res'] = df['numerateur'] / df['denominateur']
+    
+    for country in tqdm(countries, desc="Processing National"):
+        res = process_stock(
+            df,
+            'nat',
+            'fra',
+            config['trendType'],
+            'res'
+        )
+        indicateurResult['france'].append(res)
+        
+    df = pd.read_csv("files_new/" + config['res_id_reg'], 
+                     sep=None,
+                     engine='python', 
+                     dtype={'reg': str, 'dep': str})
+    df = df[df['vac_statut'] == statut]
+    
+    tri_reg = pd.read_csv("utils/region2021.csv", 
+                          sep=None,
+                          engine='python', 
+                          dtype={'reg': str, 'dep': str})
+    
+    for reg in tqdm(df['region'].unique(), desc="Processing Régions"):
+        df_reg = df[df['region'] == reg]
+        df_reg = df_reg.sort_values('date', ascending = True)
+        df_reg['numerateur'] = multi * df_reg[column].rolling(window = 7).sum()
+        df_reg['denominateur'] = df_reg['effectif J-7'].rolling(window = 7).mean()
+        df_reg = df_reg[~df_reg['denominateur'].isnull()]
+        df_reg['res'] = df_reg['numerateur'] / df_reg['denominateur']
+        
+        
+        
+        res = process_stock(
+            df_reg,
+            'reg',
+            tri_reg.loc[tri_reg['trigramme'] == reg, 'reg'].iloc[0],
+            config['trendType'],
+            'res'
+        )
+        indicateurResult['regions'].append(res)
+        
     save_result(indicateurResult, name)
 

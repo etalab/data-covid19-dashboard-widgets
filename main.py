@@ -1,6 +1,6 @@
 import json
 import glob
-from utils import get_taux, get_taux_variants, get_kpi, get_kpi_only_france, get_taux_specific, get_couv
+from utils import get_taux, get_taux_variants, get_kpi, get_kpi_only_france, get_taux_specific, get_couv, get_vacsi_non_vacsi
 from download_and_check_files import download_and_check, save_new_files, shorten_and_save
 from logger import log
 
@@ -80,6 +80,19 @@ if('taux_occupation' in kpis):
 
 if('facteur_reproduction' in kpis):
     get_taux_specific('facteur_reproduction', 'R')
+    
+if('pos_test_vacsi' in kpis):
+    get_vacsi_non_vacsi('pos_test_vacsi', 'nb_PCR+', 'Vaccination complète', 100000)
+    
+if('pos_test_non_vacsi' in kpis):
+    get_vacsi_non_vacsi('pos_test_non_vacsi', 'nb_PCR+', 'Non-vaccinés', 100000)
+    
+if('sc_vacsi' in kpis):
+    get_vacsi_non_vacsi('sc_vacsi', 'SC_PCR+', 'Vaccination complète', 1000000)
+    
+if('sc_non_vacsi' in kpis):
+    get_vacsi_non_vacsi('sc_non_vacsi', 'SC_PCR+', 'Non-vaccinés', 1000000)
+    
 
 shorten_and_save(kpis)
 

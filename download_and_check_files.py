@@ -5,6 +5,7 @@ import glob
 import pandas as pd
 import json
 from logger import log
+import os
 
 
 def check_files(title, columns):
@@ -41,6 +42,7 @@ def download_and_check():
     """
     urls = [
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "5c4e1452-3850-4b59-b11c-3dd51d7fb8b5",
             "title": "synthese",
             "kpis": [
@@ -73,6 +75,7 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "f335f9ea-86e3-4ffa-9684-93c009d5e617",
             "title": "synthese_fra",
             "kpis": [
@@ -88,6 +91,7 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "cbd6477e-bda6-485d-afdc-8e61b904d771",
             "title": "taux_fra",
             "kpis": [
@@ -102,6 +106,7 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "36ab36ea-d073-4543-9ea0-a64a0175083f",
             "title": "taux_reg",
             "kpis": [
@@ -117,6 +122,7 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "3c18e242-7d45-44f2-ac70-dee78a38ee1c",
             "title": "taux_dep",
             "kpis": [
@@ -132,6 +138,7 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "4f39ec91-80d7-4602-befb-4b522804c0af",
             "title": "vaccin",
             "kpis": [
@@ -150,6 +157,7 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "54dd5f8d-1e2e-4ccb-8fb8-eac68245befd",
             "title": "vaccin_couv_fra",
             "kpis": [
@@ -169,6 +177,7 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "c3ccc72a-a945-494b-b98d-09f48aa25337",
             "title": "vaccin_couv_reg",
             "kpis": [
@@ -188,6 +197,7 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "83cbbdb9-23cb-455e-8231-69fc25d58111",
             "title": "vaccin_couv_dep",
             "kpis": [
@@ -207,6 +217,7 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "dc103057-d933-4e4b-bdbf-36d312af9ca9",
             "title": "pop_age_fra",
             "kpis": [
@@ -225,6 +236,7 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "2dadbaa7-02ae-43df-92bb-53a82e790cb2",
             "title": "pop_age_reg",
             "kpis": [
@@ -243,6 +255,7 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "de4b356b-8cd9-4b9a-8878-459a62646107",
             "title": "pop_age_dep",
             "kpis": [
@@ -261,6 +274,7 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "848debc4-0e42-4e3b-a176-afc285ed5401",
             "title": "prop_variants_fra",
             "kpis": [
@@ -286,6 +300,7 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "5ff0cad6-f150-47ea-a4e0-57e354c1b2a4",
             "title": "prop_variants_reg",
             "kpis": [
@@ -311,6 +326,7 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "4d3e5a8b-9649-4c41-86ec-5420eb6b530c",
             "title": "prop_variants_dep",
             "kpis": [
@@ -334,6 +350,57 @@ def download_and_check():
                 "nb_C1",
                 "tx_C1"
             ]
+        },
+        {
+            "url": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/",
+            "res_id": "covid-19-resultats-issus-des-appariements-entre-si-vic-si-dep-et-vac-si/download/?format=csv&timezone=Europe/Berlin&lang=fr&use_labels_for_header=true&csv_separator=%3B",
+            "title": "vacsi_non_vacsi_nat",
+            "kpis": [
+                "pos_test_vacsi",
+                "pos_test_non_vacsi",
+                "sc_vacsi",
+                "sc_non_vacsi"
+            ],
+            "columns": [
+                "date",	
+                "vac_statut",
+                "nb_PCR",
+                "nb_PCR_sympt",
+                "nb_PCR+",
+                "nb_PCR+_sympt",
+                "HC",
+                "HC_PCR+",
+                "SC",
+                "SC_PCR+",	
+                "DC",
+                "DC_PCR+",	
+                "effectif J-7"
+            ]
+        },
+        {
+            "url": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/",
+            "res_id": "covid-19-resultats-regionaux-issus-des-appariements-entre-si-vic-si-dep-et-vac-s/download/?format=csv&timezone=Europe/Berlin&lang=fr&use_labels_for_header=true&csv_separator=%3B",
+            "title": "vacsi_non_vacsi_reg",
+            "kpis": [
+                "pos_test_vacsi",
+                "pos_test_non_vacsi",
+                "sc_vacsi",
+                "sc_non_vacsi"
+            ],
+            "columns": [
+                "date",	
+                "region",
+                "vac_statut",
+                "nb_PCR",
+                "nb_PCR_sympt",
+                "nb_PCR+",
+                "nb_PCR+_sympt",
+                "HC",
+                "HC_PCR+",
+                "SC",
+                "SC_PCR+",	
+                "effectif J-7"
+            ]
         }
     ]
 
@@ -341,10 +408,14 @@ def download_and_check():
 
     for url in urls:
         r = requests.get(
-            "https://www.data.gouv.fr/fr/datasets/r/"+url['res_id']
+            url['url']+url['res_id']
         )
         with open('./files_new/'+url['title']+'.csv', 'wb') as f:
             f.write(r.content)
+
+        if not os.path.exists('./files_previous/'+url['title']+'.csv'):
+            pd.DataFrame().to_csv('./files_previous/'+url['title']+'.csv')
+            
         comp = filecmp.cmp(
             './files_new/'+url['title']+'.csv',
             './files_previous/'+url['title']+'.csv'
