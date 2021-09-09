@@ -6,6 +6,7 @@ res_id_dep = "taux_dep.csv"
 trendType = "normal"
 nom = "Taux d'incidence"
 unite = "nombre de cas par semaine pour 100 000 habitants"
+unite_short = "/100k hab"
 
 [taux_positivite]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -14,7 +15,8 @@ res_id_reg = "taux_reg.csv"
 res_id_dep = "taux_dep.csv"
 trendType = "normal"
 nom = "Taux de positivité"
-unite = "%"
+unite = "% de cas positifs"
+unite_short = "%"
 
 [hospitalisations]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -22,6 +24,7 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre de personnes hospitalisées"
 unite = "personnes hospitalisées"
+unite_short = ""
 
 [hospitalisations_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -29,6 +32,7 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de nouvelles hospitalisations quotidiennes"
 unite = "nouvelles personnes hospitalisées"
+unite_short = ""
 
 [retour_a_domicile]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -36,6 +40,7 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre de retours à domicile"
 unite = "personnes"
+unite_short = ""
 
 [retour_a_domicile_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -43,6 +48,7 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de nouveaux retours à domicile quotidiens"
 unite = "nouvelles personnes retournées à domicile"
+unite_short = ""
 
 [soins_critiques]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -50,6 +56,7 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre de personnes en soins critiques "
 unite = "personnes en soins critiques"
+unite_short = ""
 
 [soins_critiques_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -57,6 +64,7 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de nouvelles entrées en soins critiques quotidiennes"
 unite = "nouvelles entrées en soins critiques"
+unite_short = ""
 
 [deces]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -64,6 +72,7 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Décès hospitaliers"
 unite = "décès hospitaliers"
+unite_short = ""
 
 [deces_moyenne_quotidienne]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -71,6 +80,7 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de décès quotidiens à l'hôpital"
 unite = "décès hospitaliers"
+unite_short = ""
 
 [deces_total]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -78,6 +88,7 @@ res_id = "synthese_fra.csv"
 trendType = "normal"
 nom = "Nombre total des décès à l'hôpital et en ESMS dont EPHAD"
 unite = "décès"
+unite_short = ""
 
 [vaccins_premiere_dose]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
@@ -85,6 +96,7 @@ res_id = "vaccin.csv"
 trendType = "abnormal"
 nom = "Nombre de personnes ayant reçu au moins une dose"
 unite = "personnes ayant reçues au moins une dose de vaccin"
+unite_short = ""
 
 [vaccins_vaccines]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
@@ -92,6 +104,7 @@ res_id = "vaccin.csv"
 trendType = "abnormal"
 nom = "Nombre de personnes complètement vaccinées"
 unite = "personnes complètement vaccinées"
+unite_short = ""
 
 [vaccins_premiere_dose_moyenne_quotidienne]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
@@ -99,6 +112,7 @@ res_id = "vaccin.csv"
 trendType = "abnormal"
 nom = "Nombre quotidien de personnes ayant reçu au moins une dose"
 unite = "personnes ayant reçues au moins une dose de vaccin"
+unite_short = ""
 
 [vaccins_vaccines_moyenne_quotidienne]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
@@ -106,6 +120,7 @@ res_id = "vaccin.csv"
 trendType = "abnormal"
 nom = "Nombre quotidien de personnes complètement vaccinées"
 unite = "personnes complètement vaccinées"
+unite_short = ""
 
 [cas_positifs]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -113,6 +128,7 @@ res_id = "synthese.csv"
 trendType = "normal"
 nom = "Nombre moyen de nouveaux cas confirmés quotidiens"
 unite = "cas positifs"
+unite_short = ""
 
 [facteur_reproduction]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -122,6 +138,7 @@ res_id_dep = "synthese.csv"
 trendType = "normal"
 nom = "Taux de reproduction effectif"
 unite = "R"
+unite_short = ""
 
 [taux_occupation]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -130,7 +147,8 @@ res_id_reg = "synthese.csv"
 res_id_dep = "synthese.csv"
 trendType = "normal"
 nom = "Taux d'occupation"
-unite = "%"
+unite = "% d'occupation"
+unite_short = "%"
 
 [vaccins_vaccines_couv_majeurs]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
@@ -142,7 +160,8 @@ pop_id_reg = "pop_age_reg.csv"
 pop_id_dep = "pop_age_dep.csv"
 trendType = "abnormal"
 nom = "Part de la population majeure complètement vaccinée "
-unite = "Part de la population majeure complètement vaccinée "
+unite = "% de la population majeure complètement vaccinée "
+unite_short = "%"
 
 [vaccins_vaccines_couv_ado_majeurs]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
@@ -154,7 +173,8 @@ pop_id_reg = "pop_age_reg.csv"
 pop_id_dep = "pop_age_dep.csv"
 trendType = "abnormal"
 nom = "Part de la population âgée de plus de 12 ans complètement vaccinée "
-unite = "Part de la population âgée de plus de 12 ans complètement vaccinée "
+unite = "% de la population âgée de plus de 12 ans complètement vaccinée "
+unite_short = "%"
 
 [prop_variant_A]
 dataset = "donnees-de-laboratoires-pour-le-depistage-indicateurs-sur-les-mutations"
@@ -164,6 +184,7 @@ res_id_dep = "prop_variants_dep.csv"
 trendType = "normal"
 nom = "Mutation E484K (dont variants Beta, Gamma)"
 unite = "% Mutation E484K"
+unite_short = "%"
 
 [prop_variant_B]
 dataset = "donnees-de-laboratoires-pour-le-depistage-indicateurs-sur-les-mutations"
@@ -173,6 +194,7 @@ res_id_dep = "prop_variants_dep.csv"
 trendType = "normal"
 nom = "Mutation E484Q"
 unite = "% Mutation E484Q"
+unite_short = "%"
 
 [prop_variant_C]
 dataset = "donnees-de-laboratoires-pour-le-depistage-indicateurs-sur-les-mutations"
@@ -182,3 +204,40 @@ res_id_dep = "prop_variants_dep.csv"
 trendType = "normal"
 nom = "Mutation L452R (dont variant Delta)"
 unite = "% Mutation L452R"
+unite_short = "%"
+
+[pos_test_vacsi]
+dataset = "résultats nationaux issus des appariements entre SI-VIC, SI-DEP et VAC-SI"
+res_id_fra = "vacsi_non_vacsi_nat.csv"
+res_id_reg = "vacsi_non_vacsi_reg.csv"
+trendType = "normal"
+nom = "Nombre de tests positifs chez les personnes vaccinées"
+unite = "tests positifs pour 100 000 personnes vaccinées"
+unite_short="/100 0000 personnes"
+
+[pos_test_non_vacsi]
+dataset = "résultats nationaux issus des appariements entre SI-VIC, SI-DEP et VAC-SI"
+res_id_fra = "vacsi_non_vacsi_nat.csv"
+res_id_reg = "vacsi_non_vacsi_reg.csv"
+trendType = "normal"
+nom = "Nombre de tests positifs chez les personnes non vaccinées"
+unite = "tests positifs pour 100 000 personnes non vaccinées"
+unite_short="/100 0000 personnes"
+
+[sc_vacsi]
+dataset = "résultats nationaux issus des appariements entre SI-VIC, SI-DEP et VAC-SI"
+res_id_fra = "vacsi_non_vacsi_nat.csv"
+res_id_reg = "vacsi_non_vacsi_reg.csv"
+trendType = "normal"
+nom = "Nombre d'entrées en réanimation chez les personnes vaccinées"
+unite = "entrées en réanimation pour 1 million de personnes vaccinées"
+unite_short="/1M de personnes"
+
+[sc_non_vacsi]
+dataset = "résultats nationaux issus des appariements entre SI-VIC, SI-DEP et VAC-SI"
+res_id_fra = "vacsi_non_vacsi_nat.csv"
+res_id_reg = "vacsi_non_vacsi_reg.csv"
+trendType = "normal"
+nom = "Nombre d'entrées en réanimation chez les personnes non vaccinées"
+unite = "entrées en réanimation pour 1 million de personnes non vaccinées"
+unite_short="/1M de personnes"
