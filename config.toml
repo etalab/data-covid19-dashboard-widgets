@@ -6,7 +6,7 @@ res_id_dep = "taux_dep.csv"
 trendType = "normal"
 nom = "Taux d'incidence"
 unite = "nombre de cas par semaine pour 100 000 habitants"
-unite_short = "/100k hab"
+unite_short = ""
 
 [taux_positivite]
 dataset = "synthese-des-indicateurs-de-suivi-de-lepidemie-covid-19"
@@ -213,7 +213,7 @@ res_id_reg = "vacsi_non_vacsi_reg.csv"
 trendType = "normal"
 nom = "Nombre de tests positifs chez les personnes vaccinées"
 unite = "tests positifs pour 100 000 personnes vaccinées"
-unite_short="/100 0000 personnes"
+unite_short=""
 
 [pos_test_non_vacsi]
 dataset = "résultats nationaux issus des appariements entre SI-VIC, SI-DEP et VAC-SI"
@@ -222,22 +222,70 @@ res_id_reg = "vacsi_non_vacsi_reg.csv"
 trendType = "normal"
 nom = "Nombre de tests positifs chez les personnes non vaccinées"
 unite = "tests positifs pour 100 000 personnes non vaccinées"
-unite_short="/100 0000 personnes"
+unite_short=""
 
 [sc_vacsi]
 dataset = "résultats nationaux issus des appariements entre SI-VIC, SI-DEP et VAC-SI"
 res_id_fra = "vacsi_non_vacsi_nat.csv"
 res_id_reg = "vacsi_non_vacsi_reg.csv"
 trendType = "normal"
-nom = "Nombre d'entrées en réanimation chez les personnes vaccinées"
-unite = "entrées en réanimation pour 1 million de personnes vaccinées"
-unite_short="/1M de personnes"
+nom = "Nombre d'entrées en soins critiques chez les personnes vaccinées"
+unite = "entrées en soins critiques pour 1 million de personnes vaccinées"
+unite_short=""
 
 [sc_non_vacsi]
 dataset = "résultats nationaux issus des appariements entre SI-VIC, SI-DEP et VAC-SI"
 res_id_fra = "vacsi_non_vacsi_nat.csv"
 res_id_reg = "vacsi_non_vacsi_reg.csv"
 trendType = "normal"
-nom = "Nombre d'entrées en réanimation chez les personnes non vaccinées"
-unite = "entrées en réanimation pour 1 million de personnes non vaccinées"
-unite_short="/1M de personnes"
+nom = "Nombre d'entrées en soins critiques chez les personnes non vaccinées"
+unite = "entrées en soins critiques pour 1 million de personnes non vaccinées"
+unite_short=""
+
+[nb_classes_fermees]
+dataset = "fr-en-situation_nationale_covid"
+res_id = "fr-en-situation_nationale_covid_export.csv"
+protocole_id = "historique_protocole_sanitaire.csv"
+trendType = "normal"
+nom = "Nombre de classes fermées"
+unite = "classes fermées"
+unite_short = ""
+
+[taux_classes_fermees]
+dataset = "fr-en-situation_nationale_covid"
+res_id = "fr-en-situation_nationale_covid_export.csv"
+protocole_id = "historique_protocole_sanitaire.csv"
+trendType = "normal"
+nom = "Taux de classes fermées"
+unite = "% classes fermées"
+unite_short = "%"
+
+[nb_structures_fermees]
+dataset = "fr-en-situation_nationale_covid"
+res_id = "fr-en-situation_nationale_covid_export.csv"
+protocole_id = "historique_protocole_sanitaire.csv"
+trendType = "normal"
+nom = "Nombre de structures scolaires fermées"
+unite = "structures scolaires fermées"
+unite_short = ""
+
+[taux_structures_fermees]
+dataset = "fr-en-situation_nationale_covid"
+res_id = "fr-en-situation_nationale_covid_export.csv"
+protocole_id = "historique_protocole_sanitaire.csv"
+trendType = "normal"
+nom = "Taux de structures scolaires fermées"
+unite = "% structures fermées"
+unite_short = "%"
+
+[nb_college_lycee_vaccin]
+dataset = "fr-en-situation_nationale_covid"
+res_id = "fr-en-situation_nationale_covid_export.csv"
+protocole_id = "historique_protocole_sanitaire.csv"
+trendType = "normal"
+nom = "Nombre de collèges et de lycées proposant la vaccination aux élèves"
+unite = "collèges et lycées proposant la vaccination aux élèves"
+unite_short = ""
+constante_label = "Nombre total de collèges et de lycées"
+constante_value = 11400
+

@@ -80,6 +80,8 @@ def format_dict(
         interdict = {}
         interdict['value'] = str(round(row[column], 2))
         interdict['date'] = row['date']
+        if 'protocole_en_vigueur' in dfvalues.columns:
+            interdict['protocole'] = row['protocole_en_vigueur']
         resdict['values'].append(interdict)
     return resdict
 
@@ -125,7 +127,7 @@ def process_stock(df, level, code_level, trendType, column, shorten=False):
         df[df['date'] == df.date.max()]['evol_percentage'].iloc[0],
         level,
         code_level,
-        df[[column, 'date']],
+        df,
         column,
         trendType
     )
@@ -186,6 +188,18 @@ def enrich_dataframe(df, name):
         df['couv_complet'] = 100 * df['n_cum_complet'] / df['pop']
     if(name == 'vaccins_vaccines_couv_ado_majeurs'):
         df['couv_complet'] = 100 * df['n_cum_complet'] / df['pop']
+    if(name == 'nb_classes_fermees'):
+        df['date'] = pd.to_datetime(df['date'], format = '%d/%m/%Y').dt.strftime('%Y-%m-%d')
+    if(name == 'taux_classes_fermees'):
+        df['taux_classes'] = 100* df['nombre_classes_fermees'] / df['nombre_total_classes']
+        df['date'] = pd.to_datetime(df['date'], format = '%d/%m/%Y').dt.strftime('%Y-%m-%d')
+    if(name == 'nb_structures_fermees'):
+        df['date'] = pd.to_datetime(df['date'], format = '%d/%m/%Y').dt.strftime('%Y-%m-%d')
+    if(name == 'taux_structures_fermees'):
+        df['taux_structures'] = 100* df['nombre_structures_fermees'] / df['nombre_total_structures']
+        df['date'] = pd.to_datetime(df['date'], format = '%d/%m/%Y').dt.strftime('%Y-%m-%d')
+    if(name == 'nb_college_lycee_vaccin'):
+        df['date'] = pd.to_datetime(df['date'], format = '%d/%m/%Y').dt.strftime('%Y-%m-%d')
         
         
     return df
@@ -446,11 +460,53 @@ def get_kpi_only_france(name, column, mean, transformDF=False):
         engine='python',
         dtype={'reg': str, 'dep': str}
     )
+    
 
+    df = enrich_dataframe(df, name)
     df = df[['date', column]]
     for country in tqdm(countries, desc="Processing National"):
         res = get_kpi_by_type(
             df.groupby(['date'], as_index=False).sum(),
+            'nat',
+            'fra',
+            config['trendType'],
+            column,
+            mean
+        )
+        indicateurResult['france'].append(res)
+
+    save_result(indicateurResult, name)
+    
+def get_kpi_scolaire(name, column, mean=False, transformDF=False):
+
+    indicateurResult = get_empty_kpi()
+    config = get_config(name)
+    log.debug('Processing - '+name)
+
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
+    indicateurResult['unite_short'] = config['unite_short']
+    indicateurResult['trendType'] = config['trendType']
+        
+
+    df = pd.read_csv(
+        'files_new/'+config['res_id'],
+        sep=None,
+        engine='python',
+        dtype={'reg': str, 'dep': str}
+    )
+
+    df = enrich_dataframe(df, name)
+    if(name == 'nb_college_lycee_vaccin'):   
+        df = df[df['date'] >= '2021-06-01']
+        indicateurResult['constante_label'] = config['constante_label'] 
+        indicateurResult['constante_value'] = config['constante_value']
+        df[column] = df[column].fillna(0)
+    
+    df = df[['date', column, 'protocole_en_vigueur']]
+    for country in tqdm(countries, desc="Processing National"):
+        res = get_kpi_by_type(
+            df,
             'nat',
             'fra',
             config['trendType'],
