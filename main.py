@@ -1,10 +1,13 @@
 import json
 import glob
-from utils import get_taux, get_taux_variants, get_kpi, get_kpi_only_france, get_taux_specific, get_couv, get_vacsi_non_vacsi
+from utils import get_taux, get_taux_variants, get_kpi, get_kpi_only_france, get_taux_specific, get_couv, get_vacsi_non_vacsi,\
+    get_kpi_scolaire
 from download_and_check_files import download_and_check, save_new_files, shorten_and_save
 from logger import log
 
 kpis = download_and_check()
+kpis.extend(['nb_classes_fermees', 'taux_classes_fermees', 'nb_structures_fermees', 'taux_structures_fermees',
+            'nb_college_lycee_vaccin'])
 
 # kpis = ['hospitalisations', 'hospitalisations_moyenne_quotidienne', 'retour_a_domicile', 'retour_a_domicile_moyenne_quotidienne', 'soins_critiques', 'soins_critiques_moyenne_quotidienne', 'deces', 'deces_moyenne_quotidienne', 'cas_positifs', 'taux_incidence', 'taux_positivite', 'vaccins_premiere_dose', 'vaccins_premiere_dose_moyenne_quotidienne', 'vaccins_vaccines','vaccins_vaccines_moyenne_quotidienne','taux_occupation','facteur_reproduction']
 
@@ -92,6 +95,21 @@ if('sc_vacsi' in kpis):
     
 if('sc_non_vacsi' in kpis):
     get_vacsi_non_vacsi('sc_non_vacsi', 'SC_PCR+', 'Non-vaccinés', 1000000)
+    
+if('nb_classes_fermees' in kpis):
+    get_kpi_scolaire('nb_classes_fermees', 'nombre_classes_fermees', False)
+    
+if('taux_classes_fermees' in kpis):
+    get_kpi_scolaire('taux_classes_fermees', 'taux_classes', False)
+    
+if('nb_structures_fermees' in kpis):
+    get_kpi_scolaire('nb_structures_fermees', 'nombre_structures_fermees', False)
+    
+if('taux_structures_fermees' in kpis):
+    get_kpi_scolaire('taux_structures_fermees', 'taux_structures', False)
+    
+if('nb_college_lycee_vaccin' in kpis):
+    get_kpi_scolaire('nb_college_lycee_vaccin', 'nombre_etablissements_avec_offre_vaccinale', False)
     
 
 shorten_and_save(kpis)
