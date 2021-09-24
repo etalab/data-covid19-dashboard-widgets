@@ -80,8 +80,8 @@ def format_dict(
         interdict = {}
         interdict['value'] = str(round(row[column], 2))
         interdict['date'] = row['date']
-        if 'protocole_en_vigueur' in dfvalues.columns:
-            interdict['protocole'] = row['protocole_en_vigueur']
+        if 'date_entree_en_vigueur' in dfvalues.columns:
+            interdict['protocole'] = row['date_entree_en_vigueur']
         resdict['values'].append(interdict)
     return resdict
 
@@ -495,15 +495,24 @@ def get_kpi_scolaire(name, column, mean=False, transformDF=False):
         engine='python',
         dtype={'reg': str, 'dep': str}
     )
+    
+    df_protocole = pd.read_csv(
+        'files_new/'+config['protocole_id'],
+        sep=None,
+        engine='python',
+        dtype={'reg': str, 'dep': str}
+    )
+    
+    df = df.merge(df_protocole, how = 'left', left_on = 'protocole_en_vigueur', right_on = 'identifiant')
 
     df = enrich_dataframe(df, name)
     if(name == 'nb_college_lycee_vaccin'):   
-        df = df[df['date'] >= '2021-06-01']
+        df = df[df['date'] >= '2021-09-01']
         indicateurResult['constante_label'] = config['constante_label'] 
         indicateurResult['constante_value'] = config['constante_value']
         df[column] = df[column].fillna(0)
     
-    df = df[['date', column, 'protocole_en_vigueur']]
+    df = df[['date', column, 'date_entree_en_vigueur']]
     for country in tqdm(countries, desc="Processing National"):
         res = get_kpi_by_type(
             df,

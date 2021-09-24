@@ -275,17 +275,17 @@ res_id = "fr-en-situation_nationale_covid_export.csv"
 protocole_id = "historique_protocole_sanitaire.csv"
 trendType = "normal"
 nom = "Taux de structures scolaires fermées"
-unite = "% structures fermées"
+unite = "% structures scolaires fermées"
 unite_short = "%"
 
 [nb_college_lycee_vaccin]
 dataset = "fr-en-situation_nationale_covid"
 res_id = "fr-en-situation_nationale_covid_export.csv"
 protocole_id = "historique_protocole_sanitaire.csv"
-trendType = "normal"
-nom = "Nombre de collèges et de lycées proposant la vaccination aux élèves"
-unite = "collèges et lycées proposant la vaccination aux élèves"
+trendType = "abnormal"
+nom = "Nombre de collèges et lycées proposant un parcours vaccinal aux élèves"
+unite = "collèges et lycées proposant un parcours vaccinal aux élèves"
 unite_short = ""
-constante_label = "Nombre total de collèges et de lycées"
+constante_label = "Nombre total de collèges et lycées"
 constante_value = 11400
 
