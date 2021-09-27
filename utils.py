@@ -82,6 +82,10 @@ def format_dict(
         interdict['date'] = row['date']
         if 'date_entree_en_vigueur' in dfvalues.columns:
             interdict['protocole'] = row['date_entree_en_vigueur']
+        if 'nombre_total_classes' in dfvalues.columns:
+            interdict['total'] = str(row['nombre_total_classes'])
+        if 'nombre_total_structures' in dfvalues.columns:
+            interdict['total'] = str(row['nombre_total_structures'])
         resdict['values'].append(interdict)
     return resdict
 
@@ -510,10 +514,12 @@ def get_kpi_scolaire(name, column, mean=False, transformDF=False):
         df = df[df['date'] >= '2021-09-01']
         indicateurResult['constante_label'] = config['constante_label'] 
         indicateurResult['constante_value'] = config['constante_value']
-        df[column] = df[column].fillna(0)
+        df[column] = df[column].fillna(0)        
         
-    if (name == 'nb_classes_fermees') | (name == 'taux_classes_fermees'):
-        df = df[['date', column, 'date_entree_en_vigueur']]
+    if name == 'nb_classes_fermees':
+        df = df[['date', column, 'date_entree_en_vigueur' ,'nombre_total_classes']]
+    elif name == 'nb_structures_fermees':
+        df = df[['date', column, 'nombre_total_structures']]
     else:
         df = df[['date', column]]
     
