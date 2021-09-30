@@ -244,7 +244,7 @@ unite_short=""
 
 [nb_classes_fermees]
 dataset = "fr-en-situation_nationale_covid"
-res_id = "fr-en-situation_nationale_covid_export.csv"
+res_id = "scolaire_nat.csv"
 protocole_id = "historique_protocole_sanitaire.csv"
 trendType = "normal"
 nom = "Nombre de classes fermées"
@@ -253,7 +253,7 @@ unite_short = ""
 
 [taux_classes_fermees]
 dataset = "fr-en-situation_nationale_covid"
-res_id = "fr-en-situation_nationale_covid_export.csv"
+res_id = "scolaire_nat.csv"
 protocole_id = "historique_protocole_sanitaire.csv"
 trendType = "normal"
 nom = "Taux de classes fermées"
@@ -262,7 +262,7 @@ unite_short = "%"
 
 [nb_structures_fermees]
 dataset = "fr-en-situation_nationale_covid"
-res_id = "fr-en-situation_nationale_covid_export.csv"
+res_id = "scolaire_nat.csv"
 protocole_id = "historique_protocole_sanitaire.csv"
 trendType = "normal"
 nom = "Nombre de structures scolaires fermées"
@@ -271,7 +271,7 @@ unite_short = ""
 
 [taux_structures_fermees]
 dataset = "fr-en-situation_nationale_covid"
-res_id = "fr-en-situation_nationale_covid_export.csv"
+res_id = "scolaire_nat.csv"
 protocole_id = "historique_protocole_sanitaire.csv"
 trendType = "normal"
 nom = "Taux de structures scolaires fermées"
@@ -280,7 +280,7 @@ unite_short = "%"
 
 [nb_college_lycee_vaccin]
 dataset = "fr-en-situation_nationale_covid"
-res_id = "fr-en-situation_nationale_covid_export.csv"
+res_id = "scolaire_nat.csv"
 protocole_id = "historique_protocole_sanitaire.csv"
 trendType = "abnormal"
 nom = "Nombre de collèges et lycées proposant un parcours vaccinal aux élèves"
