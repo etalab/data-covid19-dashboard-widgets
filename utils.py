@@ -192,18 +192,11 @@ def enrich_dataframe(df, name):
         df['couv_complet'] = 100 * df['n_cum_complet'] / df['pop']
     if(name == 'vaccins_vaccines_couv_ado_majeurs'):
         df['couv_complet'] = 100 * df['n_cum_complet'] / df['pop']
-    if(name == 'nb_classes_fermees'):
-        df['date'] = pd.to_datetime(df['date'], format = '%d/%m/%Y').dt.strftime('%Y-%m-%d')
     if(name == 'taux_classes_fermees'):
         df['taux_classes'] = 100* df['nombre_classes_fermees'] / df['nombre_total_classes']
-        df['date'] = pd.to_datetime(df['date'], format = '%d/%m/%Y').dt.strftime('%Y-%m-%d')
-    if(name == 'nb_structures_fermees'):
-        df['date'] = pd.to_datetime(df['date'], format = '%d/%m/%Y').dt.strftime('%Y-%m-%d')
     if(name == 'taux_structures_fermees'):
         df['taux_structures'] = 100* df['nombre_structures_fermees'] / df['nombre_total_structures']
-        df['date'] = pd.to_datetime(df['date'], format = '%d/%m/%Y').dt.strftime('%Y-%m-%d')
-    if(name == 'nb_college_lycee_vaccin'):
-        df['date'] = pd.to_datetime(df['date'], format = '%d/%m/%Y').dt.strftime('%Y-%m-%d')
+
         
         
     return df
@@ -508,8 +501,10 @@ def get_kpi_scolaire(name, column, mean=False, transformDF=False):
     )
     
     df = df.merge(df_protocole, how = 'left', left_on = 'protocole_en_vigueur', right_on = 'identifiant')
-
-    df = enrich_dataframe(df, name)
+    
+    if (name == 'taux_classes_fermees') | (name == 'taux_structures_fermees'):
+        df = enrich_dataframe(df, name)
+        
     if name == 'nb_college_lycee_vaccin':   
         df = df[df['date'] >= '2021-09-01']
         indicateurResult['constante_label'] = config['constante_label'] 

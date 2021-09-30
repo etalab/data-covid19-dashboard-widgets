@@ -401,6 +401,36 @@ def download_and_check():
                 "SC_PCR+",	
                 "effectif J-7"
             ]
+        },
+        {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
+            "res_id": "b8260846-2a71-4e1b-822f-398a36f39f9f",
+            "title": "scolaire_nat",
+            "kpis": [
+                "nb_classes_fermees",
+                "taux_classes_fermees",
+                "nb_structures_fermees",
+                "taux_structures_fermees",
+                "nb_college_lycee_vaccin"
+            ],
+            "columns": [
+                "date",	
+                "nombre_total_classes",
+                "nombre_classes_fermees",
+                "nombre_total_structures",
+                "nombre_structures_fermees",
+                "nombre_total_ecoles",
+                "nombre_ecoles_fermees",
+                "nombre_total_colleges",
+                "nombre_colleges_fermes",
+                "nombre_total_lycees",
+                "nombre_lycees_fermes",	
+                "nombre_etablissements_avec_offre_vaccinale",
+                "vacances_a",
+                "vacances_b",
+                "vacances_c",
+                "protocole_en_vigueur"
+            ]
         }
     ]
 
