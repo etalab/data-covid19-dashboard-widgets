@@ -289,3 +289,22 @@ unite_short = ""
 constante_label = "Nombre total de collèges et lycées"
 constante_value = 11400
 
+[vaccins_rappel]
+dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
+res_id_fra = "vaccin_rappel_nat.csv"
+res_id_reg = "vaccin_rappel_reg.csv"
+res_id_dep = "vaccin_rappel_dep.csv"
+trendType = "abnormal"
+nom = "Nombre de personnes ayant reçu une dose de rappel"
+unite = "personnes ayant reçu une dose de rappel"
+unite_short = ""
+
+[vaccins_rappel_moyenne_quotidienne]
+dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
+res_id_fra = "vaccin_rappel_nat.csv"
+res_id_reg = "vaccin_rappel_reg.csv"
+res_id_dep = "vaccin_rappel_dep.csv"
+trendType = "abnormal"
+nom = "Nombre quotidien de personnes ayant reçu une dose de rappel"
+unite = "personnes ayant reçu une dose de rappel"
+unite_short = ""

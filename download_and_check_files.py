@@ -431,6 +431,80 @@ def download_and_check():
                 "vacances_c",
                 "protocole_en_vigueur"
             ]
+        },
+        {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
+            "res_id": "4c0953c7-635d-474f-bc13-97631eb657d4",
+            "title": "historique_protocole_sanitaire",
+            "kpis": [
+                "nb_classes_fermees",
+                "taux_classes_fermees"
+            ],
+            "columns": [
+                "identifiant",	
+                "date_entree_en_vigueur",
+                "description"
+            ]
+        },
+        {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
+            "res_id": "b273cf3b-e9de-437c-af55-eda5979e92fc",
+            "title": "vaccin_rappel_nat",
+            "kpis": [
+                'vaccins_rappel',
+                'vaccins_rappel_moyenne_quotidienne'
+            ],
+            "columns": [
+                "fra",	
+                "vaccin",
+                "jour",
+                "n_dose1",
+                "n_dose2",
+                "n_dose3",
+                "n_cum_dose1",
+                "n_cum_dose2",
+                "n_cum_dose3"
+            ]
+        },
+        {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
+            "res_id": "900da9b0-8987-4ba7-b117-7aea0e53f530",
+            "title": "vaccin_rappel_reg",
+            "kpis": [
+                'vaccins_rappel',
+                'vaccins_rappel_moyenne_quotidienne'
+            ],
+            "columns": [
+                "reg",	
+                "vaccin",
+                "jour",
+                "n_dose1",
+                "n_dose2",
+                "n_dose3",
+                "n_cum_dose1",
+                "n_cum_dose2",
+                "n_cum_dose3"
+            ]
+        },
+        {
+            "url": "https://www.data.gouv.fr/fr/datasets/r/",
+            "res_id": "535f8686-d75d-43d9-94b3-da8cdf850634",
+            "title": "vaccin_rappel_dep",
+            "kpis": [
+                'vaccins_rappel',
+                'vaccins_rappel_moyenne_quotidienne'
+            ],
+            "columns": [
+                "dep",	
+                "vaccin",
+                "jour",
+                "n_dose1",
+                "n_dose2",
+                "n_dose3",
+                "n_cum_dose1",
+                "n_cum_dose2",
+                "n_cum_dose3"
+            ]
         }
     ]
 

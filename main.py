@@ -1,7 +1,7 @@
-import json
+t import json
 import glob
 from utils import get_taux, get_taux_variants, get_kpi, get_kpi_only_france, get_taux_specific, get_couv, get_vacsi_non_vacsi,\
-    get_kpi_scolaire
+    get_kpi_scolaire, get_kpi_3_files
 from download_and_check_files import download_and_check, save_new_files, shorten_and_save
 from logger import log
 
@@ -107,7 +107,13 @@ if('taux_structures_fermees' in kpis):
     
 if('nb_college_lycee_vaccin' in kpis):
     get_kpi_scolaire('nb_college_lycee_vaccin', 'nombre_etablissements_avec_offre_vaccinale', False)
-    
+
+if('vaccins_rappel' in kpis):
+    get_kpi_3_files('vaccins_rappel','n_cum_dose3', False, True)
+
+if('vaccins_rappel_moyenne_quotidienne' in kpis):
+    get_kpi_3_files('vaccins_rappel_moyenne_quotidienne', 'n_dose3', True, True)
+
 
 shorten_and_save(kpis)
 
