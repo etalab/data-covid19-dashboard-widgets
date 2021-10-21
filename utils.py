@@ -371,7 +371,7 @@ def get_kpi(name, column, mean, transformDF=False):
     """
     indicateurResult = get_empty_kpi()
     config = get_config(name)
-    log.debug('Processing - '+name)
+    log.debug('Processing - '+ name)
 
     indicateurResult['nom'] = config['nom']
     indicateurResult['unite'] = config['unite']
@@ -379,7 +379,7 @@ def get_kpi(name, column, mean, transformDF=False):
     indicateurResult['trendType'] = config['trendType']
 
     df = pd.read_csv(
-        'files_new/'+config['res_id'],
+        'files_new/'+ config['res_id'],
         sep=None,
         engine='python',
         dtype={'reg': str, 'dep': str}
@@ -425,6 +425,101 @@ def get_kpi(name, column, mean, transformDF=False):
     for dep in tqdm(df.dep.unique(), desc="Processing Départements"):
         res = get_kpi_by_type(
             df[df['dep'] == dep].copy(),
+            'dep',
+            dep,
+            config['trendType'],
+            column,
+            mean
+        )
+        indicateurResult['departements'].append(res)
+
+    save_result(indicateurResult, name)
+
+def get_kpi_3_files(name, column, mean, transformDF=False):
+    """Process each geozones for Number type of KPIs.
+
+    Common function which orchestrate processing for Number type of KPIs
+    (there is some exception, see get_kpi_only_france)
+    """
+    indicateurResult = get_empty_kpi()
+    config = get_config(name)
+    log.debug('Processing - '+ name)
+
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
+    indicateurResult['unite_short'] = config['unite_short']
+    indicateurResult['trendType'] = config['trendType']
+    
+    # France -----
+    df = pd.read_csv(
+        'files_new/'+ config['res_id_fra'],
+        sep=None,
+        engine='python',
+        dtype={'reg': str, 'dep': str}
+    )
+
+    # Specificity KPI vaccins
+    if(transformDF):
+        df = df.rename(columns={'jour': 'date'})
+
+
+    df = df[['date', column]]
+    for country in tqdm(countries, desc="Processing National"):
+        res = get_kpi_by_type(
+            df.groupby(['date'], as_index=False).sum(),
+            'nat',
+            'fra',
+            config['trendType'],
+            column,
+            mean
+        )
+        indicateurResult['france'].append(res)
+
+    # Région -----
+    df = pd.read_csv(
+        'files_new/'+ config['res_id_reg'],
+        sep=None,
+        engine='python',
+        dtype={'reg': str, 'dep': str}
+    )
+
+    # Specificity KPI vaccins
+    if(transformDF):
+        df = df.rename(columns={'jour': 'date'})
+
+
+    df = df[['date', 'reg', column]]
+    dfinter = df.groupby(['date', 'reg'], as_index=False).sum()
+    for reg in tqdm(df.reg.unique(), desc="Processing Régions"): 
+        res = get_kpi_by_type(
+            dfinter[dfinter['reg'] == reg].copy(),
+            'reg',
+            reg,
+            config['trendType'],
+            column,
+            mean
+        )
+        indicateurResult['regions'].append(res)
+
+    # Département -----
+    df = pd.read_csv(
+        'files_new/'+ config['res_id_dep'],
+        sep=None,
+        engine='python',
+        dtype={'reg': str, 'dep': str}
+    )
+
+    # Specificity KPI vaccins
+    if(transformDF):
+        df = df.rename(columns={'jour': 'date'})
+
+
+    df = df[['date', 'dep', column]]
+    dfinter = df.groupby(['date', 'dep'], as_index=False).sum()
+    
+    for dep in tqdm(df.dep.unique(), desc="Processing Départements"):
+        res = get_kpi_by_type(
+            dfinter[dfinter['dep'] == dep].copy(),
             'dep',
             dep,
             config['trendType'],
