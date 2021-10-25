@@ -1,4 +1,4 @@
-t import json
+import json
 import glob
 from utils import get_taux, get_taux_variants, get_kpi, get_kpi_only_france, get_taux_specific, get_couv, get_vacsi_non_vacsi,\
     get_kpi_scolaire, get_kpi_3_files
