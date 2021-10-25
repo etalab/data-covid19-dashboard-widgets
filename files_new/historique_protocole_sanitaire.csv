@@ -1,10 +1,11 @@
-identifiant;date_entree_en_vigueur;description;lien_protocole_complet
-protocole_20200901;01/09/2020;Protocole en vigueur lors de la rentrée scolaire 2020-2021.;
-protocole_20200922;22/09/2020;Protocole en vigueur suite à l’avis du HCSP du 17 septembre 2020. Il prévoit désormais la fermeture d’une classe dès 3 cas dans une même classe.;
+identifiant;date_entree_en_vigueur;description
+protocole_20200901;01/09/2020;Protocole en vigueur à la rentrée scolaire 2020-2021. Il prévoit la possibilité d’une fermeture de classe si un ou deux cas et la possibilité de fermeture de l’établissement à partir de trois cas.
+protocole_20200922;22/09/2020;Protocole en vigueur suite à l’avis HCSP du 17 septembre 2020. Il prévoit la fermeture d’une classe dès trois cas dans une même classe.
 protocole_20210215;15/02/2021;"Renforcement du protocole le 15 février 2021 dans le contexte d’émergence de variants. La fermeture d’une classe est décidée à partir :
         - D’un cas en maternelle
         - De trois cas en école, collège ou lycée (souche historique ou variant anglais)
-        - Dès un cas si l’élève est positif ou «cas contact» d’un de ses parents ou d’un membre de sa fratrie à la variant brésilien ou sud-africain.";
-protocole_20210329;29/03/2021;Renforcement du protocole le 29 mars 2021 dans les départements faisant l’objet de mesures renforcées. Fermeture de la classe dès un cas dans ces départements (Tous les départements des régions Île-de-France et Hauts-de-France, de la Seine-Maritime, l’Eure, les Alpes-Maritimes, l’Aube, la Nièvre et le Rhône).;
-protocole_20210426;26/04/2021;Protocole en vigueur pour la rentrée du 26 avril pour le 1er degré (maternelle et élémentaire) et du 3 mai pour le 2nd degré. Ce protocole prévoit la fermeture de la classe dès un cas de Covid sur le territoire métropolitain.;
-protocole_20210902;02/09/2021;Protocole en vigueur pour la rentrée scolaire 2021-2022, mise en place du niveau 2 (jaune) sur 4 niveaux.;
+        - Dès un cas si l’élève est positif ou «cas contact» d’un de ses parents ou d’un membre de sa fratrie à la variant brésilien ou sud-africain."
+protocole_20210329;29/03/2021;Renforcement du protocole le 29 mars 2021 dans les départements faisant l’objet de mesures renforcées. Fermeture de la classe dès un cas dans ces départements (Tous les départements des régions Île-de-France et Hauts-de-France, de la Seine-Maritime, l’Eure, les Alpes-Maritimes, l’Aube, la Nièvre et le Rhône).
+protocole_20210426;26/04/2021;Protocole en vigueur pour la rentrée du 26 avril pour le 1er degré (maternelle et élémentaire) et du 3 mai pour le 2nd degré. Ce protocole prévoit la fermeture de la classe dès un cas de Covid sur le territoire métropolitain.
+protocole_20210902;02/09/2021;Protocole en vigueur pour la rentrée scolaire 2021-2022, mise en place du niveau 2 (jaune) sur 4 niveaux possibles (vert, jaune, orange, rouge). Il prévoit, dans les écoles, la fermeture d’une classe dès le premier cas.
+protocole_20211004;04/10/2021;Le niveau 1 (vert) s'applique dans les départements dont le taux d'incidence a été inférieur au seuil de 50 pour 100 000 habitants sur une période de 5 jours (détail : https://www.education.gouv.fr/covid19-quel-protocole-sanitaire-s-applique-pour-les-ecoles-et-etablissements-de-mon-departement-325535). Le protocole de contact-tracing reste inchangé : fermeture de la classe dès le 1er cas en école. 
