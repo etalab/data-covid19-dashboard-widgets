@@ -448,7 +448,7 @@ def download_and_check():
         },
         {
             "url": "https://www.data.gouv.fr/fr/datasets/r/",
-            "res_id": "b273cf3b-e9de-437c-af55-eda5979e92fc",
+            "res_id": "efe23314-67c4-45d3-89a2-3faef82fae90",
             "title": "vaccin_rappel_nat",
             "kpis": [
                 'vaccins_rappel',
@@ -456,19 +456,21 @@ def download_and_check():
             ],
             "columns": [
                 "fra",	
-                "vaccin",
                 "jour",
                 "n_dose1",
-                "n_dose2",
-                "n_dose3",
+                "n_complet",
+                "n_rappel",
                 "n_cum_dose1",
-                "n_cum_dose2",
-                "n_cum_dose3"
+                "n_cum_complet",
+                "n_cum_rappel",
+                "couv_dose1",
+                "couv_complet",
+                "couv_rappel"
             ]
         },
         {
             "url": "https://www.data.gouv.fr/fr/datasets/r/",
-            "res_id": "900da9b0-8987-4ba7-b117-7aea0e53f530",
+            "res_id": "735b0df8-51b4-4dd2-8a2d-8e46d77d60d8",
             "title": "vaccin_rappel_reg",
             "kpis": [
                 'vaccins_rappel',
@@ -476,19 +478,21 @@ def download_and_check():
             ],
             "columns": [
                 "reg",	
-                "vaccin",
                 "jour",
                 "n_dose1",
-                "n_dose2",
-                "n_dose3",
+                "n_complet",
+                "n_rappel",
                 "n_cum_dose1",
-                "n_cum_dose2",
-                "n_cum_dose3"
+                "n_cum_complet",
+                "n_cum_rappel",
+                "couv_dose1",
+                "couv_complet",
+                "couv_rappel"
             ]
         },
         {
             "url": "https://www.data.gouv.fr/fr/datasets/r/",
-            "res_id": "535f8686-d75d-43d9-94b3-da8cdf850634",
+            "res_id": "4f39ec91-80d7-4602-befb-4b522804c0af",
             "title": "vaccin_rappel_dep",
             "kpis": [
                 'vaccins_rappel',
@@ -496,14 +500,16 @@ def download_and_check():
             ],
             "columns": [
                 "dep",	
-                "vaccin",
                 "jour",
                 "n_dose1",
-                "n_dose2",
-                "n_dose3",
+                "n_complet",
+                "n_rappel",
                 "n_cum_dose1",
-                "n_cum_dose2",
-                "n_cum_dose3"
+                "n_cum_complet",
+                "n_cum_rappel",
+                "couv_dose1",
+                "couv_complet",
+                "couv_rappel"
             ]
         }
     ]
