@@ -1,7 +1,7 @@
-t import json
+import json
 import glob
 from utils import get_taux, get_taux_variants, get_kpi, get_kpi_only_france, get_taux_specific, get_couv, get_vacsi_non_vacsi,\
-    get_kpi_scolaire, get_kpi_3_files
+    get_kpi_scolaire, get_kpi_3_files, make_json_periods
 from download_and_check_files import download_and_check, save_new_files, shorten_and_save
 from logger import log
 
@@ -109,12 +109,12 @@ if('nb_college_lycee_vaccin' in kpis):
     get_kpi_scolaire('nb_college_lycee_vaccin', 'nombre_etablissements_avec_offre_vaccinale', False)
 
 if('vaccins_rappel' in kpis):
-    get_kpi_3_files('vaccins_rappel','n_cum_dose3', False, True)
+    get_kpi_3_files('vaccins_rappel','n_cum_rappel', False, True)
 
 if('vaccins_rappel_moyenne_quotidienne' in kpis):
-    get_kpi_3_files('vaccins_rappel_moyenne_quotidienne', 'n_dose3', True, True)
-
-
+    get_kpi_3_files('vaccins_rappel_moyenne_quotidienne', 'n_rappel', True, True)
+    
+make_json_periods()
 shorten_and_save(kpis)
 
 save_new_files()

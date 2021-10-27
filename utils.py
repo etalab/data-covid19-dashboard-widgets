@@ -895,3 +895,7 @@ def get_vacsi_non_vacsi(name, column, statut, multi):
         
     save_result(indicateurResult, name)
 
+def make_json_periods():
+    period = toml.load('./period.toml')
+    with open('dist/period.json','w') as fp:
+        json.dump(period, fp)
