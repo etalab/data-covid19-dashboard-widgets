@@ -825,7 +825,7 @@ def get_couv(name, column, minClass):
 
     save_result(indicateurResult, name)
     
-def get_vacsi_non_vacsi(name, column, statut, multi):
+def get_vacsi_non_vacsi(name, column, statut, multi, filter = False, region = True):
     """Process each geozone for Rate type of KPIs with exception.
 
     Specific function dedicated to vaccin_vaccines_couv
@@ -846,6 +846,13 @@ def get_vacsi_non_vacsi(name, column, statut, multi):
                      engine='python', 
                      dtype={'reg': str, 'dep': str})
     
+    if filter:
+        df = df[df['age'] != '[0,19]']
+        groupby_col = ['date', 'vac_statut']
+        if region:
+            groupby_col.append('region')
+        df = df.groupby(groupby_col, as_index = False).sum()
+    
     df = df[df['vac_statut'] == statut]
     df = df.sort_values('date', ascending = True)
     df['numerateur'] = multi * df[column].rolling(window = 7).sum()
@@ -862,36 +869,38 @@ def get_vacsi_non_vacsi(name, column, statut, multi):
             'res'
         )
         indicateurResult['france'].append(res)
+
+    if region:
+        df = pd.read_csv("files_new/" + config['res_id_reg'], 
+                         sep=None,
+                         engine='python', 
+                         dtype={'reg': str, 'dep': str})
+        df = df[df['vac_statut'] == statut]
         
-    df = pd.read_csv("files_new/" + config['res_id_reg'], 
-                     sep=None,
-                     engine='python', 
-                     dtype={'reg': str, 'dep': str})
-    df = df[df['vac_statut'] == statut]
+        tri_reg = pd.read_csv("utils/region2021.csv", 
+                              sep=None,
+                              engine='python', 
+                              dtype={'reg': str, 'dep': str})
     
-    tri_reg = pd.read_csv("utils/region2021.csv", 
-                          sep=None,
-                          engine='python', 
-                          dtype={'reg': str, 'dep': str})
     
-    for reg in tqdm(df['region'].unique(), desc="Processing Régions"):
-        df_reg = df[df['region'] == reg]
-        df_reg = df_reg.sort_values('date', ascending = True)
-        df_reg['numerateur'] = multi * df_reg[column].rolling(window = 7).sum()
-        df_reg['denominateur'] = df_reg['effectif J-7'].rolling(window = 7).mean()
-        df_reg = df_reg[~df_reg['denominateur'].isnull()]
-        df_reg['res'] = df_reg['numerateur'] / df_reg['denominateur']
-        
-        
-        
-        res = process_stock(
-            df_reg,
-            'reg',
-            tri_reg.loc[tri_reg['trigramme'] == reg, 'reg'].iloc[0],
-            config['trendType'],
-            'res'
-        )
-        indicateurResult['regions'].append(res)
+        for reg in tqdm(df['region'].unique(), desc="Processing Régions"):
+            df_reg = df[df['region'] == reg]
+            df_reg = df_reg.sort_values('date', ascending = True)
+            df_reg['numerateur'] = multi * df_reg[column].rolling(window = 7).sum()
+            df_reg['denominateur'] = df_reg['effectif J-7'].rolling(window = 7).mean()
+            df_reg = df_reg[~df_reg['denominateur'].isnull()]
+            df_reg['res'] = df_reg['numerateur'] / df_reg['denominateur']
+            
+            
+            
+            res = process_stock(
+                df_reg,
+                'reg',
+                tri_reg.loc[tri_reg['trigramme'] == reg, 'reg'].iloc[0],
+                config['trendType'],
+                'res'
+            )
+            indicateurResult['regions'].append(res)
         
     save_result(indicateurResult, name)
 

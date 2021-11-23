@@ -93,6 +93,18 @@ if('sc_vacsi' in kpis):
 if('sc_non_vacsi' in kpis):
     get_vacsi_non_vacsi('sc_non_vacsi', 'SC_PCR+', 'Non-vaccinés', 1000000)
     
+if('pos_test_vacsi_20ans' in kpis):
+    get_vacsi_non_vacsi('pos_test_vacsi_20ans', 'nb_PCR+', 'Vaccination complète', 100000, filter = True, region = False)
+    
+if('pos_test_non_vacsi_20ans' in kpis):
+    get_vacsi_non_vacsi('pos_test_non_vacsi_20ans', 'nb_PCR+', 'Non-vaccinés', 100000, filter = True, region = False)
+    
+if('sc_vacsi_20ans' in kpis):
+    get_vacsi_non_vacsi('sc_vacsi_20ans', 'SC_PCR+', 'Vaccination complète', 1000000, filter = True, region = False)
+    
+if('sc_non_vacsi_20ans' in kpis):
+    get_vacsi_non_vacsi('sc_non_vacsi_20ans', 'SC_PCR+', 'Non-vaccinés', 1000000, filter = True, region = False)
+    
 if('nb_classes_fermees' in kpis):
     get_kpi_scolaire('nb_classes_fermees', 'nombre_classes_fermees', False)
     
