@@ -242,6 +242,38 @@ nom = "Nombre d'entrées en soins critiques chez les personnes non vaccinées"
 unite = "entrées en soins critiques pour 1 million de personnes non vaccinées"
 unite_short=""
 
+[pos_test_vacsi_20ans]
+dataset = "résultats nationaux issus des appariements entre SI-VIC, SI-DEP et VAC-SI"
+res_id_fra = "vacsi_non_vacsi_nat_age.csv"
+trendType = "normal"
+nom = "Nombre de tests positifs chez les personnes vaccinées"
+unite = "tests positifs pour 100 000 personnes vaccinées"
+unite_short=""
+
+[pos_test_non_vacsi_20ans]
+dataset = "résultats nationaux issus des appariements entre SI-VIC, SI-DEP et VAC-SI"
+res_id_fra = "vacsi_non_vacsi_nat_age.csv"
+trendType = "normal"
+nom = "Nombre de tests positifs chez les personnes non vaccinées"
+unite = "tests positifs pour 100 000 personnes non vaccinées"
+unite_short=""
+
+[sc_vacsi_20ans]
+dataset = "résultats nationaux issus des appariements entre SI-VIC, SI-DEP et VAC-SI"
+res_id_fra = "vacsi_non_vacsi_nat_age.csv"
+trendType = "normal"
+nom = "Nombre d'entrées en soins critiques chez les personnes vaccinées"
+unite = "entrées en soins critiques pour 1 million de personnes vaccinées"
+unite_short=""
+
+[sc_non_vacsi_20ans]
+dataset = "résultats nationaux issus des appariements entre SI-VIC, SI-DEP et VAC-SI"
+res_id_fra = "vacsi_non_vacsi_nat_age.csv"
+trendType = "normal"
+nom = "Nombre d'entrées en soins critiques chez les personnes non vaccinées"
+unite = "entrées en soins critiques pour 1 million de personnes non vaccinées"
+unite_short=""
+
 [nb_classes_fermees]
 dataset = "fr-en-situation_nationale_covid"
 res_id = "scolaire_nat.csv"

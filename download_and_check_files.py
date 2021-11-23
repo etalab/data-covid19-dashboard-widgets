@@ -403,6 +403,29 @@ def download_and_check():
             ]
         },
         {
+            "url": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/",
+            "res_id": "covid-19-resultats-par-age-issus-des-appariements-entre-si-vic-si-dep-et-vac-si/download/?format=csv&timezone=Europe/Berlin&lang=fr&use_labels_for_header=true&csv_separator=%3B",
+            "title": "vacsi_non_vacsi_nat_age",
+            "kpis": [
+                "pos_test_vacsi_20ans",
+                "pos_test_non_vacsi_20ans",
+                "sc_vacsi_20ans",
+                "sc_non_vacsi_20ans"
+            ],
+            "columns": [
+                "date",	
+                "vac_statut",
+                "age",
+                "nb_PCR",
+                "nb_PCR+",
+                "HC",
+                "HC_PCR+",
+                "SC",
+                "SC_PCR+",	
+                "effectif J-7"
+            ]
+        },
+        {
             "url": "https://www.data.gouv.fr/fr/datasets/r/",
             "res_id": "b8260846-2a71-4e1b-822f-398a36f39f9f",
             "title": "scolaire_nat",
