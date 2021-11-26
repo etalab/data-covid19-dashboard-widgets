@@ -848,15 +848,16 @@ def get_vacsi_non_vacsi(name, column, statut, multi, filter = False, region = Tr
     
     if filter:
         df = df[df['age'] != '[0,19]']
-        groupby_col = ['date', 'vac_statut']
-        if region:
-            groupby_col.append('region')
-        df = df.groupby(groupby_col, as_index = False).sum()
+        df = df.groupby(['date', 'vac_statut'], as_index = False).sum()
     
-    df = df[df['vac_statut'] == statut]
+    if statut == 'Vaccination complète':
+        df = df[~df['vac_statut'].isin(['Non-vaccinés', 'Primo dose efficace', 'Primo dose récente'])]
+        df = df.groupby('date', as_index = False).sum()
+    else:
+        df = df[df['vac_statut'] == statut]
     df = df.sort_values('date', ascending = True)
     df['numerateur'] = multi * df[column].rolling(window = 7).sum()
-    df['denominateur'] = df['effectif J-7'].rolling(window = 7).mean()
+    df['denominateur'] = df['effectif'].rolling(window = 7).mean()
     df = df[~df['denominateur'].isnull()]
     df['res'] = df['numerateur'] / df['denominateur']
     
@@ -887,7 +888,7 @@ def get_vacsi_non_vacsi(name, column, statut, multi, filter = False, region = Tr
             df_reg = df[df['region'] == reg]
             df_reg = df_reg.sort_values('date', ascending = True)
             df_reg['numerateur'] = multi * df_reg[column].rolling(window = 7).sum()
-            df_reg['denominateur'] = df_reg['effectif J-7'].rolling(window = 7).mean()
+            df_reg['denominateur'] = df_reg['effectif'].rolling(window = 7).mean()
             df_reg = df_reg[~df_reg['denominateur'].isnull()]
             df_reg['res'] = df_reg['numerateur'] / df_reg['denominateur']
             
