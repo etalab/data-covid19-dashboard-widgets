@@ -374,7 +374,7 @@ def download_and_check():
                 "SC_PCR+",	
                 "DC",
                 "DC_PCR+",	
-                "effectif J-7"
+                "effectif"
             ]
         },
         {
@@ -399,7 +399,7 @@ def download_and_check():
                 "HC_PCR+",
                 "SC",
                 "SC_PCR+",	
-                "effectif J-7"
+                "effectif"
             ]
         },
         {
@@ -422,7 +422,7 @@ def download_and_check():
                 "HC_PCR+",
                 "SC",
                 "SC_PCR+",	
-                "effectif J-7"
+                "effectif"
             ]
         },
         {
