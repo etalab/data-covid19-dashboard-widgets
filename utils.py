@@ -595,6 +595,7 @@ def get_kpi_scolaire(name, column, mean=False, transformDF=False):
         dtype={'reg': str, 'dep': str}
     )
     
+    df_protocole['identifiant'] = df_protocole['identifiant'].str.lower().str.replace(' ', '_')
     df = df.merge(df_protocole, how = 'left', left_on = 'protocole_en_vigueur', right_on = 'identifiant')
     
     if (name == 'taux_classes_fermees') | (name == 'taux_structures_fermees'):
