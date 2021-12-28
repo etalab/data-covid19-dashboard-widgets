@@ -5,9 +5,9 @@ from utils import get_taux, get_taux_variants, get_kpi, get_kpi_2files, get_kpi_
 from download_and_check_files import download_and_check, save_new_files, shorten_and_save
 from logger import log
 
-#kpis = download_and_check()
+kpis = download_and_check()
 # kpis = ['hospitalisations', 'hospitalisations_moyenne_quotidienne', 'retour_a_domicile', 'retour_a_domicile_moyenne_quotidienne', 'soins_critiques', 'soins_critiques_moyenne_quotidienne', 'deces', 'deces_moyenne_quotidienne', 'cas_positifs', 'taux_incidence', 'taux_positivite', 'vaccins_premiere_dose', 'vaccins_premiere_dose_moyenne_quotidienne', 'vaccins_vaccines','vaccins_vaccines_moyenne_quotidienne','taux_occupation','facteur_reproduction']
-kpis = ['vaccins_vaccines', 'vaccins_premiere_dose']
+#kpis = ['vaccins_vaccines', 'vaccins_premiere_dose']
 
 #kpis = ['hospitalisations', 'hospitalisations_moyenne_quotidienne', 'retour_a_domicile', 'retour_a_domicile_moyenne_quotidienne', 'soins_critiques', 'soins_critiques_moyenne_quotidienne', 'deces', 'deces_moyenne_quotidienne', 'cas_positifs', 'taux_incidence', 'taux_positivite', 'vaccins_premiere_dose', 'vaccins_premiere_dose_moyenne_quotidienne', 'vaccins_vaccines']
 
