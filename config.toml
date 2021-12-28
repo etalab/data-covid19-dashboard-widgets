@@ -139,6 +139,7 @@ statusTwitter = "le nombre moyen de décès dus au Covid chaque jour en France e
 
 [vaccins_premiere_dose]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
+res_id_nat = "vaccin_rappel_nat.csv"
 res_id = "vaccin.csv"
 trendType = "abnormal"
 nom = "Nombre de personnes ayant reçu au moins une première injection"
@@ -152,6 +153,7 @@ statusTwitter = "le nombre de premières injections en France est de "
 
 [vaccins_vaccines]
 dataset = "donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1"
+res_id_nat = "vaccin_rappel_nat.csv"
 res_id = "vaccin.csv"
 trendType = "abnormal"
 nom = "Nombre de personnes vaccinées"
