@@ -435,6 +435,89 @@ def get_kpi(name, column, mean, transformDF=False):
 
     save_result(indicateurResult, name)
 
+
+def get_kpi_2files(name, column, mean, transformDF=False):
+    """Process each geozones for Number type of KPIs.
+
+    Common function which orchestrate processing for Number type of KPIs
+    (there is some exception, see get_kpi_only_france)
+    """
+    indicateurResult = get_empty_kpi()
+    config = get_config(name)
+    log.debug('Processing - '+ name)
+
+    indicateurResult['nom'] = config['nom']
+    indicateurResult['unite'] = config['unite']
+    indicateurResult['unite_short'] = config['unite_short']
+    indicateurResult['trendType'] = config['trendType']
+
+    df = pd.read_csv(
+        'files_new/'+ config['res_id'],
+        sep=None,
+        engine='python',
+        dtype={'reg': str, 'dep': str}
+    )
+
+    df_nat = pd.read_csv(
+        'files_new/'+ config['res_id_nat'],
+        sep=None,
+        engine='python'
+    )
+    # Specificity KPI vaccins
+    if(transformDF):
+        df = df.rename(columns={'jour': 'date'})
+        df = pd.merge(df, deps, on='dep', how='left')
+        df = df[df['reg'].notna()]
+
+    # Specifity cas_positifs
+    if(column == 'pos_7j'):
+        df = df[df['pos_7j'].notna()]
+        df['pos7j_moyen'] = df['pos_7j'] / 7
+        df['pos7j_moyen'] = df['pos7j_moyen'].astype(int)
+        column = 'pos7j_moyen'
+
+    df = df[['dep', 'reg', 'date', column]]
+    df_nat = df_nat[['jour', column]].rename(columns={"jour": 'date'})
+    for country in tqdm(countries, desc="Processing National"):
+        res = get_kpi_by_type(
+            df_nat.groupby(['date'], as_index=False).sum(),
+            'nat',
+            'fra',
+            config['trendType'],
+            column,
+            mean
+        )
+        indicateurResult['france'].append(res)
+
+    dfinter = df.groupby(['date', 'reg'], as_index=False).sum()
+    for reg in tqdm(df.reg.unique(), desc="Processing Régions"): 
+        res = get_kpi_by_type(
+            dfinter[dfinter['reg'] == reg].copy(),
+            'reg',
+            reg,
+            config['trendType'],
+            column,
+            mean
+        )
+        indicateurResult['regions'].append(res)
+
+    for dep in tqdm(df.dep.unique(), desc="Processing Départements"):
+        res = get_kpi_by_type(
+            df[df['dep'] == dep].copy(),
+            'dep',
+            dep,
+            config['trendType'],
+            column,
+            mean
+        )
+        indicateurResult['departements'].append(res)
+
+    save_result(indicateurResult, name)
+
+
+
+
+
 def get_kpi_3_files(name, column, mean, transformDF=False):
     """Process each geozones for Number type of KPIs.
 
