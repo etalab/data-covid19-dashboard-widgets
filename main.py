@@ -19,11 +19,17 @@ if('taux_incidence' in kpis):
 if('prop_variant_A' in kpis):
     get_taux_variants('prop_variant_A')
 
-if('prop_variant_B' in kpis):
-    get_taux_variants('prop_variant_B')
+# if('prop_variant_B' in kpis):
+#     get_taux_variants('prop_variant_B')
 
 if('prop_variant_C' in kpis):
     get_taux_variants('prop_variant_C')
+    
+if('prop_variant_D' in kpis):
+    get_taux_variants('prop_variant_D')
+    
+if('prop_variant_A0C0' in kpis):
+    get_taux_variants('prop_variant_A0C0')
 
 if('taux_positivite' in kpis):
     get_taux('taux_positivite')
