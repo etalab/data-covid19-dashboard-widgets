@@ -208,6 +208,26 @@ nom = "Mutation L452R (dont variant Delta)"
 unite = "% Mutation L452R"
 unite_short = "%"
 
+[prop_variant_D]
+dataset = "donnees-de-laboratoires-pour-le-depistage-indicateurs-sur-les-mutations"
+res_id_fra = "prop_variants_fra.csv"
+res_id_reg = "prop_variants_reg.csv"
+res_id_dep = "prop_variants_dep.csv"
+trendType = "normal"
+nom = "Mutation N501Y ou K417N (suspicion variant Omicron)"
+unite = "% Mutation N501Y ou K417N (suspicion variant Omicron)"
+unite_short = "%"
+
+[prop_variant_A0C0]
+dataset = "donnees-de-laboratoires-pour-le-depistage-indicateurs-sur-les-mutations"
+res_id_fra = "prop_variants_fra.csv"
+res_id_reg = "prop_variants_reg.csv"
+res_id_dep = "prop_variants_dep.csv"
+trendType = "normal"
+nom = "Mutations non E484K et L452R (suspicion variant Omicron)"
+unite = "% Mutations non E484K et L452R (suspicion variant Omicron)"
+unite_short = "%"
+
 [pos_test_vacsi]
 dataset = "résultats nationaux issus des appariements entre SI-VIC, SI-DEP et VAC-SI"
 res_id_fra = "vacsi_non_vacsi_nat.csv"

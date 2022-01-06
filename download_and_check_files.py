@@ -275,12 +275,13 @@ def download_and_check():
         },
         {
             "url": "https://www.data.gouv.fr/fr/datasets/r/",
-            "res_id": "848debc4-0e42-4e3b-a176-afc285ed5401",
+            "res_id": "7eade8d7-f79a-4c7f-8579-51f3f7104cfb",
             "title": "prop_variants_fra",
             "kpis": [
                 "prop_variant_A",
                 "prop_variant_B",
-                "prop_variant_C"
+                "prop_variant_C",
+                "prop_variant_D"
             ],
             "columns": [
                 "fra",
@@ -301,12 +302,13 @@ def download_and_check():
         },
         {
             "url": "https://www.data.gouv.fr/fr/datasets/r/",
-            "res_id": "5ff0cad6-f150-47ea-a4e0-57e354c1b2a4",
+            "res_id": "9ed7f76c-09bc-43fb-997a-a1733faa6e8b",
             "title": "prop_variants_reg",
             "kpis": [
                 "prop_variant_A",
                 "prop_variant_B",
-                "prop_variant_C"
+                "prop_variant_C",
+                "prop_variant_D"
             ],
             "columns": [
                 "reg",
@@ -332,7 +334,8 @@ def download_and_check():
             "kpis": [
                 "prop_variant_A",
                 "prop_variant_B",
-                "prop_variant_C"
+                "prop_variant_C",
+                "prop_variant_D"
             ],
             "columns": [
                 "dep",

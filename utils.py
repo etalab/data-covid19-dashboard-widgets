@@ -292,8 +292,12 @@ def get_taux_variants(name):
         colname = "tx_A1"
     elif name == "prop_variant_B":
         colname = "tx_B1"
-    else :
+    elif name == "prop_variant_C":
         colname = "tx_C1"
+    elif name == "prop_variant_D":
+        colname = "tx_D1"
+    else:
+        colname = "tx_A0C0"
 
     df = pd.read_csv(
         'files_new/'+config['res_id_fra'],
@@ -312,12 +316,14 @@ def get_taux_variants(name):
             colname
         )
         indicateurResult['france'].append(res)
+        
     df = pd.read_csv(
         'files_new/'+config['res_id_reg'],
         sep=None,
         engine='python',
         dtype={'reg': str, 'dep': str}
     )
+    df = df[~df['reg'].isnull()]
     df = enrich_dataframe(df, name)
     df['date'] = df['semaine'].apply(lambda x: str(x)[11:])
     for reg in tqdm(df.reg.unique(), desc="Processing Régions"):
@@ -330,23 +336,23 @@ def get_taux_variants(name):
         )
         indicateurResult['regions'].append(res)
 
-    df = pd.read_csv(
-        'files_new/'+config['res_id_dep'],
-        sep=None,
-        engine='python',
-        dtype={'reg': str, 'dep': str}
-    )
-    df = enrich_dataframe(df, name)
-    df['date'] = df['semaine'].apply(lambda x: str(x)[11:])
-    for dep in tqdm(df.dep.unique(), desc="Processing Départements"):
-        res = process_stock(
-            df[df['dep'] == dep].copy(),
-            'dep',
-            dep,
-            config['trendType'],
-            colname
-        )
-        indicateurResult['departements'].append(res)
+    # df = pd.read_csv(
+    #     'files_new/'+config['res_id_dep'],
+    #     sep=None,
+    #     engine='python',
+    #     dtype={'reg': str, 'dep': str}
+    # )
+    # df = enrich_dataframe(df, name)
+    # df['date'] = df['semaine'].apply(lambda x: str(x)[11:])
+    # for dep in tqdm(df.dep.unique(), desc="Processing Départements"):
+    #     res = process_stock(
+    #         df[df['dep'] == dep].copy(),
+    #         'dep',
+    #         dep,
+    #         config['trendType'],
+    #         colname
+    #     )
+    #     indicateurResult['departements'].append(res)
 
     save_result(indicateurResult, name)
 
