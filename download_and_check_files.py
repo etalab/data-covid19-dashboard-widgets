@@ -281,23 +281,27 @@ def download_and_check():
                 "prop_variant_A",
                 "prop_variant_B",
                 "prop_variant_C",
-                "prop_variant_D"
+                "prop_variant_D",
+                "prop_variant_A0C0"
             ],
             "columns": [
                 "fra",
                 "semaine",
-                "nb_crib",
                 "nb_pos",
+                "nb_crib",
                 "tx_crib",
                 "nb_A0",
                 "nb_A1",
                 "tx_A1",
-                "nb_B0",
-                "nb_B1",
-                "tx_B1",
                 "nb_C0",
                 "nb_C1",
-                "tx_C1"
+                "tx_C1",
+                "nb_D0",
+                "nb_D1",
+                "tx_D1",
+                "nb_A0C0",
+                "nb_A01C01",
+                "tx_A0C0",
             ]
         },
         {
@@ -308,23 +312,28 @@ def download_and_check():
                 "prop_variant_A",
                 "prop_variant_B",
                 "prop_variant_C",
-                "prop_variant_D"
+                "prop_variant_D",
+                "prop_variant_A0C0"
             ],
             "columns": [
                 "reg",
+                "nom_reg",
                 "semaine",
-                "nb_crib",
                 "nb_pos",
+                "nb_crib",
                 "tx_crib",
                 "nb_A0",
                 "nb_A1",
                 "tx_A1",
-                "nb_B0",
-                "nb_B1",
-                "tx_B1",
                 "nb_C0",
                 "nb_C1",
-                "tx_C1"
+                "tx_C1",
+                "nb_D0",
+                "nb_D1",
+                "tx_D1",
+                "nb_A0C0",
+                "nb_A01C01",
+                "tx_A0C0",
             ]
         },
         {
@@ -335,7 +344,8 @@ def download_and_check():
                 "prop_variant_A",
                 "prop_variant_B",
                 "prop_variant_C",
-                "prop_variant_D"
+                "prop_variant_D",
+                "prop_variant_A0C0"
             ],
             "columns": [
                 "dep",
