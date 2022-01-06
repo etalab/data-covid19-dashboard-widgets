@@ -281,7 +281,8 @@ def download_and_check():
                 "prop_variant_A",
                 "prop_variant_B",
                 "prop_variant_C",
-                "prop_variant_D"
+                "prop_variant_D",
+                "prop_variant_A0C0"
             ],
             "columns": [
                 "fra",
@@ -308,7 +309,8 @@ def download_and_check():
                 "prop_variant_A",
                 "prop_variant_B",
                 "prop_variant_C",
-                "prop_variant_D"
+                "prop_variant_D",
+                "prop_variant_A0C0"
             ],
             "columns": [
                 "reg",
@@ -335,7 +337,8 @@ def download_and_check():
                 "prop_variant_A",
                 "prop_variant_B",
                 "prop_variant_C",
-                "prop_variant_D"
+                "prop_variant_D",
+                "prop_variant_A0C0"
             ],
             "columns": [
                 "dep",
