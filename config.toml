@@ -207,6 +207,7 @@ trendType = "normal"
 nom = "Mutation L452R (dont variant Delta)"
 unite = "% Mutation L452R"
 unite_short = "%"
+color = "#E4794A"
 
 [prop_variant_D]
 dataset = "donnees-de-laboratoires-pour-le-depistage-indicateurs-sur-les-mutations"
@@ -217,6 +218,7 @@ trendType = "normal"
 nom = "Mutation N501Y ou K417N (suspicion variant Omicron)"
 unite = "% Mutation N501Y ou K417N (suspicion variant Omicron)"
 unite_short = "%"
+color = "#A558A0"
 
 [prop_variant_A0C0]
 dataset = "donnees-de-laboratoires-pour-le-depistage-indicateurs-sur-les-mutations"
@@ -227,6 +229,7 @@ trendType = "normal"
 nom = "Mutations non E484K et L452R (suspicion variant Omicron)"
 unite = "% Mutations non E484K et L452R (suspicion variant Omicron)"
 unite_short = "%"
+color = "#A558A0"
 
 [pos_test_vacsi]
 dataset = "résultats nationaux issus des appariements entre SI-VIC, SI-DEP et VAC-SI"

@@ -35,6 +35,12 @@ def get_color(val, trendType):
         color = 'blue'
     return color
 
+def get_color_indicateur(config):
+    
+    if 'color' in config.keys():
+        return config['color']
+    else:
+        return 'default'
 
 def get_empty_kpi():
     """Initialize result Dictionnary."""
@@ -46,6 +52,7 @@ def get_empty_kpi():
     indicateurResult['france'] = []
     indicateurResult['regions'] = []
     indicateurResult['departements'] = []
+    indicateurResult['color'] = []
     return indicateurResult
 
 
@@ -216,6 +223,7 @@ def get_taux(name):
     indicateurResult['unite'] = config['unite']
     indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
+    indicateurResult['color'] = get_color_indicateur(config)
 
     df = pd.read_csv(
         'files_new/'+config['res_id_fra'],
@@ -287,6 +295,7 @@ def get_taux_variants(name):
     indicateurResult['unite'] = config['unite']
     indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
+    indicateurResult['color'] = get_color_indicateur(config)
 
     if name == "prop_variant_A":
         colname = "tx_A1"
@@ -383,6 +392,7 @@ def get_kpi(name, column, mean, transformDF=False):
     indicateurResult['unite'] = config['unite']
     indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
+    indicateurResult['color'] = get_color_indicateur(config)
 
     df = pd.read_csv(
         'files_new/'+ config['res_id'],
@@ -456,6 +466,7 @@ def get_kpi_2files(name, column, mean, transformDF=False):
     indicateurResult['unite'] = config['unite']
     indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
+    indicateurResult['color'] = get_color_indicateur(config)
 
     df = pd.read_csv(
         'files_new/'+ config['res_id'],
@@ -538,6 +549,7 @@ def get_kpi_3_files(name, column, mean, transformDF=False):
     indicateurResult['unite'] = config['unite']
     indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
+    indicateurResult['color'] = get_color_indicateur(config)
     
     # France -----
     df = pd.read_csv(
@@ -634,6 +646,7 @@ def get_kpi_only_france(name, column, mean, transformDF=False):
     indicateurResult['unite'] = config['unite']
     indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
+    indicateurResult['color'] = get_color_indicateur(config)
 
     df = pd.read_csv(
         'files_new/'+config['res_id'],
@@ -668,6 +681,7 @@ def get_kpi_scolaire(name, column, mean=False, transformDF=False):
     indicateurResult['unite'] = config['unite']
     indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
+    indicateurResult['color'] = get_color_indicateur(config)
         
 
     df = pd.read_csv(
@@ -734,6 +748,7 @@ def get_taux_specific(name, column):
     indicateurResult['unite'] = config['unite']
     indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
+    indicateurResult['color'] = get_color_indicateur(config)
 
     df = pd.read_csv(
         'files_new/'+config['res_id_fra'],
@@ -811,8 +826,7 @@ def get_couv(name, column, minClass):
     indicateurResult['unite'] = config['unite']
     indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']
-    
-    
+    indicateurResult['color'] = get_color_indicateur(config)    
     
     pop = pd.read_csv("files_new/" + config['pop_id_fra'], 
                       sep=None,
@@ -929,7 +943,7 @@ def get_vacsi_non_vacsi(name, column, statut, multi, filter = False, region = Tr
     indicateurResult['unite'] = config['unite']
     indicateurResult['unite_short'] = config['unite_short']
     indicateurResult['trendType'] = config['trendType']    
-    
+    indicateurResult['color'] = get_color_indicateur(config)
     
     df = pd.read_csv("files_new/" + config['res_id_fra'], 
                      sep=None,
