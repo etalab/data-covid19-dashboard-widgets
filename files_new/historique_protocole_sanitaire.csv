@@ -11,3 +11,15 @@ protocole_20210902;02/09/2021;Protocole en vigueur pour la rentrée scolaire 2021
 protocole_20211004;04/10/2021;Le niveau 1 (vert) s'applique dans les départements dont le taux d'incidence a été inférieur au seuil de 50 pour 100 000 habitants sur une période de 5 jours (détail : https://www.education.gouv.fr/covid19-quel-protocole-sanitaire-s-applique-pour-les-ecoles-et-etablissements-de-mon-departement-325535). Le protocole de contact-tracing reste inchangé : fermeture de la classe dès le 1er cas en école. 
 protocole_20211115;15/11/2021;Passage au niveau 2 du protocole sanitaire sauf pour les départements dont le taux d’incidence justifierait un niveau du protocole supérieur. Ainsi le protocole de niveau 4 reste applicable au département de la Guyane. Le port du masque est obligatoire en intérieur pour tous les élèves à compter de la classe de CP ainsi que pour tous les personnels dès le lundi 15 novembre.
 Protocole 20211209;09/12/2021;"Passage au niveau 3 du protocole sanitaire pour les écoles maternelles et élementaires (à l'exception de la Guyane): Après un cas confirmé, poursuite des apprentissages en présentiel pour les élèves testés négatifs;L’apparition de trois cas confirmés parmi les élèves conduit à la fermeture de la classe pour une durée de 7 jours. "
+protocole_20220103;03/01/2022;"Écoles maternelles et élémentaires : le protocole sanitaire de niveau 3 s’applique à l’ensemble des départements à l'exception de la Guyane qui applique le niveau 4.
+Collèges et lycées : le protocole sanitaire de niveau 2 s’applique à l’ensemble des départements à l'exception de la Guyane qui applique le niveau 4.
+A partir du 3 janvier, le protocole de contact-tracing pour l’ensemble des départements, quel que soit le niveau de protocole applicable, est le suivant :
+-Écoles :
+Après un cas confirmé, poursuite des apprentissages en présentiel pour les élèves régulièrement testés négatifs :
+- si le test PCR ou antigénique fait à J+0 est bien négatif ;
+- et si les autotests réalisés à J+2 et J+4 et délivrés gratuitement en pharmacie sont négatifs (attestation sur l’honneur des parents).
+Apprentissage à distance pour les élèves testés positifs et les élèves non testés qui doivent s'isoler 7 jours. Cette durée est réduite à 5 jours sur présentation d'un résultat négatif de test antigénique ou PCR réalisé le 5e jour et en l'absence de symptômes depuis 48h.
+-Collèges et lycées :
+- Les élèves de moins de 12 ans et les élèves âgés de 12 ans et plus justifiant d'une vaccination complète poursuivent les cours en présentiel s'ils réalisent un test antigénique ou PCR immédiatement puis deux autotests délivrés gratuitement en pharmacie les 2e et 4e jours après le 1er test.
+- Les élèves âgés de 12 ans et plus contact à risque sans vaccination complète poursuivent pendant 7 jours les apprentissages à distance et réalisent un test antigénique ou PCR à l'issue de l'isolement.
+"
