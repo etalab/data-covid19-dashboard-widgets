@@ -691,15 +691,14 @@ def get_kpi_scolaire(name, column, mean=False, transformDF=False):
         dtype={'reg': str, 'dep': str}
     )
     
-    df_protocole = pd.read_csv(
-        'files_new/'+config['protocole_id'],
-        sep=None,
-        engine='python',
-        dtype={'reg': str, 'dep': str}
-    )
-    
-    df_protocole['identifiant'] = df_protocole['identifiant'].str.lower().str.replace(' ', '_')
-    df = df.merge(df_protocole, how = 'left', left_on = 'protocole_en_vigueur', right_on = 'identifiant')
+    date_protocole = []
+    for protocole in df['protocole_en_vigueur']:
+        try: 
+            date = protocole.split('_')[1]
+            date_protocole.append(date[6:8] + '/' + date[4:6] + '/' + date[0:4])
+        except:
+            date_protocole.append('nan')
+    df['date_entree_en_vigueur'] = date_protocole
     
     if (name == 'taux_classes_fermees') | (name == 'taux_structures_fermees'):
         df = enrich_dataframe(df, name)
